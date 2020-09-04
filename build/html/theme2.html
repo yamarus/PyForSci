@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Основы Синтаксиса Python &mdash; Документация Основы Python для работы с научными данными </title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="3. Числа и списки" href="theme3.html" />
+    <link rel="prev" title="1. Введение. Установка интерпретатора Python" href="theme1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #6495ED" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Основы Python для работы с научными данными
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="theme1.html">1. Введение. Установка интерпретатора Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id1">1.1. О языке Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id2">1.2. Установка интерпретатора Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#anaconda">1.2.1. Установка Anaconda на свой компьютер</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#id7">1.2.2. Установка стандартных средств для python разработки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Основы Синтаксиса Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2.1. Форматирование блоков кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2.2. Ввод и вывод в консоль</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2.3. Ключевые слова и встроенные функции в Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">2.4. Основные операторы и типы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.4.1. Обзор Типов данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.4.2. Операторы сравнения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.4.3. Условные операторы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while">2.4.4. Цикл while</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-range">2.4.5. Цикл for и функция range</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme3.html">3. Числа и списки</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Основы Python для работы с научными данными</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>2. Основы Синтаксиса Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="theme3.html" class="btn btn-neutral float-right" title="3. Числа и списки" accesskey="n">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="theme1.html" class="btn btn-neutral float-left" title="1. Введение. Установка интерпретатора Python" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<span id="theme2"></span><h1>2. Основы Синтаксиса Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Подробное описание спецификаций языка Python можно найти на <a class="reference external" href="https://www.python.org/doc/">официальном сайте</a>. Помимо этого существует множество стороних (в том числе рускоязычных) ресурсов, где основы языка описаны более понятно для читателя с малым опытом программирования.</p>
+<div class="section" id="id2">
+<h2>2.1. Форматирование блоков кода<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В python достаточно удобная система разметки кода. Один и тот же уровень вложения имее один и тот же отступ (табуляция или 4 пробела), и не требует никакого дополнительного форматирования (как <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> в <strong>С/C++</strong> и схожих по синтаксису языках или <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">end</span></code> в <strong>Pascal</strong> и т.д.).</p>
+</div>
+<div class="section" id="id3">
+<h2>2.2. Ввод и вывод в консоль<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Работать с Python можно двумя основными способами: работа в консоли или написание исполняемых скриптов. В первом случае, достаточно просто последовательно вводить команды в консоль. Такой способ хорош в случае использования python в режиме калькулятора без графического интерфейса, или для выполнения нескольких простых последовательных комманд. В данном случае вопрос ввода и вывода данных решается сам собой.  В остальных случаях целесообразние использование <code class="file docutils literal notranslate"><span class="pre">.py</span></code> скриптов или <code class="file docutils literal notranslate"><span class="pre">.ipynb</span></code> файлов.</p>
+<p>Для вывода значения переменной <strong>var</strong> достаточно просто вызвать стандартную функцию:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Для чтения данных с клавиатуры в переменную <strong>var</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="o">=</span><span class="nb">input</span><span class="p">()</span>               <span class="c1">#ожидаем ввода с клавиатуры</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;вы ввели:&#39;</span> <span class="o">+</span><span class="n">var</span><span class="p">)</span>   <span class="c1">#выводим результат</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p>Если вы используете кириллицу в своем скрипте, он должен начинатся со строки:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>2.3. Ключевые слова и встроенные функции в Python<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Дабы избежать конфликта имен и познакомиться с некоторыми стандартными функциями pyhton полезно просмотреть стандартные ключевые слова и встроенные функции.</p>
+<ul class="simple">
+<li>Список <a class="reference external" href="https://pythonworld.ru/osnovy/klyuchevye-slova-modul-keyword.html">ключевых слов</a></li>
+<li>Список <a class="reference external" href="https://pythonworld.ru/osnovy/vstroennye-funkcii.html">встроенных функций</a></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>2.4. Основные операторы и типы<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В данной теме мы рассмотрим минимальный набор операторов и типов. На следующих занятиях эти вопросы будут рассмотренны более подробно.</p>
+<div class="section" id="id8">
+<h3>2.4.1. Обзор Типов данных<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>К основным типам данных можно отнести: логические (bool), числовые (int, float, complex), списки (list), кортежи (tuple), словари (dict), множества (set) и строки (str). Создание переменной любого выглядит следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">имя_переменной</span> <span class="o">=</span> <span class="n">данные</span>
+</pre></div>
+</div>
+<p>Рассмотрим пример создание каждого типа переменных:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Логические переменные</span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">True</span>              <span class="c1"># возможные значения True и False</span>
+
+<span class="c1"># числовые переменные</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">42</span>                <span class="c1"># целые</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="mf">4.2e1</span>            <span class="c1"># числа с плавающей точкой</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="mf">0.42</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">4.2</span> <span class="o">-</span> <span class="mf">0.1</span><span class="n">j</span>        <span class="c1"># комплексные числа</span>
+
+<span class="c1"># списки (массивы)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;строка&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.3</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+     <span class="p">[</span><span class="n">f2</span><span class="p">,</span> <span class="mf">1.47e-7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+
+<span class="c1"># кортежи (как списки, только их нельзя изменить после создания)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.7</span><span class="p">)</span>
+
+<span class="c1"># словари</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ключ&#39;</span><span class="p">:</span><span class="s1">&#39;значение&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="mf">12.01</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="mf">14.01</span><span class="p">}</span>
+
+<span class="c1"># множества (особенность: содержат не повторяющиеся элементы)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+
+<span class="c1"># строки</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;просто строка&#39;</span>
+</pre></div>
+</div>
+<p>В дополнении к этому, можно легко преобразовывать один тип в другой:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">4.2e1</span><span class="p">)</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">16</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;1.25e-3&#39;</span><span class="p">)</span>
+<span class="go">0.00125</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">&#39;4.1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
+<span class="go">[&#39;t&#39;, &#39;e&#39;, &#39;x&#39;, &#39;t&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>2.4.2. Операторы сравнения<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>К операторам сравнения можно отнести <code class="docutils literal notranslate"><span class="pre">==</span></code>,  <code class="docutils literal notranslate"><span class="pre">!=</span></code> - проверка равенства и неравенства, соответственно;  <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> и <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> - проверка условий больше, меньше;  <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> и <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> - проверка условий больше или равно и меньше или равно. Каждый из операторов сравнения возвращает <code class="docutils literal notranslate"><span class="pre">True</span></code> или <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">5</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">==</span> <span class="mf">20.0e-1</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>2.4.3. Условные операторы<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Условные операторы выполняют проверку тех или иных условий. В python имется 3 стандартных условных конструкций:</p>
+<p>простое условие на выполение инструкций</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">условие</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+
+<span class="c1"># например, если a&gt;0, то пишем что число положительное</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;число положительное&#39;</span><span class="p">)</span>
+
+<span class="c1"># тоже самое</span>
+<span class="c1"># присваиваем переменной condition логическое значение</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="c1"># в случае лишь одной инструкции после if, elif или else</span>
+<span class="c1"># инструкцию можно записать сразу после условия</span>
+<span class="k">if</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;число положительное&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>условие с одной альтернативой</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">условие</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+
+<span class="c1"># например, если a &gt;= b, то вычитаем из a единичку</span>
+<span class="c1"># иначе прибавляем к a единичку</span>
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>    <span class="c1"># или a = a - 1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>    <span class="c1"># или a = a + 1</span>
+</pre></div>
+</div>
+<p>условия с множественным выбором</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">условие_1</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+<span class="k">elif</span> <span class="n">условие_2</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+<span class="o">...</span>
+<span class="k">elif</span> <span class="n">условие_n</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">инструкция</span>
+    <span class="n">инструкция</span>
+
+<span class="c1"># например, проверяем тип атома и присваиваем соответствующую массу</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">atom</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>     <span class="n">m</span> <span class="o">=</span> <span class="mf">12.</span>
+<span class="k">elif</span> <span class="n">atom</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span>   <span class="n">m</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="k">elif</span> <span class="n">atom</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>   <span class="n">m</span> <span class="o">=</span> <span class="mf">16.</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;такого атома не знаю&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="while">
+<h3>2.4.4. Цикл while<a class="headerlink" href="#while" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Цикл <code class="docutils literal notranslate"><span class="pre">while</span></code> выполняется до тех пор, пока условие в нем верно</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">условие</span><span class="p">:</span>
+    <span class="n">делаем</span> <span class="n">какие</span><span class="o">-</span><span class="n">то</span> <span class="n">действия</span> <span class="mi">1</span>
+    <span class="n">делаем</span> <span class="n">какие</span><span class="o">-</span><span class="n">то</span> <span class="n">действия</span> <span class="mi">2</span>
+    <span class="o">...</span>
+
+<span class="c1"># выводим буквы пока i &lt; 10</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>В этом случае буде выводиться в столбик <code class="docutils literal notranslate"><span class="pre">a0</span>&#160; <span class="pre">a2</span>&#160; <span class="pre">a4</span>&#160; <span class="pre">a6</span>&#160; <span class="pre">a8</span></code>.</p>
+</div>
+<div class="section" id="for-range">
+<h3>2.4.5. Цикл for и функция range<a class="headerlink" href="#for-range" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Цикл <code class="docutils literal notranslate"><span class="pre">for</span></code> выполняет инструкции, последовательно итерируя набор. Пример итерации по некоторому списку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">some_list</span><span class="p">:</span>
+    <span class="n">набор</span> <span class="n">инструкций</span>
+
+<span class="c1"># пример</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Цикл <code class="docutils literal notranslate"><span class="pre">for</span></code> может выводить значения любого итерируемого объекта, будь то список, кортеж, словарь (по ключам), множества, строки и т.д.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s1">&#39;яблоко&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;я&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Я&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c1"># выведет слово Яблоко с большой буквы</span>
+</pre></div>
+</div>
+<p>Для удобства итераций по последовательному ряду числе можно использовать функцию <code class="docutils literal notranslate"><span class="pre">range(начало,</span> <span class="pre">конец,</span> <span class="pre">шаг)</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">#выведет значения от 0 до 9</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">#выведет значения от 10 до 19</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">#выведет значения от -9 до 18 с шагом 3 (т.е. -9, -6, ..., 18)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">#выведет значения от 20 до 12 с шагом 2 (т.е. 20, 18, ..., 12)</span>
+</pre></div>
+</div>
+<p>Функцией <code class="docutils literal notranslate"><span class="pre">range()</span></code> можно генерировать списки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">range(0, 10)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Функция <code class="docutils literal notranslate"><span class="pre">range()</span></code> в качестве аргументов принемает только целочисленные значения.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="theme3.html" class="btn btn-neutral float-right" title="3. Числа и списки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="theme1.html" class="btn btn-neutral float-left" title="1. Введение. Установка интерпретатора Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, NIIC SB RAS
+
+    </p>
+  </div>
+    
+    
+    
+    Собрано при помощи <a href="http://sphinx-doc.org/">Sphinx</a> с использованием
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">темы,</a>
+    
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
