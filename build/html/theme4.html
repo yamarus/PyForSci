@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Строки и функции &mdash; Документация Основы Python для работы с научными данными </title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="5. NumPy массивы и их свойства" href="theme5.html" />
+    <link rel="prev" title="3. Числа и списки" href="theme3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #6495ED" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Основы Python для работы с научными данными
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="theme1.html">1. Введение. Установка интерпретатора Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id1">1.1. О языке Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id2">1.2. Установка интерпретатора Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#anaconda">1.2.1. Установка Anaconda на свой компьютер</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#id7">1.2.2. Установка стандартных средств для python разработки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme2.html">2. Основы Синтаксиса Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id2">2.1. Форматирование блоков кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id3">2.2. Ввод и вывод в консоль</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id4">2.3. Ключевые слова и встроенные функции в Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id7">2.4. Основные операторы и типы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id8">2.4.1. Обзор Типов данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id9">2.4.2. Операторы сравнения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id10">2.4.3. Условные операторы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#while">2.4.4. Цикл while</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#for-range">2.4.5. Цикл for и функция range</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id11">2.5. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme3.html">3. Числа и списки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme3.html#id2">3.1. Числа</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#math">3.1.1. Модуль math</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Строки и функции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Основы Python для работы с научными данными</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>4. Строки и функции</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="theme5.html" class="btn btn-neutral float-right" title="5. NumPy массивы и их свойства" accesskey="n">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="theme3.html" class="btn btn-neutral float-left" title="3. Числа и списки" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="theme4">
+<span id="id1"></span><h1>4. Строки и функции<a class="headerlink" href="#theme4" title="Ссылка на этот заголовок">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="theme5.html" class="btn btn-neutral float-right" title="5. NumPy массивы и их свойства" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="theme3.html" class="btn btn-neutral float-left" title="3. Числа и списки" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, NIIC SB RAS
+
+    </p>
+  </div>
+    
+    
+    
+    Собрано при помощи <a href="http://sphinx-doc.org/">Sphinx</a> с использованием
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">темы,</a>
+    
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
