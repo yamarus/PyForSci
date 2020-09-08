@@ -31,12 +31,14 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script type="text/javascript" src="_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="4. Строки и функции" href="theme4.html" />
     <link rel="prev" title="2. Основы Синтаксиса Python" href="theme2.html" /> 
 </head>
 
@@ -107,7 +109,16 @@
 <li class="toctree-l2"><a class="reference internal" href="theme2.html#id11">2.5. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Числа и списки</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Числа и списки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.1. Числа</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#math">3.1.1. Модуль math</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">3.2. Списки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme4.html">4. Строки и функции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a></li>
 </ul>
 
             
@@ -168,6 +179,8 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
+        <a href="theme4.html" class="btn btn-neutral float-right" title="4. Строки и функции" accesskey="n">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="theme2.html" class="btn btn-neutral float-left" title="2. Основы Синтаксиса Python" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
       
@@ -180,6 +193,51 @@
             
   <div class="section" id="theme3">
 <span id="id1"></span><h1>3. Числа и списки<a class="headerlink" href="#theme3" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>3.1. Числа<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В python существует три стандартных класса чисел: цлочисленные (int), числа с плавающей запятой (float) и комплексные числа (complex). Подробное описание спецификаций численных типов Python можно найти в <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html?#numeric-types-int-float-complex">документации</a>. Особое внимание стоит уделить на заметки после таблицы поддерживаемых стандартных операций.</p>
+<p>В некоторых задачах важно понимать как компьютер представляет числа. Наиболее частый тип используемых чисел для научного применения является <a class="reference external" href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">64-битный float</a>.</p>
+<img alt="_images/t2_float64.svg" src="_images/t2_float64.svg" /><div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Будьте внимательны суммируя числа разного порядка. 64-битный float имеет свои ограничения, связанные со способом его кодирования</p>
+</div>
+<div class="section" id="math">
+<h3>3.1.1. Модуль math<a class="headerlink" href="#math" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Модуль math является встроенным модулем python для простейших математических операций. Описание модуля и его функций можно найти в <a class="reference external" href="https://docs.python.org/3/library/math.html">документации модуля math</a>. На практике, удобнее и эффективнее использовать специализированный модуль numerical python (NumPy). При дальнейшем изучении курса мы будем пользоваться именно им.</p>
+<p>Для использования любого модуля или отдкльной функции, метода, или константы из него, необоходимо сначала его подключить к вашему скрипту. Рассмотрим несколько примеров подключения и использования модуля math (рассчитываем <span class="math notranslate nohighlight">\(\sin (\frac{\pi}{4})\)</span>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>   <span class="c1"># любая другая функция модуля вызывается схожим способом</span>
+<span class="c1">#    ^    ^</span>
+<span class="c1">#    |    |</span>
+<span class="c1">#    | название функции в модуле</span>
+<span class="c1">#    |</span>
+<span class="c1"># название модуля</span>
+</pre></div>
+</div>
+<p>Внутри вашего скрипта любому сторонyему модулю можно дать свое локальное имя (часто используется в случае длинного названия модуля)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>        <span class="c1"># в дальнейшем к модулю math можно обращаться через m</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># тоже что в предыдущем примере math.sin(math.pi/4)</span>
+</pre></div>
+</div>
+<p>Помимо этого, можно подгрузить отдельные объекты из модуля</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>или загрузить модуль полностью</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">В качестве подключаемого модуля может быть ваш собственный файл (удобно использовать для разбиения фунционала в случае больших проектов или в качестве вашего личного модуля с уже написанными наиболее частоиспользуемыми алгоритмами. Подключение файла <code class="file docutils literal notranslate"><span class="pre">my_super_module.py</span></code> лежащего в той же папке, где и основной скрипт, происходит аналогично другим модулям <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_super_module</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>3.2. Списки<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
 </div>
 
 
@@ -189,6 +247,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="theme4.html" class="btn btn-neutral float-right" title="4. Строки и функции" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="theme2.html" class="btn btn-neutral float-left" title="2. Основы Синтаксиса Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
