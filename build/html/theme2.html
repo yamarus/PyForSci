@@ -545,7 +545,7 @@ True
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>    <span class="mi">1</span>
 <span class="mi">7</span>    <span class="mi">49</span>
-<span class="mf">2.3</span>          <span class="mf">5.289999999999999</span>
+<span class="mf">2.3</span>  <span class="mf">5.289999999999999</span>
 <span class="mi">0</span>    <span class="mi">0</span>
 </pre></div>
 </div>
@@ -563,7 +563,7 @@ True
 </div>
 <p>Для удобства итераций по последовательному ряду числе можно использовать
 функцию <code class="docutils literal notranslate"><span class="pre">range(начало,</span> <span class="pre">конец,</span> <span class="pre">шаг)</span></code>.</p>
-<p>Функция <code class="docutils literal notranslate"><span class="pre">range()</span></code> в качестве аргументов принемает только целочисленные
+<p>Функция <code class="docutils literal notranslate"><span class="pre">range()</span></code> в качестве аргументов принимает только целочисленные
 значения.</p>
 <p>Выводим числа от 0 до 9:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="p">)</span>
@@ -606,6 +606,67 @@ True
 </div>
 <div class="section" id="id16">
 <h2>2.6. Задачи<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Что выведет команда <code class="docutils literal notranslate"><span class="pre">print(b)</span></code>, если <code class="docutils literal notranslate"><span class="pre">b</span></code> задается следующим образом:</p>
+<blockquote>
+<div><ul>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">==</span> <span class="mf">0.03e2</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span>  <span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">!=</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mf">3.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">42</span><span class="n">j</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">some_list</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">some_list</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Напишите программу, суммирующую два числа из ввода <code class="docutils literal notranslate"><span class="pre">input()</span></code>.</p>
+</li>
+<li><p class="first">Найдите уравнение прямой, проходящей через две заданные точки (задается через <code class="docutils literal notranslate"><span class="pre">input()</span></code>).</p>
+</li>
+<li><p class="first">Найдите корни квадратного уравнения вида <span class="math notranslate nohighlight">\(a x^2+b x+c = 0\)</span>, где коэффициенты задаются по отдельности через <code class="docutils literal notranslate"><span class="pre">input()</span></code>. В случае получения комплексных корней, выводите предупреждение об отсутствие действительных корней.</p>
+<blockquote>
+<div><div class="admonition hint">
+<p class="first admonition-title">Подсказка</p>
+<p class="last">используйте проверку по типу переменной (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">type(D)</span> <span class="pre">is</span> <span class="pre">complex:</span> <span class="pre">...</span></code>)</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Используя циклы <code class="docutils literal notranslate"><span class="pre">for</span></code> и <code class="docutils literal notranslate"><span class="pre">while</span></code>, двумя разными способами рассчитайте сумму ряда <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span>, где <span class="math notranslate nohighlight">\(n\)</span> изменяется от <span class="math notranslate nohighlight">\(N_0\)</span> до <span class="math notranslate nohighlight">\(N\)</span>.</p>
+</li>
+<li><p class="first">Рассчитайте количество символов, и количество уникальных символов в введенной строке, не включая знаки препинания (,.!?;:) и пробелы.</p>
+<blockquote>
+<div><div class="admonition hint">
+<p class="first admonition-title">Подсказка</p>
+<p class="last">используйте типы <code class="docutils literal notranslate"><span class="pre">list</span></code> и <code class="docutils literal notranslate"><span class="pre">set</span></code> (списки и множества), команду <code class="docutils literal notranslate"><span class="pre">len()</span></code> и проверку наличия элемента <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">in</span> <span class="pre">reference_list</span></code>.</p>
+</div>
+</div></blockquote>
+</li>
+</ol>
 </div>
 </div>
 
