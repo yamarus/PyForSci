@@ -20,7 +20,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = u'Основы Python для работы с научными данными'
-copyright = u'2020, NIIC SB RAS'
+copyright = u'R.D.Yamaletdinov, NIIC SB RAS, 2020'
 author = u'Ruslan Yamaletdinov'
 
 # The short X.Y version
