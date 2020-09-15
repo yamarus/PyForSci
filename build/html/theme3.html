@@ -284,6 +284,10 @@
 (т.е. по правилу <span class="math notranslate nohighlight">\(2.5\approx2\)</span>, <span class="math notranslate nohighlight">\(3.5\approx4\)</span>)</p>
 <p>Все это может приводить к ошибке
 <span class="math notranslate nohighlight">\(-1+\left(1+\frac{\epsilon}{2}\right)\neq\left(-1+1\right)+\frac{\epsilon}{2}\)</span></p>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">Будьте внимательны суммируя числа разного порядка. 64-битный float имеет свои ограничения, связанные со способом его кодирования</p>
+</div>
 <p>float поддерживает специальные „не числа“ <code class="docutils literal notranslate"><span class="pre">nan</span></code> и <code class="docutils literal notranslate"><span class="pre">inf</span></code>.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -308,10 +312,6 @@
 <span class="kc">True</span>
 <span class="o">-</span><span class="n">inf</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Примечание</p>
-<p class="last">Будьте внимательны суммируя числа разного порядка. 64-битный float имеет свои ограничения, связанные со способом его кодирования</p>
 </div>
 </div>
 <div class="section" id="complex">
@@ -551,6 +551,52 @@
 </div>
 <div class="section" id="id12">
 <h2>3.4. Задачи<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Выведите все числа от 0 до 100 делящиеся на введенное число.</p>
+</li>
+<li><p class="first">Напишите программу для нахождения значения машинного эпсилон, прибавляя к единице <span class="math notranslate nohighlight">\(2^{-1}\)</span>, <span class="math notranslate nohighlight">\(2^{-2}\)</span>,  <span class="math notranslate nohighlight">\(2^{-3}\)</span> и т.д.</p>
+</li>
+<li><p class="first">Сравните друг с другом четыре машинных числа: <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(1+ \frac{\epsilon}{2}\)</span>, <span class="math notranslate nohighlight">\(1+\epsilon\)</span>, <span class="math notranslate nohighlight">\(1+\epsilon+ \frac{\epsilon}{2}\)</span>, объясните результат. То же для чисел <span class="math notranslate nohighlight">\(1+\epsilon+ \frac{\epsilon}{2}\)</span> и <span class="math notranslate nohighlight">\(1+ \frac{\epsilon}{2} +\epsilon\)</span>.</p>
+</li>
+<li><p class="first">Просуммируйте ряд 1/n, где n изменяется от 1 до миллиона, и от миллиона до 1 (т.е. ряды <span class="math notranslate nohighlight">\(\frac{1}{1}+\frac{1}{2}+...+\frac{1}{10^6}\)</span> и <span class="math notranslate nohighlight">\(\frac{1}{10^6}+\frac{1}{999999}+...+ \frac{1}{1}\)</span>). Сравните результат. В чем причина различия, и какая из сумм точнее?</p>
+</li>
+<li><p class="first">Напишите программу, которая считывает комплексное число из консоли (по отдельности действительную и мнимую часть), находит комплекно сопряженное число, и нормирует (<span class="math notranslate nohighlight">\(|c|^2=1\)</span>).</p>
+</li>
+<li><p class="first">Геометрию молекулы можно задать в виде списка <code class="docutils literal notranslate"><span class="pre">[['Element',x,y,z],</span> <span class="pre">...]</span></code>. Для молекулы воды такой словарь представлен ниже (координаты в ангстремах)</p>
+<blockquote>
+<div><div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">water</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;O&#39;</span><span class="p">,</span>  <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span>  <span class="mf">0.757</span><span class="p">,</span> <span class="mf">0.586</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.757</span><span class="p">,</span> <span class="mf">0.586</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Найдите положение центра масс, и момент инерции для молекулы воды. Постарайтесь решить задачу так, чтобы программа могла справиться с любым количеством атомов, и быстро дополнялась для учета бОльшего количества типов атомов.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Подсказка</p>
+<p class="last">Используйте словарь для хранения масс для каждого типа атома. Ссылки на Википедию: <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BD%D1%82%D1%80_%D0%BC%D0%B0%D1%81%D1%81#%D0%9E%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">положение центра масс</a>, <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BC%D0%B5%D0%BD%D1%82_%D0%B8%D0%BD%D0%B5%D1%80%D1%86%D0%B8%D0%B8#%D0%9E%D1%81%D0%B5%D0%B2%D0%BE%D0%B9_%D0%BC%D0%BE%D0%BC%D0%B5%D0%BD%D1%82_%D0%B8%D0%BD%D0%B5%D1%80%D1%86%D0%B8%D0%B8">момент инерции</a></p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Найдите собственные значения и собственные вектора матрицы <span class="math notranslate nohighlight">\(2\times2\)</span> (матрицу задавайте в самом коде программы).</p>
+<blockquote>
+<div><div class="admonition hint">
+<p class="first admonition-title">Подсказка</p>
+<p class="last">Вспоминаем математику. В интернете куча статей с простыми примерами, например <a class="reference external" href="http://mathportal.net/index.php/vektornaya-algebra/sobstvennye-chisla-i-vektora-matrits-metody-ikh-nakhozhdeniya">эта</a>.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">После прочтения очередного файла, вы получили список следующего содержания:</p>
+<blockquote>
+<div><div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;name one&#39;</span><span class="p">,</span>  <span class="s1">&#39;name two&#39;</span> <span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;units one&#39;</span><span class="p">,</span> <span class="s1">&#39;units two&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;100.5439&#39;</span><span class="p">,</span> <span class="s1">&#39;    23.321&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;100.6439&#39;</span><span class="p">,</span> <span class="s1">&#39;    22.129&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;100.7440&#39;</span><span class="p">,</span> <span class="s1">&#39;    22.974&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Преобразуте численные значения в два отдельных листа <code class="docutils literal notranslate"><span class="pre">X</span></code> и <code class="docutils literal notranslate"><span class="pre">Y</span></code> (должны содержать исключительно числа, имена и единицы можно вынести в отдельный словарь).</p>
+</div></blockquote>
+</li>
+</ol>
 </div>
 </div>
 
