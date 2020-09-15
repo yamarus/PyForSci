@@ -31,6 +31,7 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script type="text/javascript" src="_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -276,6 +277,13 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
 </pre></div>
 </div>
+<p>Машинное <span class="math notranslate nohighlight">\(\epsilon\)</span> - минимальное число, при сложении которого с
+единицей результат будет отличаться от единицы:
+<span class="math notranslate nohighlight">\(1+\epsilon \neq 1\)</span></p>
+<p>Округление же в таком случае происходит до ближайшего четного разряда
+(т.е. по правилу <span class="math notranslate nohighlight">\(2.5\approx2\)</span>, <span class="math notranslate nohighlight">\(3.5\approx4\)</span>)</p>
+<p>Все это может приводить к ошибке
+<span class="math notranslate nohighlight">\(-1+\left(1+\frac{\epsilon}{2}\right)\neq\left(-1+1\right)+\frac{\epsilon}{2}\)</span></p>
 <p>float поддерживает специальные „не числа“ <code class="docutils literal notranslate"><span class="pre">nan</span></code> и <code class="docutils literal notranslate"><span class="pre">inf</span></code>.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
