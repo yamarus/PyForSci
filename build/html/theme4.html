@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. Строки и функции &mdash; Документация Основы Python для работы с научными данными </title>
+  <title>4. Функции и строки &mdash; Документация Основы Python для работы с научными данными </title>
   
 
   
@@ -132,7 +132,22 @@
 <li class="toctree-l2"><a class="reference internal" href="theme3.html#id12">3.4. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Строки и функции</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Функции и строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">4.1. Функции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.1. Функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.2. Аргументы функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lambda">4.1.3. Lambda функции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.2. Строки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.2.1. Литералы строк.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.2.2. Методы и функции строк</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#format">4.2.3. Форматирование строк. Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">4.3. Задачи</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a></li>
 </ul>
 
@@ -180,7 +195,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>4. Строки и функции</li>
+      <li>4. Функции и строки</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -207,7 +222,343 @@
            <div itemprop="articleBody">
             
   <div class="section" id="theme4">
-<span id="id1"></span><h1>4. Строки и функции<a class="headerlink" href="#theme4" title="Ссылка на этот заголовок">¶</a></h1>
+<span id="id1"></span><h1>4. Функции и строки<a class="headerlink" href="#theme4" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="../../source/lectures/theme4.ipynb">Лекция в .ipynb формате</a></p>
+<div class="section" id="id2">
+<h2>4.1. Функции<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3>4.1.1. Функции<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Функция - объект принимающий аргументы, и возвращающий результат. В
+простейщем случае функция определяются следующим образом:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argN</span><span class="p">):</span>
+    <span class="s2">&quot;Строка документации. Не обязательна, но приветствуется в больших проектах, или в модулях&quot;</span>
+    <span class="n">инструкция1</span>
+    <span class="n">инструкция2</span>
+    <span class="o">...</span>
+    <span class="n">инструкцияN</span>
+    <span class="k">return</span> <span class="n">результат</span>
+</pre></div>
+</div>
+<p>Для использования функции просто вызываем ее из скрипта ниже объявления</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">переменная_для_результата</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Рассмотрим функцию, выводящую гипотенузу прямоугольного треугольника,
+зная длины сторон катетов: <span class="math notranslate nohighlight">\(c=\sqrt{a^2+b^2}\)</span></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hypotenuse</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="s2">&quot;ищем гипотенузу&quot;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">hyp</span> <span class="o">=</span> <span class="n">hypotenuse</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hyp</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">5.0</span>
+</pre></div>
+</div>
+<p>В качестве аргументов, и возвращаемого результата функции способны
+принимать и отдавать любой набор объектов (включая другие функции или
+ничего)</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_list_of_None</span><span class="p">():</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">l</span>
+
+<span class="n">el</span> <span class="o">=</span> <span class="n">create_list_of_None</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_stuff</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">:</span> <span class="c1"># проверяем что нам передали список</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;это не список&#39;</span><span class="p">)</span>
+        <span class="k">return</span>                <span class="c1"># еще можно pass</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># проверяем что список достаточно длинный для нашего кода</span>
+        <span class="n">output_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># создаем строку из первого элемента</span>
+
+        <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="n">output_string</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span> <span class="c1"># добавляем запятые и пробелы</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output_string</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># в списке один элемент. запятые не нужны</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;получен пустой список&#39;</span><span class="p">)</span>
+
+<span class="n">print_stuff</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">print_stuff</span><span class="p">([])</span> <span class="c1">#пустой список</span>
+<span class="n">print_stuff</span><span class="p">([</span><span class="s1">&#39;в списке один элемент. Выводим без запятых&#39;</span><span class="p">])</span>
+<span class="n">print_stuff</span><span class="p">([</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">3.</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span><span class="p">,</span> <span class="mf">6.62e-34</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">это</span> <span class="n">не</span> <span class="n">список</span>
+<span class="n">получен</span> <span class="n">пустой</span> <span class="n">список</span>
+<span class="n">в</span> <span class="n">списке</span> <span class="n">один</span> <span class="n">элемент</span><span class="o">.</span> <span class="n">Выводим</span> <span class="n">без</span> <span class="n">запятых</span>
+<span class="n">d</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span><span class="p">),</span> <span class="mf">6.62e-34</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>4.1.2. Аргументы функции<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иногда функции требуется передать заранее не известное количество
+аргументов, дополнительные аргументы (полезно при подборе параметров
+моделей с scipy.optimize) и именованные аргументы.</p>
+<p>Рассмотрим использование дополнительных аргументов (функция получает
+кортеж, обозначается <code class="docutils literal notranslate"><span class="pre">*</span></code>, например <code class="docutils literal notranslate"><span class="pre">*args</span></code>)</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">ab_args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ab_args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">ab_args</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+<span class="mi">11</span>
+<span class="mi">11</span>
+</pre></div>
+</div>
+<p>Именованные аргументы представляются в виде словаря и обозначаются
+<code class="docutils literal notranslate"><span class="pre">**</span></code>, например <code class="docutils literal notranslate"><span class="pre">**kwards</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">ab_kwards</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ab_kwards</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">ab_kwards</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lambda">
+<h3>4.1.3. Lambda функции<a class="headerlink" href="#lambda" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иногда бывает удобно использовать короткие <code class="docutils literal notranslate"><span class="pre">lambda</span></code> функции, которые
+можно объявлять непосредственно перед использованием. Мы не будем их
+использовать на регулярной основе. При необходимости, вы можете
+самостоятельно ознакомиться с их функционалом и возможностями.</p>
+<p>В общем виде, объявление и использование lambda функции происходит
+следующим образом:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">название_функции</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argN</span> <span class="p">:</span> <span class="n">выражение</span>
+</pre></div>
+</div>
+<p>Рассмотрим приведенный ранее пример с вычислением гипотенузы</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hypotenuse</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hypotenuse</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">5.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>4.2. Строки<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Строки - необходимый элемент для работы с текстом, подписями и файлами.
+Python имеет довольно широкий базовый функционал для работы со строками.
+Полное описание всего доступного функционала можно найти в документации
+(учитывая ее формат и размер, лучше ищите отдельные примеры)</p>
+<p>Строку можно задать с помощью кавычек или апострофов:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;это строка&#39;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;это тоже строка&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">это</span> <span class="n">тоже</span> <span class="n">строка</span>
+</pre></div>
+</div>
+<p>Для записи очень длинных строк удобно использовать тройные кавычки
+(апострофы):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Это очень</span>
+<span class="s1">тоже строка.</span>
+<span class="s1">Можно писать</span>
+<span class="s1">в несколько строк.</span>
+
+<span class="s1">удобно для форматирования</span>
+<span class="s1">input файлов для программ</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Это</span> <span class="n">очень</span>
+<span class="n">тоже</span> <span class="n">строка</span><span class="o">.</span>
+<span class="n">Можно</span> <span class="n">писать</span>
+<span class="n">в</span> <span class="n">несколько</span> <span class="n">строк</span><span class="o">.</span>
+
+<span class="n">удобно</span> <span class="n">для</span> <span class="n">форматирования</span>
+<span class="nb">input</span> <span class="n">файлов</span> <span class="n">для</span> <span class="n">программ</span>
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h3>4.2.1. Литералы строк.<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Литералы - служебные последовательности специального назначения (список
+литералов строк). В работе с числовыми данными наиболее востребованны
+символы</p>
+<p><code class="docutils literal notranslate"><span class="pre">\n</span></code> - новая строка</p>
+<p><code class="docutils literal notranslate"><span class="pre">\t</span></code> - табуляция</p>
+<p><code class="docutils literal notranslate"><span class="pre">\uhhhh</span></code> - Unicode символ с номером hhhh (удобная таблица символов )</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;мы пытаемся написать текст</span><span class="se">\n</span><span class="s1">в несколько строк&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">а это была табуляция&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u03a3</span><span class="s1"> - сигма&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1"> - а это вывод кавычки, </span><span class="se">\n</span><span class="s1">еще можно так </span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">
+мы пытаемся написать текст
+в несколько строк
+    а это была табуляция
+Σ - сигма
+' - а это вывод кавычки,
+еще можно так n
+</pre>
+<p>Каждый вывод функции <code class="docutils literal notranslate"><span class="pre">print()</span></code> заканчивает строку символом <code class="docutils literal notranslate"><span class="pre">\n</span></code>.
+Если требуется, чтобы вывод не начинался с новой строки, можно либо
+передавать в функцию <code class="docutils literal notranslate"><span class="pre">print()</span></code> уже отформатированну строку, либо
+настроить ее окончание аргументом <code class="docutils literal notranslate"><span class="pre">end='строка</span> <span class="pre">окончания'</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>В некоторых случаях требуется подавить экранирование символов. Для этого
+перед началом строки добавляют <code class="docutils literal notranslate"><span class="pre">r</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\t</span><span class="s1">est</span><span class="se">\f</span><span class="s1">rom_lectures</span><span class="se">\a</span><span class="s1">ll</span><span class="se">\n</span><span class="s1">ew_example.csv&#39;</span><span class="p">)</span> <span class="c1"># если N в new была бы большой - SyntaxError: (unicode error)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\test\from_lectures\all\new_example.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">
+C:  est rom_lecturesll
+ew_example.csv
+C:testfrom_lecturesallnew_example.csv
+</pre>
+</div>
+<div class="section" id="id7">
+<h3>4.2.2. Методы и функции строк<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Многие базовые операции строк дублируют аналогичные для списков, и любы
+других итерируемых объектов.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;строка&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39; раз&#39;</span><span class="p">)</span> <span class="c1"># сложение</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>        <span class="c1"># умножение</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>     <span class="c1"># размер строки</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>     <span class="c1"># срезы и обращение к элементам</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">строка</span> <span class="n">раз</span>
+<span class="n">строкастрокастрока</span>
+<span class="mi">6</span>
+<span class="n">акортс</span>
+</pre></div>
+</div>
+<p>Строки имеют дополнительные специальные методы форматирования. С рядом
+из них рекомендуется ознакомиться тут, хотя бы чтобы не тратить время на
+решение задач, которые решаются стандартными методами. Рассмотрим три
+наиболее важных для нас метода:</p>
+<p><code class="docutils literal notranslate"><span class="pre">s.split(';')</span></code> - разбиение строки по разделителю</p>
+<p><code class="docutils literal notranslate"><span class="pre">s.replace('CARBON','C')</span></code> - замена шаблона</p>
+<p><code class="docutils literal notranslate"><span class="pre">s.find('energy',[start],[end])</span></code> - поиск подстроки в строке с позиции
+<code class="docutils literal notranslate"><span class="pre">start</span></code> до позиции <code class="docutils literal notranslate"><span class="pre">end</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;100.7440;22.974&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;CARBON    1.0345   -3.9387    3.4362&#39;</span>
+<span class="n">new_s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;CARBON&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_s</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;jhalfjghofdinoivap;nkioskxnvlskvnsiudfvhmzxvloruigvaa;oirvw&#39;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;kiosk&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">6</span><span class="p">],</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;100.7440&#39;</span><span class="p">,</span> <span class="s1">&#39;22.974&#39;</span><span class="p">]</span>
+<span class="n">C</span>    <span class="mf">1.0345</span>   <span class="o">-</span><span class="mf">3.9387</span>    <span class="mf">3.4362</span>
+<span class="n">nkioskx</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="format">
+<h3>4.2.3. Форматирование строк. Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code><a class="headerlink" href="#format" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code> используется для подстановки значения в строку. Сам
+метод имеет огромный функционал, который описан в соответствующем
+разделе документации. Мы же рассмотрим лишь его общее использование и
+отдельно форматирование вывода чисел. Общее использование метода
+выглядит следующим образом:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;подставляем </span><span class="si">{}</span><span class="s1"> вместо фигурных скобок&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;строку&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">подставляем</span> <span class="n">строку</span> <span class="n">вместо</span> <span class="n">фигурных</span> <span class="n">скобок</span>
+</pre></div>
+</div>
+<p>Если подставляем несколько значений, то можно указывать какой именно
+поррядковый номер аргумента подставлять в конкретную скобку:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{2}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span>
+<span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span>
+<span class="mi">30</span> <span class="mi">20</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p>В случае работы с приборными данными, бОльшую актуальность имеет
+форматирование чисел. Рассмотрим структуру такого форматирования:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;...{:FasN.pT}...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">число</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">:</span></code> начало блока спецификаций</p>
+<p><code class="docutils literal notranslate"><span class="pre">F</span></code> - символ заполнения (<strong>по умолчанию пробел</strong>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> - выравнивание. <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> - по левому краю, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> - по правому краю
+(<strong>по умолчанию</strong>), <code class="docutils literal notranslate"><span class="pre">=</span></code> - знак слева, остальное справа, <code class="docutils literal notranslate"><span class="pre">^</span></code> - по
+центру</p>
+<p><code class="docutils literal notranslate"><span class="pre">s</span></code> - знак. <code class="docutils literal notranslate"><span class="pre">+</span></code> - всегда отображать знак, <code class="docutils literal notranslate"><span class="pre">-</span></code> - отображать только
+минусы (<strong>по умолчанию</strong>), `` `` - отображать пробел для
+положительных чисел</p>
+<p><code class="docutils literal notranslate"><span class="pre">N</span></code> - общее количество знаков в выводе (если не протеворечит <code class="docutils literal notranslate"><span class="pre">.d</span></code>,
+иначе выводит согласно <code class="docutils literal notranslate"><span class="pre">.d</span></code>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">.p</span></code> - количества знаков после запятой</p>
+<p><code class="docutils literal notranslate"><span class="pre">T</span></code> - тип выводимого. <code class="docutils literal notranslate"><span class="pre">d</span></code> - для десятичных целочисленных (исключает
+использование <code class="docutils literal notranslate"><span class="pre">.p</span></code>), <code class="docutils literal notranslate"><span class="pre">e</span></code> - экспоненциальная запись (<code class="docutils literal notranslate"><span class="pre">E</span></code> - тоже, но
+выводит заглавную E), <code class="docutils literal notranslate"><span class="pre">f</span></code> - вывод числа с плавающей запятой, <code class="docutils literal notranslate"><span class="pre">%</span></code> -
+вывод в процентах.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4 знака после запятой: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pi</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ширина колонки 10 символов, 2 знака после запятой</span><span class="se">\n</span><span class="si">{:10.2f}{:10.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">+ выравнивание слева и по центру, заполнение 0 и *</span><span class="se">\n</span><span class="si">{:0&lt;12.2f}{:*^12.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span><span class="n">pi</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">а это </span><span class="se">\u03C0</span><span class="s1">\%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="n">знака</span> <span class="n">после</span> <span class="n">запятой</span><span class="p">:</span> <span class="mf">3.1416</span>
+
+<span class="n">ширина</span> <span class="n">колонки</span> <span class="mi">10</span> <span class="n">символов</span><span class="p">,</span> <span class="mi">2</span> <span class="n">знака</span> <span class="n">после</span> <span class="n">запятой</span>
+      <span class="mf">3.14</span>     <span class="mf">31.42</span>
+
+<span class="o">+</span> <span class="n">выравнивание</span> <span class="n">слева</span> <span class="n">и</span> <span class="n">по</span> <span class="n">центру</span><span class="p">,</span> <span class="n">заполнение</span> <span class="mi">0</span> <span class="n">и</span> <span class="o">*</span>
+<span class="mf">3.1400000000</span><span class="o">**</span><span class="mf">3.14e+01</span><span class="o">**</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>4.3. Задачи<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
 </div>
 
 
