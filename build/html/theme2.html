@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">2.2. Динамическая типизация</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">2.3. Ввод и вывод в консоль</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">2.4. Ключевые слова и встроенные функции в Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">2.5. Основные операторы и типы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id8">2.5. Основные операторы и типы данных</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id9">2.5.1. Логические переменные</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">2.5.2. Числовые переменные</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">2.5.3. Списки и кортежи</a></li>
@@ -132,7 +132,22 @@
 <li class="toctree-l2"><a class="reference internal" href="theme3.html#id12">3.4. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="theme4.html">4. Строки и функции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme4.html">4. Функции и строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id2">4.1. Функции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id3">4.1.1. Функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id4">4.1.2. Аргументы функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#lambda">4.1.3. Lambda функции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id5">4.2. Строки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id6">4.2.1. Литералы строк.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id7">4.2.2. Методы и функции строк</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#format">4.2.3. Форматирование строк. Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id8">4.3. Задачи</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a></li>
 </ul>
 
@@ -212,7 +227,7 @@
 <p><a class="reference external" href="../../source/lectures/theme2.ipynb">Лекция в .ipynb формате</a></p>
 <div class="section" id="id2">
 <h2>2.1. Форматирование блоков кода<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В python достаточно удобная система разметки кода. Один и тот же уровень вложения имее один и тот же отступ (табуляция или 4 пробела), и не требует никакого дополнительного форматирования (как <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> в <strong>С/C++</strong> и схожих по синтаксису языках или <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">end</span></code> в <strong>Pascal</strong> и т.д.).</p>
+<p>В python достаточно удобная система разметки кода. Один и тот же уровень вложения имеет один и тот же отступ (табуляция или 4 пробела), и не требует никакого дополнительного форматирования (как <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> в <strong>С/C++</strong> и схожих по синтаксису языках или <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">end</span></code> в <strong>Pascal</strong> и т.д.).</p>
 <p>Пример кода на <strong>C</strong>:</p>
 <div class="code C highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="p">{</span>
@@ -254,7 +269,7 @@
 </div>
 <div class="section" id="id3">
 <h2>2.2. Динамическая типизация<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В Python не нужно явно задавать тип переменой, можно изменять по ходу выполнения
+<p>В Python не нужно явно задавать тип переменой, его можно изменять по ходу выполнения
 программы</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
 (3.2+0.5j)
@@ -263,8 +278,8 @@
 </div>
 <div class="section" id="id4">
 <h2>2.3. Ввод и вывод в консоль<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Работать с Python можно двумя основными способами: работа в консоли или написание исполняемых скриптов. В первом случае, достаточно просто последовательно вводить команды в консоль. Такой способ хорош в случае использования python в режиме калькулятора без графического интерфейса, или для выполнения нескольких простых последовательных комманд. В данном случае вопрос ввода и вывода данных решается сам собой.  В остальных случаях целесообразние использование <code class="file docutils literal notranslate"><span class="pre">.py</span></code> скриптов или <code class="file docutils literal notranslate"><span class="pre">.ipynb</span></code> файлов.</p>
-<p>В коносли и в jupyter notebook все делается само собой.</p>
+<p>Есть два основных способа работы с Python: работа в консоли или написание исполняемых скриптов. В первом случае, достаточно просто последовательно вводить команды в консоль. Такой способ подходит использования python в режиме калькулятора без графического интерфейса, или для выполнения нескольких простых последовательных комманд. В данном случае вопрос ввода и вывода данных решается сам собой.  В остальных случаях целесообразние использование <code class="file docutils literal notranslate"><span class="pre">.py</span></code> скриптов или <code class="file docutils literal notranslate"><span class="pre">.ipynb</span></code> файлов.</p>
+<p>В коносли и в jupyter notebook ввод и вывод делается сам собой.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -301,15 +316,15 @@
 </div>
 <div class="section" id="id5">
 <h2>2.4. Ключевые слова и встроенные функции в Python<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Дабы избежать конфликта имен и познакомиться с некоторыми стандартными функциями pyhton полезно просмотреть стандартные ключевые слова и встроенные функции.</p>
+<p>Дабы избежать конфликта имен и познакомиться с некоторыми стандартными функциями pyhton, полезно просмотреть стандартные ключевые слова и встроенные функции.</p>
 <ul class="simple">
 <li>Список <a class="reference external" href="https://pythonworld.ru/osnovy/klyuchevye-slova-modul-keyword.html">ключевых слов</a></li>
 <li>Список <a class="reference external" href="https://pythonworld.ru/osnovy/vstroennye-funkcii.html">встроенных функций</a></li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h2>2.5. Основные операторы и типы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В данной теме мы рассмотрим минимальный набор операторов и типов. На следующих занятиях эти вопросы будут рассмотренны более подробно.</p>
+<h2>2.5. Основные операторы и типы данных<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В данной теме мы рассмотрим минимальный набор операторов и типов данных. На следующих занятиях эти вопросы будут рассмотренны более подробно.</p>
 <p>К основным типам данных можно отнести: логические (bool), числовые (int, float, complex), списки (list), кортежи (tuple), словари (dict), множества (set) и строки (str). Создание переменной любого типа выглядит следующим образом:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">имя_переменной</span> <span class="o">=</span> <span class="n">данные</span>
 </pre></div>
