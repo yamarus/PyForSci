@@ -147,7 +147,19 @@
 <li class="toctree-l2"><a class="reference internal" href="theme4.html#id8">4.3. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. NumPy массивы и их свойства</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. NumPy массивы и их свойства</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">5.2. Массивы NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.2.1. Базовые методы масивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.2.2. Оси и форма массивов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5.2.3. Создание шаблонных массивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy">5.2.4. Метод <code class="docutils literal notranslate"><span class="pre">copy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scipy-linalg">5.3. Линейная алгебра и SciPy.linalg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">5.4. Задачи</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -220,6 +232,363 @@
             
   <div class="section" id="numpy">
 <span id="theme5"></span><h1>5. NumPy массивы и их свойства<a class="headerlink" href="#numpy" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="../../source/lectures/theme5.ipynb">Лекция в .ipynb формате</a></p>
+<div class="section" id="id1">
+<h2>5.1. Numpy<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Согласно разделу документации <a class="reference external" href="https://numpy.org/doc/stable/user/absolute_beginners.html">NumPy: the absolute basics for beginners</a>,
+библиотека NumPy (Numerical Python) де факто стала абсолютным стандартом
+для всех что работает с любыми вычислениями в Python. Использование
+NumPy для вычислений позволяет ускорить их в десятки (а иногда и в
+сотни) раз, по сравнению с обычным Python, и иногда даже приблизиться к
+скорости выполнения вычислений на C++.</p>
+<p>NumPy не является стандартной библиотекой Python, по этому для ее
+использования ее необходимо установить. Если же вы используете Anaconda,
+то NumPy у вас уже есть.</p>
+<p>Для использования NumPy достаточно импортировать:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+</pre></div>
+</div>
+<p>Чаще, ее импортируют как <code class="docutils literal notranslate"><span class="pre">np</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>Дальнейшее ее использование сводится к вызову одной из <a class="reference external" href="https://numpy.org/doc/stable/user/absolute_beginners.html">тысяч внутренних
+констант, объектов, функций и модулей</a>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>    <span class="c1"># 5 случайных чисел от 0 до 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">0.74684566</span> <span class="mf">0.13886654</span> <span class="mf">0.05409378</span> <span class="mf">0.36626933</span> <span class="mf">0.47326628</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>5.2. Массивы NumPy<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Одним из базовых классов для NumPy являются массивы (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html">документация</a>). Именно с этими объектами работают все функции и методы
+связанные с обработкой данных. Обычный список может быть легко в него
+преобразован:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]       &lt;class &#39;list&#39;&gt;
+[0 1 2 3 4 5 6 7 8 9]                &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+<p>При этом, класс <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> является итерируемым, а значит
+обращение к элементам происходит по аналогии со списками:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Важной особенностью NumPy массивов является их гомогенность, т.е. все
+элементы имеют один и тот же тип данных. Попытка создания массива с
+элементами разного типа может привести к ошибке:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>22
+&lt;class &#39;numpy.str _&#39;&gt;
+</pre></div>
+</div>
+<p>При создании массива можно указать какой именно тип данных необходимо
+использовать. Такое может быть полезно при ресурсоемких вычислениях
+(например с <a class="reference external" href="https://numba.pydata.org/">Numba</a>), или при использовании <a class="reference external" href="https://scikit-cuda.readthedocs.io/en/latest/">видеокарты</a>, мендеджменте
+памяти и т.д.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">2.</span> <span class="mf">3.</span> <span class="mf">4.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">2.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">4.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h3>5.2.1. Базовые методы масивов NumPy<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Одним из очевидных приемуществ массивов NumPy перед списком -
+арифметические NumPy математические опреации:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">8</span> <span class="mi">18</span> <span class="mi">32</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">4</span>  <span class="mi">9</span> <span class="mi">16</span><span class="p">]</span>
+<span class="p">[</span> <span class="mf">1.</span>          <span class="mf">2.71828183</span>  <span class="mf">7.3890561</span>  <span class="mf">20.08553692</span> <span class="mf">54.59815003</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mi">6</span>  <span class="mi">8</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">10</span> <span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>В класс массивов NumPy встроена также возможность транспонирования, и
+ряд других удобных методов</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="mi">4</span>
+<span class="mi">2</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>В массивах имеется поддержка комплесных чисел</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">*=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">2.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">4.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.</span><span class="n">j</span> <span class="mf">2.</span><span class="o">+</span><span class="mf">2.</span><span class="n">j</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.</span><span class="o">+</span><span class="mf">3.</span><span class="n">j</span> <span class="mf">4.</span><span class="o">+</span><span class="mf">4.</span><span class="n">j</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">1.</span> <span class="mf">2.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.</span> <span class="mf">4.</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>5.2.2. Оси и форма массивов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иногда необходимо переформатировать массив, или вывести только элементы
+из определенной колонки. Для этого существуют связанные методы: оси
+(<code class="docutils literal notranslate"><span class="pre">axis</span></code> в документации и форма <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">reshape()</span></code>, etc).</p>
+<p>Распределение и нумерация осей выглядит довольно простым образом:</p>
+<img alt="_images/axis.jpg" src="_images/axis.jpg" />
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># сортируем все колонки</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># сортируем все строки</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">7</span> <span class="mi">6</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">7</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> массива отобркжает его размеры по осям</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>При необоходимости форму можно легко поменять:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="p">[[</span><span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">]]</span>
+
+<span class="p">[[</span><span class="mi">3</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">1</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="p">[[[</span><span class="mi">3</span> <span class="mi">6</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">1</span> <span class="mi">4</span><span class="p">]]]</span>
+
+<span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>5.2.3. Создание шаблонных массивов NumPy<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>NumPy поддерживает несколько вариантов создания массивов по шаблону. Мы
+рассмотрим три наиболее частоупотребимых из них:</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.ones(shape,</span> <span class="pre">[dtype=...])</span></code> - создание массива из единиц формы shape</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.zeros(shape,</span> <span class="pre">[dtype=...])</span></code> - создание массива из нулей формы shape</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.full(shape,</span> <span class="pre">value,</span> <span class="pre">[dtype=...])</span></code> - создание массива из <code class="docutils literal notranslate"><span class="pre">value</span></code>
+формы shape</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]]</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[[</span><span class="mf">3.14159265</span> <span class="mf">3.14159265</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.14159265</span> <span class="mf">3.14159265</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">3.14159265</span> <span class="mf">3.14159265</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Помимо этого NumPy поддерживает несколько функций, позволяющих
+генерировать ряды чисел:</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code> - аналог <code class="docutils literal notranslate"><span class="pre">range()</span></code>, возвращает
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> поддерживает не целые числа</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stop,</span> <span class="pre">num=50)</span></code> - создает массив длиной <code class="docutils literal notranslate"><span class="pre">num</span></code>, от
+<code class="docutils literal notranslate"><span class="pre">start</span></code> до <code class="docutils literal notranslate"><span class="pre">stop</span></code> (удобно для графиков)</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">0.</span>  <span class="mf">0.1</span> <span class="mf">0.2</span> <span class="mf">0.3</span> <span class="mf">0.4</span> <span class="mf">0.5</span> <span class="mf">0.6</span> <span class="mf">0.7</span> <span class="mf">0.8</span> <span class="mf">0.9</span> <span class="mf">1.</span> <span class="p">]</span>
+<span class="p">[</span> <span class="mf">0.</span>  <span class="o">-</span><span class="mf">0.3</span> <span class="o">-</span><span class="mf">0.6</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Модуль <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> содержит большое количество различных функций
+для генерации случайных чисел. В <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html">документации</a> описанны обширные
+возможности данного модуля.</p>
+</div>
+<div class="section" id="copy">
+<h3>5.2.4. Метод <code class="docutils literal notranslate"><span class="pre">copy</span></code><a class="headerlink" href="#copy" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В некоторых случаях у вас может появиться необходимость продублировать
+массив. При простом присваивание может образоваться следующая ситуация:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mi">5</span> <span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">5</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>В этом случае, передается не сам объект а ссылка на него. Для того чтобы
+копия не менялась при копировании исходника, можно использовать метод
+<code class="docutils literal notranslate"><span class="pre">np.copy()</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="mi">5</span> <span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scipy-linalg">
+<h2>5.3. Линейная алгебра и SciPy.linalg<a class="headerlink" href="#scipy-linalg" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека NumPy содержит модуль линейной алгебры <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code>. Этот
+модуль содержит простые базовые операции, как векторное умножение,
+перемножение матриц, простой поиск собственных чисел и значений матриц,
+детерминант и др. (<a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">см. документацию</a>). Его функционал не полон, и иногда
+может быть полезно использовать дополнительно модуль <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>
+(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.html#module-scipy.linalg">документация</a>).</p>
+<p>Рассмотрим простые примеры использования модулей линейной алгебры.</p>
+<p>Поиск собственных векторов и собственных значений матриц: :math: <cite>{A}cdotvec{v}-lambdavec{v} =0</cite></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># исходная матрица</span>
+<span class="n">vals</span><span class="p">,</span> <span class="n">vects</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vects</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">vects</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">vects</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="p">[</span> <span class="mf">1.61168440e+01</span> <span class="o">-</span><span class="mf">1.11684397e+00</span> <span class="o">-</span><span class="mf">9.75918483e-16</span><span class="p">]</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.23197069</span> <span class="o">-</span><span class="mf">0.78583024</span>  <span class="mf">0.40824829</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.52532209</span> <span class="o">-</span><span class="mf">0.08675134</span> <span class="o">-</span><span class="mf">0.81649658</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8186735</span>   <span class="mf">0.61232756</span>  <span class="mf">0.40824829</span><span class="p">]]</span>
+<span class="p">[</span> <span class="mf">3.55271368e-15</span>  <span class="mf">0.00000000e+00</span> <span class="o">-</span><span class="mf">1.77635684e-15</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>поиск обратной матрицы:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">1.00000000e+00</span> <span class="o">-</span><span class="mf">1.38777878e-17</span>  <span class="mf">0.00000000e+00</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">3.33066907e-16</span>  <span class="mf">1.00000000e+00</span>  <span class="mf">2.77555756e-17</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">6.10622664e-16</span>  <span class="mf">1.24900090e-16</span>  <span class="mf">1.00000000e+00</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>5.4. Задачи<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">используя <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html">документацию</a> выполните в одну строку:</p>
+<blockquote>
+<div><p>сгенерируйте случайное число от 0 до 1</p>
+<p>сгенерируйте одномерный массив длинной 1, заполненый случайными числами</p>
+<p>из предложенного массива выбирите случайную последовательность длинной <code class="docutils literal notranslate"><span class="pre">N</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
 </div>
 
 
