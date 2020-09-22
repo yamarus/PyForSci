@@ -122,14 +122,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#math">3.2. Модуль math</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">3.3. Списки</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">3.3.1. Обращения к элементам списка</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">3.3.2. Срезы списков</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">3.3.3. Свойства списков</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">3.3.4. Некоторые операции со списками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list">3.3. Списки (list)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.3.1. Обращения к элементам списка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.3.2. Срезы списков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.3.3. Свойства списков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.3.4. Некоторые операции со списками</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">3.4. Задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">3.4. Задачи</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theme4.html">4. Функции и строки</a><ul>
@@ -227,7 +227,7 @@
 <div class="section" id="id2">
 <h2>3.1. Числа<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>В python существует три стандартных класса чисел: цлочисленные (int), числа с плавающей запятой (float) и комплексные числа (complex). Подробное описание спецификаций численных типов Python можно найти в <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html?#numeric-types-int-float-complex">описании типов</a>.</p>
-<p>Общие операции <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> (степень).</p>
+<p>Общие операции <code class="docutils literal notranslate"><span class="pre">+</span></code> (сложение), <code class="docutils literal notranslate"><span class="pre">-</span></code> (вычитание), <code class="docutils literal notranslate"><span class="pre">*</span></code> (умножение), <code class="docutils literal notranslate"><span class="pre">/</span></code> (деление), <code class="docutils literal notranslate"><span class="pre">**</span></code> (степень).</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">9</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
@@ -238,6 +238,13 @@
 <span class="mf">1.5</span>
 <span class="mf">3.0</span>
 <span class="mi">1</span>
+</pre></div>
+</div>
+<p>При использовании арифметических операций необходимо помнить про их приоритет: <code class="docutils literal notranslate"><span class="pre">**</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> (равный приоритет) &gt; <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> (равный приоритет). Лучше использовать скобки для явного указания приоритета (явное лучше неявного). В противном случае можно столкнуться с «неожиданным» поведением:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">9</span><span class="o">**</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.5</span>
 </pre></div>
 </div>
 <div class="section" id="int">
@@ -280,10 +287,11 @@
 <p>Рассмотрим число:</p>
 <p>1 10000000101 0111001000000000000000000000000000000000000000000000</p>
 <p>знак: <span class="math notranslate nohighlight">\((-1)^1 = -1\)</span></p>
-<p>степень: $ 2^{10} + 2^2 +2^0=1029$;   <span class="math notranslate nohighlight">\(2^{1029-1023} = 2^6\)</span></p>
+<p>степень: <span class="math notranslate nohighlight">\(2^{10} + 2^2 +2^0=1029\)</span>;   <span class="math notranslate nohighlight">\(2^{1029-1023} = 2^6\)</span></p>
 <p>мантисса:
 <span class="math notranslate nohighlight">\(1.0111001_2 = 10111001_2\times 2^{-7} = (2^7 + 2^5+2^4 +2^3 +2^0)\times2^{-7} = 185\times2^{-7}\)</span></p>
 <p>число: <span class="math notranslate nohighlight">\(-185\times 2^{-7} \times 2^6 = -185\times 2^{-1} = - 92.5\)</span></p>
+<p>Необходимо помнить, что такое представление чисел в памяти обладает ограниченной точностью. Если <code class="docutils literal notranslate"><span class="pre">a</span></code> много больше <code class="docutils literal notranslate"><span class="pre">b</span></code>, то <code class="docutils literal notranslate"><span class="pre">b</span></code> может оказаться меньше погрешности, с которой задается <code class="docutils literal notranslate"><span class="pre">a</span></code>, и быть с точки зрения <code class="docutils literal notranslate"><span class="pre">a</span></code> нулем.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.7e308</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mf">2.5</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="p">)</span>
@@ -331,11 +339,12 @@
 </div>
 <div class="section" id="complex">
 <h3>3.1.3. Комплексные числа (complex)<a class="headerlink" href="#complex" title="Ссылка на этот заголовок">¶</a></h3>
-<p>стандартная запись: <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">Re</span> <span class="pre">+</span> <span class="pre">Imj</span></code>, <code class="docutils literal notranslate"><span class="pre">с</span> <span class="pre">=</span> <span class="pre">1.5</span> <span class="pre">-</span> <span class="pre">0.3j</span></code></p>
+<p>стандартная запись: <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">Re</span> <span class="pre">+</span> <span class="pre">Imj</span></code>,  (<code class="docutils literal notranslate"><span class="pre">с</span> <span class="pre">=</span> <span class="pre">1.5</span> <span class="pre">-</span> <span class="pre">0.3j</span></code>)</p>
 <p><code class="docutils literal notranslate"><span class="pre">c.conjugate()</span></code> - комплексное сопряжение <code class="docutils literal notranslate"><span class="pre">c</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">c.real</span></code> - действительная часть</p>
-<p><code class="docutils literal notranslate"><span class="pre">c.imag</span></code> - мнимая часть</p>
-<p><code class="docutils literal notranslate"><span class="pre">complex(Re,</span> <span class="pre">Im)</span></code> - перевод <code class="docutils literal notranslate"><span class="pre">Re,</span> <span class="pre">Im</span></code> в complex</p>
+<p><code class="docutils literal notranslate"><span class="pre">c.real</span></code> - действительная часть <code class="docutils literal notranslate"><span class="pre">c</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">c.imag</span></code> - мнимая часть <code class="docutils literal notranslate"><span class="pre">c</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">complex(Re,</span> <span class="pre">Im)</span></code> - перевод пары чисел <code class="docutils literal notranslate"><span class="pre">Re,</span> <span class="pre">Im</span></code> в одно число типа complex</p>
+<p>В остальном к комплексным числам применимы те же арифметические операции, что и для остальных чисел. Выполняются они в соответствии с алгеброй комплексных чисел.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">complex</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -359,8 +368,8 @@
 </div>
 <div class="section" id="math">
 <h2>3.2. Модуль math<a class="headerlink" href="#math" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Модуль math является встроенным модулем python для простейших математических операций. Описание модуля и его функций можно найти в <a class="reference external" href="https://docs.python.org/3/library/math.html">документации модуля math</a>. На практике, удобнее и эффективнее использовать специализированный модуль numerical python (NumPy). При дальнейшем изучении курса мы будем пользоваться именно им.</p>
-<p>Для использования любого модуля или отдкльной функции, метода, или константы из него, необоходимо сначала его подключить к вашему скрипту. Рассмотрим несколько примеров подключения и использования модуля math (рассчитываем <span class="math notranslate nohighlight">\(\sin (\frac{\pi}{4})\)</span>):</p>
+<p>Модуль math является встроенным модулем python для простейших математических операций. Описание модуля и его функций можно найти в <a class="reference external" href="https://docs.python.org/3/library/math.html">документации модуля math</a>. На практике, удобнее и эффективнее использовать специализированный модуль numerical python (NumPy). Далее в курсе мы будем пользоваться именно им.</p>
+<p>Для использования любого модуля или отдельной функции, метода, или константы из него, необоходимо сначала его подключить к вашему скрипту (импортировать). Рассмотрим несколько примеров подключения и использования модуля math (рассчитываем <span class="math notranslate nohighlight">\(\sin (\frac{\pi}{4})\)</span>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>   <span class="c1"># любая другая функция модуля вызывается схожим способом</span>
 <span class="c1">#    ^    ^</span>
@@ -385,13 +394,14 @@
 <span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>В первом случае имена <code class="docutils literal notranslate"><span class="pre">sin</span></code> и <code class="docutils literal notranslate"><span class="pre">pi</span></code> , которые были определены внутри модуля math, доступны в вашей программе, так, как будто вы определили их сами. Во втором случае в вашей программе доступны все имена модуля math, как будто он стал частью вашей программы.</p>
 <div class="admonition note">
 <p class="first admonition-title">Примечание</p>
-<p class="last">В качестве подключаемого модуля может быть ваш собственный файл (удобно использовать для разбиения фунционала в случае больших проектов или в качестве вашего личного модуля с уже написанными наиболее частоиспользуемыми алгоритмами. Подключение файла <code class="file docutils literal notranslate"><span class="pre">my_super_module.py</span></code> лежащего в той же папке, где и основной скрипт, происходит аналогично другим модулям <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_super_module</span></code></p>
+<p class="last">В качестве подключаемого модуля может быть ваш собственный файл (удобно использовать для разбиения фунционала в случае больших проектов или в качестве вашего личного модуля с уже написанными наиболее часто используемыми алгоритмами). Подключение файла <code class="file docutils literal notranslate"><span class="pre">my_super_module.py</span></code> лежащего в той же папке, где и основной скрипт, происходит аналогично другим модулям <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_super_module</span></code></p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>3.3. Списки<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="list">
+<h2>3.3. Списки (list)<a class="headerlink" href="#list" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Подробное описание в <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#sequence-types-list-tuple-range">документации</a>.</p>
 <p>Создание пустого списка:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
@@ -409,6 +419,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Данное выражение называется генератором списка. Читать его нужно как «сделай None для i в диапазоне от 0 до 4 (не включительно)», т.е.: None (i=0), None (i=1), None (i=2), None (i=3). Эту последовательность мы засовываем в список и получаем [None, None, None, None].</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 </pre></div>
@@ -416,8 +427,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
-<div class="section" id="id8">
-<h3>3.3.1. Обращения к элементам списка<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Аналогично, но вместо None здесь записывался список [„x“, „y“, „z“].</p>
+<div class="section" id="id7">
+<h3>3.3.1. Обращения к элементам списка<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
@@ -435,9 +447,10 @@
 <span class="mi">3</span>
 </pre></div>
 </div>
+<p>Здесь элемент списка l l[2] сам является списком и выражение l[2][0] - обращение к элементу 0 списка l[2].</p>
 </div>
-<div class="section" id="id9">
-<h3>3.3.2. Срезы списков<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id8">
+<h3>3.3.2. Срезы списков<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Из списков можно легко генерировать списки меньшего размера</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -450,6 +463,7 @@
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Левая граница включается в срез, а правая - нет!</p>
 <p>Можно делать срезы с определенным шагом</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="mi">3</span><span class="p">])</span>
@@ -462,8 +476,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3>3.3.3. Свойства списков<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id9">
+<h3>3.3.3. Свойства списков<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">len(a)</span></code> - длина <code class="docutils literal notranslate"><span class="pre">a</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">min(a)</span></code> - минимальный элемент <code class="docutils literal notranslate"><span class="pre">a</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">max(s)</span></code> - максимальный элемент <code class="docutils literal notranslate"><span class="pre">a</span></code></p>
@@ -501,8 +515,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>3.3.4. Некоторые операции со списками<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id10">
+<h3>3.3.4. Некоторые операции со списками<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Простейшие и самые необходимые операции</p>
 <p><code class="docutils literal notranslate"><span class="pre">a[i]</span> <span class="pre">=</span> <span class="pre">x</span></code> - заменить элемент <code class="docutils literal notranslate"><span class="pre">a[i]</span></code> на <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">a[i:j]</span> <span class="pre">=</span> <span class="pre">x</span></code> - тоже, но для среза <code class="docutils literal notranslate"><span class="pre">a[i:j]</span></code> (<code class="docutils literal notranslate"><span class="pre">x</span></code> должно быть
@@ -564,8 +578,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id12">
-<h2>3.4. Задачи<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id11">
+<h2>3.4. Задачи<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Выведите все числа от 0 до 100 делящиеся на введенное число.</p>
 </li>
