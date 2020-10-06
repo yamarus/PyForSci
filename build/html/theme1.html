@@ -86,10 +86,10 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Введение. Установка интерпретатора Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. О языке Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. Установка интерпретатора Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.1. О языке Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.2. Установка интерпретатора Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#anaconda">1.2.1. Установка Anaconda на свой компьютер</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">1.2.2. Установка стандартных средств для python разработки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1.2.2. Установка стандартных средств для python разработки</a></li>
 </ul>
 </li>
 </ul>
@@ -141,14 +141,26 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="theme4.html#id5">4.2. Строки</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="theme4.html#id6">4.2.1. Литералы строк.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theme4.html#id7">4.2.2. Методы и функции строк</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id9">4.2.2. Методы и функции строк</a></li>
 <li class="toctree-l3"><a class="reference internal" href="theme4.html#format">4.2.3. Форматирование строк. Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="theme4.html#id8">4.3. Задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id12">4.3. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme5.html">5. NumPy массивы и их свойства</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id1">5.1. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id3">5.2. Массивы NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#id6">5.2.1. Базовые методы масивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#id7">5.2.2. Оси и форма массивов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#id8">5.2.3. Создание шаблонных массивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#copy">5.2.4. Метод <code class="docutils literal notranslate"><span class="pre">copy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#scipy-linalg">5.3. Линейная алгебра и SciPy.linalg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id12">5.4. Задачи</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -224,12 +236,14 @@
   <div class="section" id="python">
 <span id="theme1"></span><h1>1. Введение. Установка интерпретатора Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h1>
 <p>Презентация  <a class="reference external" href="../../source/lectures/theme1.pdf">лекция №1</a></p>
-<div class="section" id="id1">
-<h2>1.1. О языке Python<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Предварительные <a class="reference external" href="../../source/lectures/prog.pdf">темы занятий</a></p>
+<p>Входной <a class="reference external" href="https://forms.gle/PetrgHsFure87iEq5">опрос</a> по курсу</p>
+<div class="section" id="id3">
+<h2>1.1. О языке Python<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Python является высокоуровневым интерпретируемым языком программирования. Подробную документацию, инструкции для новичков, установочные файлы интерпретатора и многое другое вы можете найти на <a class="reference external" href="http://www.python.org/">pyrthon.org</a>.</p>
 </div>
-<div class="section" id="id2">
-<h2>1.2. Установка интерпретатора Python<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id4">
+<h2>1.2. Установка интерпретатора Python<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="anaconda">
 <h3>1.2.1. Установка Anaconda на свой компьютер<a class="headerlink" href="#anaconda" title="Ссылка на этот заголовок">¶</a></h3>
 <p>В рамках данного курса рекомендуется использовать дистрибутив с интерпретатором, обширным набором подключаемых модулей и средой разработки <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>.</p>
@@ -239,9 +253,9 @@
 <li><a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/">Руководство пользователя Anaconda</a> (тут есть множество подробных инструкций по использованию компонентов anaconda)</li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h3>1.2.2. Установка стандартных средств для python разработки<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Если вы по каким то причинам решили не устанавливать anaconda, а пользоваться стандартными средствами python (<strong>это требует больших усилий и времени для установки</strong>), то вам как минимум потребуется установить интерпретатор Python с <a class="reference external" href="https://www.python.org/downloads/windows/">оффициального сайта</a> (после установки интерпретатора вам придется дополнительно установить математические и научные модули с помощью менеджера пакетов <a class="reference external" href="https://pypi.org/">PyPI</a>), и какую нибудь среду разработки (например, <a class="reference external" href="https://www.jetbrains.com/ru-ru/pycharm/download/#section=windows">PyCharm</a>, <a class="reference external" href="https://www.spyder-ide.org/">Spyder</a>, <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>).</p>
+<div class="section" id="id9">
+<h3>1.2.2. Установка стандартных средств для python разработки<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Если вы по каким то причинам решили не устанавливать anaconda, а пользоваться стандартными средствами python (<strong>это требует больших усилий и времени для установки</strong>), то вам как минимум потребуется установить интерпретатор Python с <a class="reference external" href="https://www.python.org/downloads/windows/">оффициального сайта</a> (после установки интерпретатора вам придется дополнительно установить математические и научные модули с помощью менеджера пакетов <a class="reference external" href="https://pypi.org/">PyPI</a>), и какую-нибудь среду разработки (например, <a class="reference external" href="https://www.jetbrains.com/ru-ru/pycharm/download/#section=windows">PyCharm</a>, <a class="reference external" href="https://www.spyder-ide.org/">Spyder</a>, <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>).</p>
 </div>
 </div>
 </div>
