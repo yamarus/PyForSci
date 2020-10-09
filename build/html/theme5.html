@@ -148,7 +148,10 @@
 <li class="toctree-l2"><a class="reference internal" href="theme4.html#id12">4.3. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Работа с файлами, модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Работа с файлами, модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1. Работа с файлами</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="theme6.html">6. NumPy массивы и их свойства</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="theme6.html#id1">6.1. Numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theme6.html#id3">6.2. Массивы NumPy</a><ul>
@@ -242,6 +245,24 @@
 <span id="theme5"></span><h1>5. Работа с файлами, модуль <code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#os" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme5.ipynb">Лекция в .ipynb формате</a></p>
 <p>Работа с файлами. Открытие файла, режимы доступа.  Простое чтение/запись в файл. Конструкции with .. as и try .. except. Методы numpy.loadtxt, numpy.savetxt. Модуль os. Пример работы с файловой системой, использования модуля os.path.</p>
+<div class="section" id="id1">
+<h2>5.1. Работа с файлами<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для работы с файлами Python имеет стандартную функцию <code class="docutils literal notranslate"><span class="pre">open</span></code>.
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#open">Документация на оффициальном сайте</a> описывает ее следующим образом:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">closefd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opener</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Для обычной работы с текстовыми файлами наиболее важными аргументами
+являются</p>
+<p><code class="docutils literal notranslate"><span class="pre">file</span></code> - строка (точнее <a class="reference external" href="https://docs.python.org/3/glossary.html#term-path-like-object">path-like object</a>) имя относительного или
+полного пути к файлу.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - режим работы с файлом (можно комбинировать нижестоящие)</p>
+<p><code class="docutils literal notranslate"><span class="pre">r</span></code> - режим чтения</p>
+<p><code class="docutils literal notranslate"><span class="pre">w</span></code> - режим записи (удаляет все содержимое файла)</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> - открывает для добавления (курсор в конце файла)</p>
+<p><code class="docutils literal notranslate"><span class="pre">+</span></code> - открывает для обновления (курсор в начале файла)</p>
+<p><code class="docutils literal notranslate"><span class="pre">b</span></code> - открывает в бинарном виде</p>
+</div>
 </div>
 
 
