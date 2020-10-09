@@ -8,7 +8,7 @@
 
 Предварительные `темы занятий <../../source/lectures/prog.pdf>`_
 
-Входной `опрос <https://forms.gle/PetrgHsFure87iEq5>`_ по курсу
+Входной `опрос <https://forms.gle/PetrgHsFure87iEq5>`_ по курсу 
 
 О языке Python
 ==============
