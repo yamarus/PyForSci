@@ -152,8 +152,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">5.1. Работа с файлами</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">5.1.1. Файловая система</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python">5.1.2. Стандартные методы Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-as-try-except">5.1.3. Конструкции <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> и <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">5.2. Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">5.3. Задачи</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theme6.html">6. NumPy массивы и их свойства</a><ul>
@@ -317,7 +320,212 @@
 <span class="n">строка</span> <span class="mi">4</span>
 </pre></div>
 </div>
+<p>Допишем еще одну строку в конец файла.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;еще одна строка&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 </div>
+<p>Прочтем файл:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;example_file.txt&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span>
+<span class="n">строка</span> <span class="mi">0</span>
+<span class="n">строка</span> <span class="mi">1</span>
+<span class="n">строка</span> <span class="mi">2</span>
+<span class="n">строка</span> <span class="mi">3</span>
+<span class="n">строка</span> <span class="mi">4</span>
+<span class="n">еще</span> <span class="n">одна</span> <span class="n">строка</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="literal-block">
+['строка 0n', 'строка 1n', 'строка 2n', 'строка 3n', 'строка 4n', 'еще одна строка']
+</pre>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">строка</span> <span class="mi">0</span>
+<span class="n">строка</span> <span class="mi">1</span>
+<span class="n">строка</span> <span class="mi">2</span>
+<span class="n">строка</span> <span class="mi">3</span>
+<span class="n">строка</span> <span class="mi">4</span>
+<span class="n">еще</span> <span class="n">одна</span> <span class="n">строка</span><span class="o">&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;example_file.txt&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="with-as-try-except">
+<h3>5.1.3. Конструкции <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> и <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code><a class="headerlink" href="#with-as-try-except" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Менеджер контекста <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> нужен для обертки блока инструкций
+отдельных объектов. Ее удобно использовать для простой работы с файлами.</p>
+<p>Синтаксис конструкции:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">expression</span> <span class="p">[</span><span class="s2">&quot;as&quot;</span> <span class="n">target</span><span class="p">]</span> <span class="p">(</span><span class="s2">&quot;,&quot;</span> <span class="n">expression</span> <span class="p">[</span><span class="s2">&quot;as&quot;</span> <span class="n">target</span><span class="p">])</span><span class="o">*</span> <span class="p">:</span>
+    <span class="n">suite</span>
+
+    <span class="c1">#По окончанию инструкций вызывается метод __exit__: файл закрывается автоматически</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="c1">#f.read()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">строка</span> <span class="mi">0</span>
+<span class="n">строка</span> <span class="mi">1</span>
+<span class="n">строка</span> <span class="mi">2</span>
+<span class="n">строка</span> <span class="mi">3</span>
+<span class="n">строка</span> <span class="mi">4</span>
+<span class="n">еще</span> <span class="n">одна</span> <span class="n">строка</span>
+</pre></div>
+</div>
+<p>Конструкция <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code> позволяет обрабатывать исключения.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ZeroDivisionError</span>                         <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">60955</span><span class="n">a76aa18</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+
+
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">division</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;все хорошо&#39;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">r</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">division</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inf</span>
+</pre></div>
+</div>
+<p>Конструкцию <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code> удобно использовать для работы с файлами и
+передачи данных.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;example1_file.txt&#39;</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">FileNotFoundError</span>                         <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="mi">5982</span><span class="n">f1c2a6fc</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+      <span class="mi">1</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;example1_file.txt&#39;</span>
+<span class="o">----&gt;</span> <span class="mi">2</span> <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+      <span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+      <span class="mi">4</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="ne">FileNotFoundError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">:</span> <span class="s1">&#39;example1_file.txt&#39;</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;example1_file.txt&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;проблема с чтением файла </span><span class="si">{fname}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="k">finally</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">проблема</span> <span class="n">с</span> <span class="n">чтением</span> <span class="n">файла</span> <span class="n">example1_file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>5.2. Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code> является стандартным модулем python, поддерживающим
+огромное количество различных различных функций работы с операционной
+системой.</p>
+<p>С полной документацией метода можно ознакомиться на <a class="reference external" href="https://docs.python.org/3/library/os.html">странице с оффициальной документацией</a></p>
+<p>Более короткое и простое описание можно найти <a class="reference external" href="https://pythonworld.ru/moduli/modul-os.html">тут</a>. <strong>Рекомендуется
+ознакомиться</strong></p>
+<p>ниже представлен лишь ознакомительный список некоторых функций.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.chdir(path)</span></code> - смена текущей директории.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> - текущая рабочая директория.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.listdir(path=&quot;.&quot;)</span></code> - список файлов и директорий в папке.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.mkdir(path,</span> <span class="pre">mode=0o777,</span> <span class="pre">*,</span> <span class="pre">dir_fd=None)</span></code> - создаёт директорию.
+<code class="docutils literal notranslate"><span class="pre">OSError</span></code>, если директория существует.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.remove(path,</span> <span class="pre">*,</span> <span class="pre">dir_fd=None)</span></code> - удаляет путь к файлу.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.rename(src,</span> <span class="pre">dst,</span> <span class="pre">*,</span> <span class="pre">src_dir_fd=None,</span> <span class="pre">dst_dir_fd=None)</span></code> -
+переименовывает файл или директорию из <code class="docutils literal notranslate"><span class="pre">src</span></code> в <code class="docutils literal notranslate"><span class="pre">dst</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.rmdir(path,</span> <span class="pre">*,</span> <span class="pre">dir_fd=None)</span></code> - удаляет пустую директорию.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.system(command)</span></code> - исполняет системную команду, возвращает код её
+завершения (в случае успеха 0).</p>
+<p>Пара примеров использования данного модуля:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;../figs&quot;</span><span class="p">):</span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ruslan</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">PyForSci</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">lectures</span>
+<span class="n">t2_float64</span><span class="o">.</span><span class="n">svg</span>
+<span class="n">path</span><span class="o">.</span><span class="n">svg</span>
+<span class="n">axis</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">path</span><span class="o">.</span><span class="n">odg</span>
+</pre></div>
+</div>
+<p>Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code> включает в себя вложенный модуль <code class="docutils literal notranslate"><span class="pre">path</span></code></p>
+<p>Короткое и простое <a class="reference external" href="https://pythonworld.ru/moduli/modul-os-path.html">описание модуля os.path</a>. <strong>Рекомендуется ознакомиться</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.exists(path)</span></code> - возвращает <code class="docutils literal notranslate"><span class="pre">True</span></code>, если <code class="docutils literal notranslate"><span class="pre">path</span></code> указывает
+на существующий путь или дескриптор открытого файла.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.getsize(path)</span></code> - размер файла в байтах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.isfile(path)</span></code> - является ли путь файлом.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.isdir(path)</span></code> - является ли путь директорией.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.join(path1[,</span> <span class="pre">path2[,</span> <span class="pre">...]])</span></code> - соединяет пути с учётом
+особенностей операционной системы.</p>
+</div>
+<div class="section" id="id7">
+<h2>5.3. Задачи<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Сгенерируйте <code class="docutils literal notranslate"><span class="pre">.csv</span></code> файл формата</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">(</span><span class="n">units</span><span class="p">);</span> <span class="n">y</span> <span class="p">(</span><span class="n">units</span><span class="p">)</span>
+<span class="n">x0</span><span class="p">;</span> <span class="n">y0</span>
+<span class="n">x1</span><span class="p">;</span> <span class="n">y1</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">xn</span><span class="p">;</span> <span class="n">yn</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal notranslate"><span class="pre">x</span></code> и <code class="docutils literal notranslate"><span class="pre">y</span></code> координаты какой-нибудь простой функции (линия, парабола, синус или что-то другое). Проверьте правильность результата, импортировав полученный файл в какую-нибудь из программ для построения графиков (Excel, Origin, OpenOffice, gnuplot, etc)</p>
+</li>
+<li><p class="first">С помощью функции <code class="docutils literal notranslate"><span class="pre">os.system()</span></code> откройте какой-нибудь текстовой файл в блокноте.</p>
+</li>
+<li><p class="first">Вы решили дальше изучать ион <span class="math notranslate nohighlight">\(\textrm{TYR-H}^+\)</span> из <a class="reference external" href="https://yamarus.github.io/PyForSci/build/html/theme4.html#id12">задачи 4.5</a>. Непонятно зачем, но вам захотелось сделать серию расчетов по отрыву <span class="math notranslate nohighlight">\(\textrm{H}^+\)</span> иона вдоль по направлению связи <span class="math notranslate nohighlight">\(CA \rightarrow C\)</span> (атомы 5 и 22, соответственно). Для этого вам нужно сгенерировать серию координатных файлов формата „символ_элемента X Y Z“ (на символ элемента - 4 знака, выравнивание по правому краю, на X, Y и Z по 10 знаков, 4 знака после запятой, выравнивание по правому краю). Мметодами <code class="docutils literal notranslate"><span class="pre">os</span></code> создайте отдельную папку. Запишите туда серию координатных файлов, с длиной <span class="math notranslate nohighlight">\(\textrm{O-H}\)</span> связи от 0.9 Å до 1.5 Å.</p>
+</li>
+<li><p class="first">В <a class="reference external" href="../../source/lectures/theme5.zip">архиве</a> находятся <code class="docutils literal notranslate"><span class="pre">.csv</span></code> файлы с идеальными данными по изучению кинетики с помощью UV-Vis спектроскопии (число в названии файла - время с начала эксперимента). Вы точно знаете, что в системе находится два идеальных вещества с пиками поглощения при 442.00 нм и 681.00 нм. В данных отсутствует шум, а базовая линия вычтена идеально.</p>
+<p>К сожалению, с самими файлами случилось почти все плохое, что вообще могло случиться (один из файлов у вас наврятли получится открыть вообще).</p>
+<p>Обработайте данные, сохраните в отдельный файл данные в формате <code class="docutils literal notranslate"><span class="pre">время;</span> <span class="pre">C1;</span> <span class="pre">C2</span></code>. Импортруйте его в стороннюю программу и постройте график.</p>
+</li>
+</ol>
 </div>
 </div>
 

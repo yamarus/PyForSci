@@ -104,3 +104,283 @@
     строка 2
     строка 3
     строка 4
+
+Допишем еще одну строку в конец файла.
+
+.. code:: python
+
+    f = open('example_file.txt', 'a')
+    f.write('еще одна строка')
+    f.close()
+
+Прочтем файл:
+
+.. code:: python
+
+    f = open('example_file.txt', 'r')
+    print(f)
+    print(f.read())
+    f.close()
+
+
+.. parsed-literal::
+
+    <_io.TextIOWrapper name='example_file.txt' mode='r' encoding='UTF-8'>
+    строка 0
+    строка 1
+    строка 2
+    строка 3
+    строка 4
+    еще одна строка
+
+
+.. code:: python
+
+    f = open('example_file.txt', 'r')
+    print(f.readlines())
+    f.close()
+
+
+.. parsed-literal::
+
+    ['строка 0\n', 'строка 1\n', 'строка 2\n', 'строка 3\n', 'строка 4\n', 'еще одна строка']
+
+
+.. code:: python
+
+    f = open('example_file.txt', 'r')
+    for line in f: print(line, end='')
+    f.close()
+
+
+
+.. parsed-literal::
+
+    строка 0
+    строка 1
+    строка 2
+    строка 3
+    строка 4
+    еще одна строка<_io.TextIOWrapper name='example_file.txt' mode='r' encoding='UTF-8'>
+
+
+Конструкции ``with .. as`` и ``try .. except``
+----------------------------------------------
+
+Менеджер контекста ``with .. as`` нужен для обертки блока инструкций
+отдельных объектов. Ее удобно использовать для простой работы с файлами.
+
+Синтаксис конструкции:
+
+.. code:: python
+
+    with expression ["as" target] ("," expression ["as" target])* :
+        suite
+        
+        #По окончанию инструкций вызывается метод __exit__: файл закрывается автоматически
+
+
+.. code:: python
+
+    with open('example_file.txt', 'r') as f:
+        print(f.read())
+    #f.read()
+
+
+.. parsed-literal::
+
+    строка 0
+    строка 1
+    строка 2
+    строка 3
+    строка 4
+    еще одна строка
+
+
+Конструкция ``try .. except`` позволяет обрабатывать исключения.
+
+.. code:: python
+
+    k = 1/0 
+
+
+::
+
+
+    ---------------------------------------------------------------------------
+
+    ZeroDivisionError                         Traceback (most recent call last)
+
+    <ipython-input-7-60955a76aa18> in <module>
+    ----> 1 k = 1/0
+    
+
+    ZeroDivisionError: division by zero
+
+
+.. code:: python
+
+    def division(a,b):
+        try: 
+            r = a/b
+        except ZeroDivisionError:
+            r = float('inf')
+        except Exception as ex:
+            print(ex.args)
+            r = float('nan')
+        else:
+            print('все хорошо')
+        finally:
+            return r
+        
+    
+    print(division(1,0))
+
+
+.. parsed-literal::
+
+    inf
+
+
+Конструкцию ``try .. except`` удобно использовать для работы с файлами и
+передачи данных.
+
+.. code:: python
+
+    fname='example1_file.txt'
+    f=open(fname, 'r')
+    print(f.read())
+    f.close()
+
+
+::
+
+
+    ---------------------------------------------------------------------------
+
+    FileNotFoundError                         Traceback (most recent call last)
+
+    <ipython-input-26-5982f1c2a6fc> in <module>
+          1 fname='example1_file.txt'
+    ----> 2 f=open(fname, 'r')
+          3 print(f.read())
+          4 f.close()
+
+
+    FileNotFoundError: [Errno 2] No such file or directory: 'example1_file.txt'
+
+
+.. code:: python
+
+    fname='example1_file.txt'
+    try:
+        f=open(fname, 'r')
+    except:
+        print(f'проблема с чтением файла {fname}')
+    else: 
+        print(f.read())
+    finally: f.close()
+
+
+.. parsed-literal::
+
+    проблема с чтением файла example1_file.txt
+
+
+Модуль ``os``
+=============
+
+Модуль ``os`` является стандартным модулем python, поддерживающим
+огромное количество различных различных функций работы с операционной
+системой.
+
+С полной документацией метода можно ознакомиться на `странице с оффициальной документацией <https://docs.python.org/3/library/os.html>`_ 
+
+Более короткое и простое описание можно найти `тут <https://pythonworld.ru/moduli/modul-os.html>`_. **Рекомендуется
+ознакомиться**
+
+ниже представлен лишь ознакомительный список некоторых функций.
+
+``os.chdir(path)`` - смена текущей директории.
+
+``os.getcwd()`` - текущая рабочая директория.
+
+``os.listdir(path=".")`` - список файлов и директорий в папке.
+
+``os.mkdir(path, mode=0o777, *, dir_fd=None)`` - создаёт директорию.
+``OSError``, если директория существует.
+
+``os.remove(path, *, dir_fd=None)`` - удаляет путь к файлу.
+
+``os.rename(src, dst, *, src_dir_fd=None, dst_dir_fd=None)`` -
+переименовывает файл или директорию из ``src`` в ``dst``.
+
+``os.rmdir(path, *, dir_fd=None)`` - удаляет пустую директорию.
+
+``os.system(command)`` - исполняет системную команду, возвращает код её
+завершения (в случае успеха 0).
+
+Пара примеров использования данного модуля:
+
+.. code:: python
+
+    import os
+    print(os.getcwd())
+    for f in os.listdir(path="../figs"):print(f)
+
+
+.. parsed-literal::
+
+    /home/ruslan/work/PyForSci/source/lectures
+    t2_float64.svg
+    path.svg
+    axis.jpg
+    path.odg
+
+
+Модуль ``os`` включает в себя вложенный модуль ``path``
+
+Короткое и простое `описание модуля os.path <https://pythonworld.ru/moduli/modul-os-path.html>`_. **Рекомендуется ознакомиться**
+
+``os.path.exists(path)`` - возвращает ``True``, если ``path`` указывает
+на существующий путь или дескриптор открытого файла.
+
+``os.path.getsize(path)`` - размер файла в байтах.
+
+``os.path.isfile(path)`` - является ли путь файлом.
+
+``os.path.isdir(path)`` - является ли путь директорией.
+
+``os.path.join(path1[, path2[, ...]])`` - соединяет пути с учётом
+особенностей операционной системы.
+
+
+    
+Задачи
+================
+
+
+#.  Сгенерируйте ``.csv`` файл формата
+    ::
+    
+        x (units); y (units)
+        x0; y0
+        x1; y1
+        ...
+        ...
+        xn; yn
+    
+    где ``x`` и ``y`` координаты какой-нибудь простой функции (линия, парабола, синус или что-то другое). Проверьте правильность результата, импортировав полученный файл в какую-нибудь из программ для построения графиков (Excel, Origin, OpenOffice, gnuplot, etc)
+    
+#. С помощью функции ``os.system()`` откройте какой-нибудь текстовой файл в блокноте.
+
+#. Вы решили дальше изучать ион :math:`\textrm{TYR-H}^+` из `задачи 4.5 <https://yamarus.github.io/PyForSci/build/html/theme4.html#id12>`_. Непонятно зачем, но вам захотелось сделать серию расчетов по отрыву :math:`\textrm{H}^+` иона вдоль по направлению связи :math:`CA \rightarrow C` (атомы 5 и 22, соответственно). Для этого вам нужно сгенерировать серию координатных файлов формата 'символ_элемента X Y Z' (на символ элемента - 4 знака, выравнивание по правому краю, на X, Y и Z по 10 знаков, 4 знака после запятой, выравнивание по правому краю). Мметодами ``os`` создайте отдельную папку. Запишите туда серию координатных файлов, с длиной :math:`\textrm{O-H}` связи от 0.9 Å до 1.5 Å.
+
+#.  В `архиве <../../source/lectures/theme5.zip>`_ находятся ``.csv`` файлы с идеальными данными по изучению кинетики с помощью UV-Vis спектроскопии (число в названии файла - время с начала эксперимента). Вы точно знаете, что в системе находится два идеальных вещества с пиками поглощения при 442.00 нм и 681.00 нм. В данных отсутствует шум, а базовая линия вычтена идеально. 
+
+    К сожалению, с самими файлами случилось почти все плохое, что вообще могло случиться (один из файлов у вас наврятли получится открыть вообще). 
+
+    Обработайте данные, сохраните в отдельный файл данные в формате ``время; C1; C2``. Импортруйте его в стороннюю программу и постройте график.
+
+
+
