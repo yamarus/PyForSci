@@ -152,8 +152,11 @@
 <li class="toctree-l2"><a class="reference internal" href="theme5.html#id1">5.1. Работа с файлами</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="theme5.html#id2">5.1.1. Файловая система</a></li>
 <li class="toctree-l3"><a class="reference internal" href="theme5.html#python">5.1.2. Стандартные методы Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#with-as-try-except">5.1.3. Конструкции <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> и <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id4">5.2. Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id7">5.3. Задачи</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. NumPy массивы и их свойства</a><ul>
@@ -256,8 +259,8 @@
 NumPy для вычислений позволяет ускорить их в десятки (а иногда и в
 сотни) раз, по сравнению с обычным Python, и иногда даже приблизиться к
 скорости выполнения вычислений на C++.</p>
-<p>NumPy не является стандартной библиотекой Python, по этому для ее
-использования ее необходимо установить. Если же вы используете Anaconda,
+<p>NumPy не является стандартной библиотекой Python, поэтому, чтобы ее
+использовать, необходимо ее сначала установить. Если же вы используете Anaconda,
 то NumPy у вас уже есть.</p>
 <p>Для использования NumPy достаточно импортировать:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
@@ -268,7 +271,7 @@ NumPy для вычислений позволяет ускорить их в д
 </pre></div>
 </div>
 <p>Дальнейшее ее использование сводится к вызову одной из <a class="reference external" href="https://numpy.org/doc/stable/user/absolute_beginners.html">тысяч внутренних
-констант, объектов, функций и модулей</a>:</p>
+констант, объектов, функций и модулей</a>. . Например, генерация пяти случайных чисел выглядит следующим образом:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>    <span class="c1"># 5 случайных чисел от 0 до 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 </pre></div>
@@ -279,7 +282,7 @@ NumPy для вычислений позволяет ускорить их в д
 </div>
 <div class="section" id="id3">
 <h2>6.2. Массивы NumPy<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Одним из базовых классов для NumPy являются массивы (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,
+<p>Одним из базовых классов в NumPy являются массивы (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,
 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html">описание массивов и их методов</a>). Именно с этими объектами работают все функции и методы
 связанные с обработкой данных. Обычный список может быть легко в него
 преобразован:</p>
@@ -293,18 +296,26 @@ NumPy для вычислений позволяет ускорить их в д
 [0 1 2 3 4 5 6 7 8 9]                &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
-<p>При этом, класс <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> является итерируемым, а значит
-обращение к элементам происходит по аналогии со списками:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<p>При этом, класс <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> является итерируемым, а значит поддерживает
+обращение по индексу, взятие среза и прочее (по аналогии со списками):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+<span class="mi">2</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Важной особенностью NumPy массивов является их гомогенность, т.е. все
-элементы имеют один и тот же тип данных. Попытка создания массива с
+элементы в них имеют один и тот же тип данных. Попытка создания массива с
 элементами разного типа может привести к ошибке:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -335,7 +346,9 @@ NumPy для вычислений позволяет ускорить их в д
 <div class="section" id="id6">
 <h3>6.2.1. Базовые методы масивов NumPy<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Одним из очевидных приемуществ массивов NumPy перед списком -
-арифметические и математические опреации:</p>
+векторизованные арифметические и математические опреации. Это означает
+что первый элемент первого массива будет складываться (вычитаться, умножаться
+или любая другая операция) с первым элементов второго массива, второй со вторым и т.д.:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -352,6 +365,8 @@ NumPy для вычислений позволяет ускорить их в д
 <span class="p">[</span> <span class="mf">1.</span>          <span class="mf">2.71828183</span>  <span class="mf">7.3890561</span>  <span class="mf">20.08553692</span> <span class="mf">54.59815003</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Это работает и с массивами более высоких размерностей (вложенных массивов).
+Двумерные массивы также складываются поэлементно:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
@@ -371,10 +386,11 @@ NumPy для вычислений позволяет ускорить их в д
 ряд других удобных методов</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flat</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>           <span class="c1">#транспонирование</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flat</span><span class="p">))</span>  <span class="c1">#&quot;вытягивание&quot; массива до одномерного</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>        <span class="c1">#количество элементов в массиве</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>        <span class="c1">#количество размерностей (осей) массива</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>       <span class="c1">#форма массива, т.е. количество элементов по каждой из осей</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
@@ -416,11 +432,11 @@ NumPy для вычислений позволяет ускорить их в д
      <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># сортируем все колонки</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># сортируем все колонки</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># сортируем все строки</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># сортируем все строки</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -490,6 +506,7 @@ NumPy для вычислений позволяет ускорить их в д
 <p><code class="docutils literal notranslate"><span class="pre">np.full(shape,</span> <span class="pre">value,</span> <span class="pre">[dtype=...])</span></code> - создание массива из <code class="docutils literal notranslate"><span class="pre">value</span></code>
 формы shape</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
 </pre></div>
@@ -552,7 +569,7 @@ NumPy для вычислений позволяет ускорить их в д
 <div class="section" id="scipy-linalg">
 <h2>6.3. Линейная алгебра и SciPy.linalg<a class="headerlink" href="#scipy-linalg" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Библиотека NumPy содержит модуль линейной алгебры <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code>. Этот
-модуль содержит простые базовые операции, как векторное умножение,
+модуль содержит простые базовые операции, такие как векторное умножение,
 перемножение матриц, простой поиск собственных чисел и значений матриц,
 детерминант и др. (<a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">см. документацию</a>). Его функционал не полон, и иногда
 может быть полезно использовать дополнительно модуль <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>

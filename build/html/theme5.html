@@ -251,19 +251,19 @@
   <div class="section" id="os">
 <span id="theme5"></span><h1>5. Работа с файлами, модуль <code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#os" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme5.ipynb">Лекция в .ipynb формате</a></p>
-<p>Работа с файлами. Открытие файла, режимы доступа.  Простое чтение/запись в файл. Конструкции with .. as и try .. except. Методы numpy.loadtxt, numpy.savetxt. Модуль os. Пример работы с файловой системой, использования модуля os.path.</p>
 <div class="section" id="id1">
 <h2>5.1. Работа с файлами<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="id2">
 <h3>5.1.1. Файловая система<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
-<p>Абсолютный путь - путь, по которому можно найти файл, влючающий название устройства/домена/или корневого каталога.
+<p>Абсолютный путь - путь, по которому можно найти файл, влючающий название устройства/домена/и(или) корневого каталога.
 Пример:</p>
 <p><code class="docutils literal notranslate"><span class="pre">C:\Users\admin\Documents\file.txt</span></code>  (windows)</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://yamarus.github.io/PyForSci/source/lectures/theme5.ipynb</span></code> (web)</p>
 <p><code class="docutils literal notranslate"><span class="pre">/home/ruslan/Documents/work/PyForSci/source/lectures/theme5.ipynb</span></code> (unix)</p>
-<p>Относительный путь - указание пути относительно данного файла/кактлога</p>
+<p>Относительный путь - указание пути относительно данного файла/каталога</p>
 <p>Рассмотрим некоторую систему вложенных папок и файлов, относительно файла <cite>theme5.rst</cite>:</p>
-<img alt="_images/path.svg" src="_images/path.svg" /></div>
+<img alt="_images/path.svg" src="_images/path.svg" /><p>В unix системах знак <code class="docutils literal notranslate"><span class="pre">.</span></code> означает текущую директорию, знак <code class="docutils literal notranslate"><span class="pre">..</span></code> - директорию на уровень выше.</p>
+</div>
 <div class="section" id="python">
 <h3>5.1.2. Стандартные методы Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Для работы с файлами Python имеет стандартную функцию <code class="docutils literal notranslate"><span class="pre">open</span></code>.
@@ -274,15 +274,14 @@
 <p>Для обычной работы с текстовыми файлами наиболее важными аргументами
 являются</p>
 <p><code class="docutils literal notranslate"><span class="pre">file</span></code> - строка (точнее <a class="reference external" href="https://docs.python.org/3/glossary.html#term-path-like-object">path-like object</a>) имя относительного или
-полного пути к файлу.</p>
+абсолютного пути к файлу.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - режим работы с файлом (можно комбинировать нижестоящие)</p>
 <p><code class="docutils literal notranslate"><span class="pre">r</span></code> - режим чтения</p>
 <p><code class="docutils literal notranslate"><span class="pre">w</span></code> - режим записи (удаляет все содержимое файла)</p>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code> - открывает для добавления (курсор в конце файла)</p>
 <p><code class="docutils literal notranslate"><span class="pre">+</span></code> - открывает для обновления (курсор в начале файла)</p>
 <p><code class="docutils literal notranslate"><span class="pre">b</span></code> - открывает в бинарном виде</p>
-<p>Данная функция возвращает объект файла который имеет следующие важные
-методы (пример для <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">open('filename',</span> <span class="pre">'r+')</span></code>:</p>
+<p>Данная функция возвращает объект файла: <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">open('filename',</span> <span class="pre">'r+'</span></code>. Объект файла <code class="docutils literal notranslate"><span class="pre">f</span></code> имеет следующие важные методы:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">f.read()</span></code> - читает файл. В качестве аргумента можно указать
 количество читаемых символов</li>
@@ -302,7 +301,7 @@
 <p class="first admonition-title">Предупреждение</p>
 <p class="last">По завершению работы с файлом всегда закрывайте его методом <code class="docutils literal notranslate"><span class="pre">f.close()</span></code></p>
 </div>
-<p>В случаа простой записи в файл можно воспользоваться функцией
+<p>В случае простой записи в файл можно воспользоваться функцией
 <code class="docutils literal notranslate"><span class="pre">print(string,</span> <span class="pre">file</span> <span class="pre">=</span> <span class="pre">f)</span></code></p>
 <p>Создадим простой файл в рабочем каталоге и запишем в него несколько
 строк:</p>
@@ -326,7 +325,7 @@
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Прочтем файл:</p>
+<p>Прочитаем файл:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -350,6 +349,8 @@
 <pre class="literal-block">
 ['строка 0n', 'строка 1n', 'строка 2n', 'строка 3n', 'строка 4n', 'еще одна строка']
 </pre>
+<p>Объект файла является итерируемым, т.е. по нему можно проходить циклом <code class="docutils literal notranslate"><span class="pre">for</span></code>.
+На каждом шаге цикла мы будем получать отдельную строку файла:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -367,7 +368,7 @@
 <div class="section" id="with-as-try-except">
 <h3>5.1.3. Конструкции <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> и <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code><a class="headerlink" href="#with-as-try-except" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Менеджер контекста <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> нужен для обертки блока инструкций
-отдельных объектов. Ее удобно использовать для простой работы с файлами.</p>
+отдельных объектов. Его удобно использовать для простой работы с файлами.</p>
 <p>Синтаксис конструкции:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">expression</span> <span class="p">[</span><span class="s2">&quot;as&quot;</span> <span class="n">target</span><span class="p">]</span> <span class="p">(</span><span class="s2">&quot;,&quot;</span> <span class="n">expression</span> <span class="p">[</span><span class="s2">&quot;as&quot;</span> <span class="n">target</span><span class="p">])</span><span class="o">*</span> <span class="p">:</span>
     <span class="n">suite</span>
@@ -389,6 +390,11 @@
 </pre></div>
 </div>
 <p>Конструкция <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code> позволяет обрабатывать исключения.</p>
+<p>При попытке сделать действие, которое не поддерживается синтаксисом объекта, возникает ошибка (исключение).
+Интерпретатор создает объект исключения и возвращает его программе, нормальная работа программы при этом
+прерывается. С помощью конструкции <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code> мы можем перехватывать эти исключения и обрабатывать
+их отдельно. Это позволить не останавливать работу программы, а менять ее поведение при возникновении ошибок.</p>
+<p>Рассмотрим деление на ноль. В норме мы получим исключение <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -403,6 +409,7 @@
 <span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
 </pre></div>
 </div>
+<p>Попробуем перехватить это исключение и вернуть в таком случае бесконечность:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">division</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
@@ -445,6 +452,8 @@
 <span class="ne">FileNotFoundError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">:</span> <span class="s1">&#39;example1_file.txt&#39;</span>
 </pre></div>
 </div>
+<p>Мы получили ошибку, поскольку такого файла не существует.
+Будем возвращать сообщение пользователю об ошибке, если она имеет место:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;example1_file.txt&#39;</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -462,13 +471,11 @@
 </div>
 <div class="section" id="id4">
 <h2>5.2. Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code> является стандартным модулем python, поддерживающим
-огромное количество различных различных функций работы с операционной
-системой.</p>
+<p>Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code> является стандартным модулем python, поддерживающим огромное количество функций для работы с операционной системой.</p>
 <p>С полной документацией метода можно ознакомиться на <a class="reference external" href="https://docs.python.org/3/library/os.html">странице с оффициальной документацией</a></p>
 <p>Более короткое и простое описание можно найти <a class="reference external" href="https://pythonworld.ru/moduli/modul-os.html">тут</a>. <strong>Рекомендуется
 ознакомиться</strong></p>
-<p>ниже представлен лишь ознакомительный список некоторых функций.</p>
+<p>ниже представлен список лишь некоторых функций.</p>
 <p><code class="docutils literal notranslate"><span class="pre">os.chdir(path)</span></code> - смена текущей директории.</p>
 <p><code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> - текущая рабочая директория.</p>
 <p><code class="docutils literal notranslate"><span class="pre">os.listdir(path=&quot;.&quot;)</span></code> - список файлов и директорий в папке.</p>
@@ -480,7 +487,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">os.rmdir(path,</span> <span class="pre">*,</span> <span class="pre">dir_fd=None)</span></code> - удаляет пустую директорию.</p>
 <p><code class="docutils literal notranslate"><span class="pre">os.system(command)</span></code> - исполняет системную команду, возвращает код её
 завершения (в случае успеха 0).</p>
-<p>Пара примеров использования данного модуля:</p>
+<p>Пример использования данного модуля:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;../figs&quot;</span><span class="p">):</span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -519,7 +526,7 @@
 </li>
 <li><p class="first">С помощью функции <code class="docutils literal notranslate"><span class="pre">os.system()</span></code> откройте какой-нибудь текстовой файл в блокноте.</p>
 </li>
-<li><p class="first">Вы решили дальше изучать ион <span class="math notranslate nohighlight">\(\textrm{TYR-H}^+\)</span> из <a class="reference external" href="https://yamarus.github.io/PyForSci/build/html/theme4.html#id12">задачи 4.5</a>. Непонятно зачем, но вам захотелось сделать серию расчетов по отрыву <span class="math notranslate nohighlight">\(\textrm{H}^+\)</span> иона вдоль по направлению связи <span class="math notranslate nohighlight">\(CA \rightarrow C\)</span> (атомы 5 и 22, соответственно). Для этого вам нужно сгенерировать серию координатных файлов формата „символ_элемента X Y Z“ (на символ элемента - 4 знака, выравнивание по правому краю, на X, Y и Z по 10 знаков, 4 знака после запятой, выравнивание по правому краю). Мметодами <code class="docutils literal notranslate"><span class="pre">os</span></code> создайте отдельную папку. Запишите туда серию координатных файлов, с длиной <span class="math notranslate nohighlight">\(\textrm{O-H}\)</span> связи от 0.9 Å до 1.5 Å.</p>
+<li><p class="first">Вы решили дальше изучать ион <span class="math notranslate nohighlight">\(\textrm{TYR-H}^+\)</span> из <a class="reference external" href="https://yamarus.github.io/PyForSci/build/html/theme4.html#id12">задачи 4.5</a>. Непонятно зачем, но вам захотелось сделать серию расчетов по отрыву <span class="math notranslate nohighlight">\(\textrm{H}^+\)</span> иона вдоль по направлению связи <span class="math notranslate nohighlight">\(CA \rightarrow C\)</span> (атомы 5 и 22, соответственно). Для этого вам нужно сгенерировать серию координатных файлов формата „символ_элемента X Y Z“ (на символ элемента - 4 знака, выравнивание по правому краю, на X, Y и Z по 10 знаков, 4 знака после запятой, выравнивание по правому краю). Методами <code class="docutils literal notranslate"><span class="pre">os</span></code> создайте отдельную папку. Запишите туда серию координатных файлов, с длиной <span class="math notranslate nohighlight">\(\textrm{O-H}\)</span> связи от 0.9 Å до 1.5 Å.</p>
 </li>
 <li><p class="first">В <a class="reference external" href="../../source/lectures/theme5.zip">архиве</a> находятся <code class="docutils literal notranslate"><span class="pre">.csv</span></code> файлы с идеальными данными по изучению кинетики с помощью UV-Vis спектроскопии (число в названии файла - время с начала эксперимента). Вы точно знаете, что в системе находится два идеальных вещества с пиками поглощения при 442.00 нм и 681.00 нм. В данных отсутствует шум, а базовая линия вычтена идеально.</p>
 <p>К сожалению, с самими файлами случилось почти все плохое, что вообще могло случиться (один из файлов у вас наврятли получится открыть вообще).</p>
