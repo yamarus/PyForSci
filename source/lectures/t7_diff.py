@@ -12,27 +12,26 @@ w,v = np.linalg.eig(np.cov(data.T))
 line1=np.array([[v[:,0][0],-v[:,0][0]],[v[:,0][1],-v[:,0][1]]])*w[0]**0.5*2
 line2=np.array([[v[:,1][0],-v[:,1][0]],[v[:,1][1],-v[:,1][1]]])*w[1]**0.5*2
 
-plt.subplot(222)
+ax1=plt.subplot(222)
 bins=np.linspace(-80,80,51)
 plt.hist(data[:,0],bins,color='red')
 plt.ylim(0,60)
-ax=plt.gca()
-plt.xticks(np.linspace(-75,75,7))
-ax.set_aspect(1)
-plt.text(50,45,r'$x^{fin}, \AA$')
-plt.xlabel(r'$\Delta x, \AA$')
+ax1.set_aspect(1.4)
+plt.text(50,45,r'$x^{fin}, \AA$',color='red')
+plt.setp(ax1.get_xticklabels(), visible=False)
+plt.tick_params( bottom=False,)
+ax1.set_yticklabels(['',20,40,60])
 
-plt.subplot(224)
-
+ax2=plt.subplot(224, sharex = ax1)
 plt.hist(data[:,1],bins,color='black')
 plt.text(50,45,r'$y^{fin}, \AA$')
 plt.ylim(0,60)
-ax=plt.gca()
-ax.set_aspect(1)
+
+ax2.set_aspect(1.4)
 plt.xticks(np.linspace(-75,75,7))
 plt.xlabel(r'$\Delta y, \AA$')
 
-plt.subplots_adjust(hspace=-0.2)
+plt.subplots_adjust(hspace=-0.49)
 
 plt.subplot(121)
 plt.plot(data[:,0],data[:,1], 'g.',markersize=1)

@@ -433,7 +433,7 @@ NumPy работа с файлами
 
     [ 1.000e+00  4.500e+00 -7.856e+03  2.340e+02]
 
-
+ 
 функция::
 
     numpy.loadtxt(fname, dtype=<class 'float'>, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None, unpack=False, ndmin=0, encoding='bytes', max_rows=None)

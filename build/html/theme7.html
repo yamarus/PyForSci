@@ -174,7 +174,28 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Работа с графиками</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">7.1. Задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matplotlib">7.1. Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">7.2. Свойства линии и точки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.2.1. Итерационная задача цветов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">7.3. Оформление</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matplotlib-rcparams">7.3.1. matplotlib rcParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.3.2. Легенда</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.3.3. Заголовки и подписи</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matplotlib-axes">7.4. Несколько графиков на картинке, matplotlib.axes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">7.5. Масштаб и оси</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">7.5.1. Пределы отображения и масштабирование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">7.5.2. Оси и сетка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7.5.3. Двойные оси.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">7.5.4. Общая ось для двух соседних графиков</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">7.6. Гистограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d">7.7. 2D графики</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">7.8. Задачи</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theme8.html">8. Численное интегрирование</a></li>
@@ -255,10 +276,567 @@
   <div class="section" id="theme7">
 <span id="id1"></span><h1>7. Работа с графиками<a class="headerlink" href="#theme7" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme7.ipynb">Лекция в .ipynb формате</a></p>
-<p>Работа с графиками в matplotlib. Простейшие примеры pyplot. Свойства линии и точки. Пределы отображения, положение осей, масштабирование и сетки. Легенда и заголовки. Отображение изображений, и тепловых карт. Работа со шрифтами. Сохранение рисунка. Подготовка графиков к публикации.</p>
-<div class="section" id="id2">
-<h2>7.1. Задачи<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="matplotlib">
+<h2>7.1. Matplotlib<a class="headerlink" href="#matplotlib" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Matplotlib - продвинутая библиотека для создания визуализации в Python.
+Оффициальный сайт библиотеки содержит <a class="reference external" href="https://matplotlib.org/tutorials/index.html">огромное количество хорошо
+описанных примеров использования</a>. Сама библиотека является полностью
+объектно-ориентированной, и для полноценной работы с ней нужно более
+продвинутое знание Python, чем предпологает данный курс.</p>
+<p>Как и NumPy, matplotlib не входит в стандартный набор библиотек Python,
+и требует отдельной установки в случае отсутствия в дистрибутиве (в
+Anaconda данная библиотека установленна по умолчанию).</p>
+<p>Для простой работы с библиотекой, авторами реализован модуль с
+коллекцией функций matplotlib.pyplot, который позволяет реализовать
+большую часть базовых потребностей для визуализации данных.</p>
+<p>Расмотриим простейший пример использования:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#готовим данные</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>   <span class="c1"># добавляем график</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>       <span class="c1"># строим график</span>
+</pre></div>
+</div>
+<img alt="_images/output_1_0.png" src="_images/output_1_0.png" />
+<p>Для построения нескольких кривых на одном графике достаточно несколько
+раз вызвать функию plot:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_3_0.png" src="_images/output_3_0.png" />
+</div>
+<div class="section" id="id3">
+<h2>7.2. Свойства линии и точки<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В matplotlib есть продвинутый способ задавать базовые свойства линии и
+точки. Для простых же построений достаточно передать в функцию plot()
+аргумент в виде строки с ключевыми символами ‘цвет маркер линия’. Полную
+таблицу символов и стилей можно найти в <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot">разделе Notes описания функции
+plot</a>.</p>
+<p>По умолчанию визуализация происходит линиями.</p>
+<p>Рассмотрим несколько примеров:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">0</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>   <span class="c1"># линия</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">1</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  <span class="c1"># пунктир потолще</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;r:&#39;</span><span class="p">)</span>  <span class="c1">#красные точки</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_5_0.png" src="_images/output_5_0.png" />
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">0</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>                    <span class="c1">#синие точки</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">1</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">)</span>                    <span class="c1">#зеленые кружки</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">)</span>    <span class="c1">#красные квадаты (rgb цвет в hex)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;k^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>    <span class="c1">#большие черные треугольники</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_6_0.png" src="_images/output_6_0.png" />
+<p>Как вы могли увидеть, для контроля параметров линии можно явно задавать
+значения некоторых ее параметров в plt.plot(). Наиболее часто
+используемые параметры:</p>
+<p>linestyle или ls - стиль линии (сплошная, пунктир, точки и т.д.)</p>
+<p>linewidth или lw - толщина линии</p>
+<p>color - цвет линии</p>
+<p>marker - символ, используемый для изображения заданных в plot() точек</p>
+<p>markersize - размер этих точек</p>
+<div class="section" id="id4">
+<h3>7.2.1. Итерационная задача цветов<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Иногда бывает удобно чтобы цвета были унокальными и соответствовали каким-то конкретным значениям. Для этого аргумент <code class="docutils literal notranslate"><span class="pre">color</span></code> можно задавать в цикле, из <cite>colormap</cite>. Рассмотрим вариант решения подобной задачи.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">):</span>
+    <span class="n">y</span><span class="o">=-</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="n">n</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">),</span>
+            <span class="n">boundaries</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">101</span><span class="p">),</span> <span class="c1">#границы для отображения в colorbar</span>
+            <span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span>             <span class="c1">#метки в colorbar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_8_0.png" src="_images/output_8_0.png" />
+</div>
+</div>
+<div class="section" id="id5">
+<h2>7.3. Оформление<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="matplotlib-rcparams">
+<h3>7.3.1. matplotlib rcParams<a class="headerlink" href="#matplotlib-rcparams" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В matplotlib можно настроить положение отдельных элементов, отступы,
+шрифты и многое другое. Параметры всего этого задаются в <a class="reference external" href="https://matplotlib.org/3.1.0/tutorials/introductory/customizing.html#matplotlib-rcparams">matplotlib
+rcParams</a>. Для многих эленетов существуют более удобные подходы,
+реализованные отдельными функциями.</p>
+<p>Во всех текстовых полях в <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> можно использовать
+<span class="math notranslate nohighlight">\(\LaTeX\)</span> для отображения специальных символов и формул.</p>
+</div>
+<div class="section" id="id7">
+<h3>7.3.2. Легенда<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для отображения легенды проще всего использовать аргумент <code class="docutils literal notranslate"><span class="pre">label</span></code> и
+функцию <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y =3 e^{-x}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y=\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y =\frac</span><span class="si">{3}{10}</span><span class="s1"> x$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+           <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;expand&quot;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+           <span class="n">shadow</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span>
+           <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_9_0.png" src="_images/output_9_0.png" />
+</div>
+<div class="section" id="id8">
+<h3>7.3.3. Заголовки и подписи<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для того, чтобы оставить заголовок, используется функция
+<code class="docutils literal notranslate"><span class="pre">plt.title(label,</span> <span class="pre">fontdict=None,</span> <span class="pre">loc='center',</span> <span class="pre">pad=None,</span> <span class="pre">**kwargs)</span></code>.
+Добавим к вышеописанному графику заголовок:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y =3 e^{-x}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y=\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y =\frac</span><span class="si">{3}{10}</span><span class="s1"> x$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
+           <span class="n">shadow</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Бесползензный график&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_11_0.png" src="_images/output_11_0.png" />
+<p>Для добавления на график текста можно использовать
+<code class="docutils literal notranslate"><span class="pre">plt.text(x,</span> <span class="pre">y,</span> <span class="pre">text)</span></code>. Также может быть полезно использовать
+<code class="docutils literal notranslate"><span class="pre">plt.annotate(text,</span> <span class="pre">xy,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code>. Для добавления подписей к
+осям используется <code class="docutils literal notranslate"><span class="pre">xlabel(text)</span></code> и <code class="docutils literal notranslate"><span class="pre">ylabel(text)</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y = 3e^{-x}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y=\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y =\frac</span><span class="si">{3}{10}</span><span class="s1"> x$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">shadow</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Бесползензный график&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$e^x = \sum_{k=0}^\infty \frac</span><span class="si">{x_k}</span><span class="s1">{k!}$&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$, отн. ед&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$, отн. ед&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_13_0.png" src="_images/output_13_0.png" />
+<p>Если вам не нравятся шрифты или что-то еще в оформлении, вы можете
+изменить это в параметрах <code class="docutils literal notranslate"><span class="pre">rcParams</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">]</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">600</span>                  <span class="c1">#Улучшаем качество</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y = 3e^{-x}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y=\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y =\frac</span><span class="si">{3}{10}</span><span class="s1"> x$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">shadow</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Бесползензный график&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$e^x = \sum_{k=0}^\infty \frac</span><span class="si">{x_k}</span><span class="s1">{k!}$&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$, отн. ед&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$, отн. ед&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_15_0.png" src="_images/output_15_0.png" />
+</div>
+</div>
+<div class="section" id="matplotlib-axes">
+<h2>7.4. Несколько графиков на картинке, matplotlib.axes<a class="headerlink" href="#matplotlib-axes" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Как говорилось ранее, для более продвинутой работы с графиками иногда
+приходится использовать более сложные инструменты, одним из которых
+является класс <code class="docutils literal notranslate"><span class="pre">matplotlib.axes</span></code> <a class="reference external" href="https://matplotlib.org/3.3.2/api/axes_api.html#the-axes-class">описание класса</a>. Непосредственная
+работа с данным классом позволяет настроить большее количество
+параметров каждого отдельного графика.</p>
+<p>Рассмотрим пример. Если мы просто три раза вызовем plot(), то мы
+построим три кривых на одном графике:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>                  <span class="c1">#Улучшаем качество</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_17_0.png" src="_images/output_17_0.png" />
+<p>Иногда же мы хотим построить несколько разных графиков на одном
+изображении. Для этого удобно использовать
+<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplot(*args)</span></code>, где <code class="docutils literal notranslate"><span class="pre">*args</span></code> формата
+<code class="docutils literal notranslate"><span class="pre">(nrows,</span> <span class="pre">ncols,</span> <span class="pre">index)</span></code>, или <code class="docutils literal notranslate"><span class="pre">int</span></code> того же формата (ограничения:
+каждая цифра не больше 9). <strong>Нумерация начинается с 1</strong>. При вызове,
+данная функция возвращает объект из подкласа <code class="docutils literal notranslate"><span class="pre">matplotlib.axes</span></code>.</p>
+<p>Вызов этой функции создает изображение, которое можно представить в виде
+таблицы (nrows x ncols). При этом мы обращаемся к конкретной ячейке этой
+таблицы index и строим в ней график.</p>
+<p>Рассмотрим ее использование:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># одна строка, три колонки, график №1</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># одна строка, три колонки, график №2</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># одна строка, три колонки, график №3</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1">#увеличиваем разделение между графиками</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_19_0.png" src="_images/output_19_0.png" />
+<p>Другой подход - генерировать список графиков, а потом их по отдельности
+заполнять (удобно при общей легенде или других общих параметрах),
+используя функцию <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code>.</p>
+<p>Сам рисунок, который мы видим, или холст, на котором происходит
+отрисовка, является объектом класса figure. Контролировать свойства
+этого холста можно, обращаясь именно к этому объекту. Каждый отдельный
+график является объектом класса axes (координатные оси с кривыми).
+Работа с свойствами отдельных графиков происходит путем обращения к этим
+объектам. <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> создает объект figure и список
+объектов-графиков, расположенных на нем. Расположение графиков снова
+задается параметрами <code class="docutils literal notranslate"><span class="pre">nrows</span></code> и <code class="docutils literal notranslate"><span class="pre">ncols</span></code>, размер самого рисунка -
+параметром <code class="docutils literal notranslate"><span class="pre">figsize</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">figsize</span></code> : (float, float), optional, width, height in inches. If not
+provided, defaults to <code class="docutils literal notranslate"><span class="pre">rcParams[&quot;figure.figsize&quot;]</span> <span class="pre">=</span> <span class="pre">[6.4,</span> <span class="pre">4.8]</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span> <span class="c1">#добавляем отступы</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_21_0.png" src="_images/output_21_0.png" />
+<p>Более сложный случай:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># две строки, две колонки, график №1</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># две строки, две колонки, график №2</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># две строки, одна колонка, график №2!</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1">#увеличиваем горизонтальное разделение между графиками</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_23_0.png" src="_images/output_23_0.png" />
+</div>
+<div class="section" id="id10">
+<h2>7.5. Масштаб и оси<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id11">
+<h3>7.5.1. Пределы отображения и масштабирование<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для изменения пределов, в которых отображается график, используются
+функции <code class="docutils literal notranslate"><span class="pre">plt.xlim(нижн,</span> <span class="pre">верхн)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylim(нижн,</span> <span class="pre">верхн)</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;s-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_25_0.png" src="_images/output_25_0.png" />
+<p>Изменим пределы отображения:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;s-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_27_0.png" src="_images/output_27_0.png" />
+<p>Меняем пропорции с <code class="docutils literal notranslate"><span class="pre">set_aspect(aspect_ratio)</span></code>, где <code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> -
+отношение длин единичного отрезка по <span class="math notranslate nohighlight">\(Y\)</span> к единичному отрезку по
+<span class="math notranslate nohighlight">\(X\)</span></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;s-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>      <span class="c1"># Get the current axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_29_0.png" src="_images/output_29_0.png" />
+</div>
+<div class="section" id="id12">
+<h3>7.5.2. Оси и сетка<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для настройки осей используется класс <code class="docutils literal notranslate"><span class="pre">matplotlib.spines</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_31_0.png" src="_images/output_31_0.png" />
+<p>Переместим оси в центр</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_33_0.png" src="_images/output_33_0.png" />
+<p>Или можно настроить координаты пересечения вручную</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># 0 - у нижней части оси, 1 - у верхней</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_35_0.png" src="_images/output_35_0.png" />
+<p>Для выставления шага делений осей и вида подписей данных можно
+использовать <code class="docutils literal notranslate"><span class="pre">plt.yticks()</span></code> и <code class="docutils literal notranslate"><span class="pre">plt.xticks()</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+           <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;минус один&#39;</span><span class="p">,</span> <span class="s1">&#39;минус ноль.пять&#39;</span><span class="p">,</span> <span class="s1">&#39;ноль&#39;</span><span class="p">,</span> <span class="s1">&#39;ноль.пять&#39;</span><span class="p">,</span><span class="s1">&#39;один&#39;</span><span class="p">],</span>
+           <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;30&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_37_0.png" src="_images/output_37_0.png" />
+<p>Добавим сетку функцией
+<code class="docutils literal notranslate"><span class="pre">plt.grid(b=None,</span> <span class="pre">which='major',</span> <span class="pre">axis='both',</span> <span class="pre">**kwargs)</span></code></p>
+<p><strong>b</strong> : bool or None</p>
+<p><strong>which</strong> : <code class="docutils literal notranslate"><span class="pre">{'major',</span> <span class="pre">'minor',</span> <span class="pre">'both'}</span></code>, optional The grid lines to
+apply the changes on.</p>
+<p><strong>axis</strong> : <code class="docutils literal notranslate"><span class="pre">{'both',</span> <span class="pre">'x',</span> <span class="pre">'y'}</span></code>, optional The axis to apply the
+changes on.</p>
+<p>****kwargs** : Line2D properties</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+           <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;минус один&#39;</span><span class="p">,</span> <span class="s1">&#39;минус ноль.пять&#39;</span><span class="p">,</span> <span class="s1">&#39;ноль&#39;</span><span class="p">,</span> <span class="s1">&#39;ноль.пять&#39;</span><span class="p">,</span><span class="s1">&#39;один&#39;</span><span class="p">],</span>
+           <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;30&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_39_0.png" src="_images/output_39_0.png" />
+</div>
+<div class="section" id="id13">
+<h3>7.5.3. Двойные оси.<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Рассмотрим ситуацию необходимости построения двух кривых в разных
+координатах на одном графике. Рассмотрим две кривые, одна из них которых
+меняется по закону <span class="math notranslate nohighlight">\(y_1 = 4\tanh[x - 10] + 0.5 x\)</span> и вторую
+<span class="math notranslate nohighlight">\(y_2 = 20 x +200\)</span>. Часто, построение нескольких кривых на одном
+графике черевато потерей деталей, или даже не имеет никакого физического
+смысла:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">200</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y_1 = 4\tanh[x - 10] + 0.5 x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y_2 = 20 x +200$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">at</span> <span class="mh">0x7f77e523a550</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_41_1.png" src="_images/output_41_1.png" />
+<p>В таком случае удобно использовать метод <code class="docutils literal notranslate"><span class="pre">twinx()</span></code>, <code class="docutils literal notranslate"><span class="pre">twiny()</span></code> класса
+<code class="docutils literal notranslate"><span class="pre">axes</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># генерируем данные</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">200</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y_1 = 4\tanh[x - 10] + 0.5 x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;это $x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_1$, a.u.$_1$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="c1">#инициируем второй график с общей осью x</span>
+<span class="n">ax2</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;r:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y_2 = 20 x +200$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">700</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_2$, a.u.$_2$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># работаем с легендой</span>
+<span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">h2</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span> <span class="o">=</span> <span class="n">h1</span><span class="o">+</span><span class="n">h2</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_43_0.png" src="_images/output_43_0.png" />
+</div>
+<div class="section" id="id14">
+<h3>7.5.4. Общая ось для двух соседних графиков<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В случае необходимости сделать общую ось для нескольких графиков,
+функции <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> и <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code> имеют аргументы <code class="docutils literal notranslate"><span class="pre">sharex</span></code> и
+<code class="docutils literal notranslate"><span class="pre">sharey</span></code> (<strong>Обратите внимание, они работают по-разному</strong>)</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">*</span> <span class="n">s2</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Remove horizontal space between axes</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Plot each graph, and manually set the y tick values</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s3</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_45_0.png" src="_images/output_45_0.png" />
+</div>
+</div>
+<div class="section" id="id15">
+<h2>7.6. Гистограммы<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для построения гистограмм используется функция <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_47_0.png" src="_images/output_47_0.png" />
+</div>
+<div class="section" id="d">
+<h2>7.7. 2D графики<a class="headerlink" href="#d" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Функция <code class="docutils literal notranslate"><span class="pre">pyplot.imshow</span></code> позволяет попиксельно отобразить данные
+массива.</p>
+<p>Рассмотрим форму массива:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">Y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.4</span>  <span class="mf">0.</span>   <span class="mf">0.4</span>  <span class="mf">0.8</span>  <span class="mf">1.2</span>  <span class="mf">1.6</span>  <span class="mf">2.</span> <span class="p">]]</span>
+
+<span class="p">[[</span><span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span> <span class="o">-</span><span class="mf">1.6</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span>   <span class="mf">0.</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span>  <span class="mf">0.4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span>  <span class="mf">0.8</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span>  <span class="mf">1.2</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span>  <span class="mf">1.6</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span>   <span class="mf">2.</span> <span class="p">]]</span>
+
+<span class="p">[[</span> <span class="mf">4.</span>    <span class="mf">3.2</span>   <span class="mf">2.4</span>   <span class="mf">1.6</span>   <span class="mf">0.8</span>  <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.8</span>  <span class="o">-</span><span class="mf">1.6</span>  <span class="o">-</span><span class="mf">2.4</span>  <span class="o">-</span><span class="mf">3.2</span>  <span class="o">-</span><span class="mf">4.</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">3.2</span>   <span class="mf">2.56</span>  <span class="mf">1.92</span>  <span class="mf">1.28</span>  <span class="mf">0.64</span> <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.64</span> <span class="o">-</span><span class="mf">1.28</span> <span class="o">-</span><span class="mf">1.92</span> <span class="o">-</span><span class="mf">2.56</span> <span class="o">-</span><span class="mf">3.2</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.4</span>   <span class="mf">1.92</span>  <span class="mf">1.44</span>  <span class="mf">0.96</span>  <span class="mf">0.48</span> <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.48</span> <span class="o">-</span><span class="mf">0.96</span> <span class="o">-</span><span class="mf">1.44</span> <span class="o">-</span><span class="mf">1.92</span> <span class="o">-</span><span class="mf">2.4</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.6</span>   <span class="mf">1.28</span>  <span class="mf">0.96</span>  <span class="mf">0.64</span>  <span class="mf">0.32</span> <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.32</span> <span class="o">-</span><span class="mf">0.64</span> <span class="o">-</span><span class="mf">0.96</span> <span class="o">-</span><span class="mf">1.28</span> <span class="o">-</span><span class="mf">1.6</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.8</span>   <span class="mf">0.64</span>  <span class="mf">0.48</span>  <span class="mf">0.32</span>  <span class="mf">0.16</span> <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.16</span> <span class="o">-</span><span class="mf">0.32</span> <span class="o">-</span><span class="mf">0.48</span> <span class="o">-</span><span class="mf">0.64</span> <span class="o">-</span><span class="mf">0.8</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.</span>   <span class="o">-</span><span class="mf">0.</span>    <span class="mf">0.</span>    <span class="mf">0.</span>    <span class="mf">0.</span>    <span class="mf">0.</span>    <span class="mf">0.</span>    <span class="mf">0.</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8</span>  <span class="o">-</span><span class="mf">0.64</span> <span class="o">-</span><span class="mf">0.48</span> <span class="o">-</span><span class="mf">0.32</span> <span class="o">-</span><span class="mf">0.16</span>  <span class="mf">0.</span>    <span class="mf">0.16</span>  <span class="mf">0.32</span>  <span class="mf">0.48</span>  <span class="mf">0.64</span>  <span class="mf">0.8</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.6</span>  <span class="o">-</span><span class="mf">1.28</span> <span class="o">-</span><span class="mf">0.96</span> <span class="o">-</span><span class="mf">0.64</span> <span class="o">-</span><span class="mf">0.32</span>  <span class="mf">0.</span>    <span class="mf">0.32</span>  <span class="mf">0.64</span>  <span class="mf">0.96</span>  <span class="mf">1.28</span>  <span class="mf">1.6</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.4</span>  <span class="o">-</span><span class="mf">1.92</span> <span class="o">-</span><span class="mf">1.44</span> <span class="o">-</span><span class="mf">0.96</span> <span class="o">-</span><span class="mf">0.48</span>  <span class="mf">0.</span>    <span class="mf">0.48</span>  <span class="mf">0.96</span>  <span class="mf">1.44</span>  <span class="mf">1.92</span>  <span class="mf">2.4</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">3.2</span>  <span class="o">-</span><span class="mf">2.56</span> <span class="o">-</span><span class="mf">1.92</span> <span class="o">-</span><span class="mf">1.28</span> <span class="o">-</span><span class="mf">0.64</span>  <span class="mf">0.</span>    <span class="mf">0.64</span>  <span class="mf">1.28</span>  <span class="mf">1.92</span>  <span class="mf">2.56</span>  <span class="mf">3.2</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">4.</span>   <span class="o">-</span><span class="mf">3.2</span>  <span class="o">-</span><span class="mf">2.4</span>  <span class="o">-</span><span class="mf">1.6</span>  <span class="o">-</span><span class="mf">0.8</span>   <span class="mf">0.</span>    <span class="mf">0.8</span>   <span class="mf">1.6</span>   <span class="mf">2.4</span>   <span class="mf">3.2</span>   <span class="mf">4.</span>  <span class="p">]]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code> принимает (M, N) массив (и не только), где каждому m,n
+отображается цветом задаваемым <code class="docutils literal notranslate"><span class="pre">cmap</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>  <span class="c1">#colormaps</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span>                        <span class="c1"># массив данных</span>
+              <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>     <span class="c1"># пределы по осям</span>
+              <span class="c1">#interpolation=&#39;bilinear&#39;,  # &quot;сглаживание&quot;</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span>
+              <span class="p">)</span>
+
+<span class="n">cbar</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;циферки&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/output_51_0.png" src="_images/output_51_0.png" />
+<p>Для сохраниения графика используйте <code class="docutils literal notranslate"><span class="pre">plt.savefig('filename')</span></code></p>
+</div>
+<div class="section" id="id16">
+<h2>7.8. Задачи<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h2>
 <ol class="arabic">
+<li><p class="first">Постройте график как в разделе <a class="reference external" href="#id4">Итерационная задача цветов</a> базируясь на данных задачи 5.4.</p>
+</li>
 <li><p class="first">Постройте графическую визуализацию задачи №6.4, как представленно ниже. Направление черной и краной линии - собственные вектора матрицы ковариации, их длина - <span class="math notranslate nohighlight">\(4\sqrt{w}\)</span>, где <span class="math notranslate nohighlight">\(w\)</span> - соответствующее собственное знвчение. Результат сохраните в формате <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>.</p>
 <blockquote>
 <div><img alt="_images/t7_diff.png" src="_images/t7_diff.png" />
