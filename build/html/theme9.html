@@ -1,18 +1,15 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="ru" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Интерполяция &mdash; Документация Основы Python для работы с научными данными </title>
+  <title>9. Интерполяция &mdash; документация Основы Python для работы с научными данными </title>
   
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -20,26 +17,28 @@
   
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
     <link rel="next" title="10. Решение уравнений. Поиск минимумов" href="theme10.html" />
-    <link rel="prev" title="8. Численное интегрирование" href="theme8.html" /> 
+    <link rel="prev" title="8. Библиотека SciPy" href="theme8.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Основы Python для работы с научными данными
+            <a href="index.html" class="icon icon-home"> Основы Python для работы с научными данными
           
 
           
@@ -67,7 +66,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -76,7 +75,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -198,7 +196,27 @@
 <li class="toctree-l2"><a class="reference internal" href="theme7.html#id16">7.8. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="theme8.html">8. Численное интегрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme8.html">8. Библиотека SciPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-linalg">8.1. Линейная алгебра (<code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#scipy-integrate">8.1.1. Интегрирование и работа с обыкновенными дифференциальными уравнениями (<code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id1">8.2. Интегрирование функций</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id4">8.2.1. Интегрирование по заданному набору точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id5">8.3. Интегрирование ОДУ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#scipy-optimize">8.3.1. Фитирование кривых, нахождение минимума функции, решение уравнений с <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id6">8.4. Фитирование кривых</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id9">8.5. Минимизация функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id10">8.6. Поиск корней уравнения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id11">8.6.1. Задачи</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Интерполяция</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme10.html">10. Решение уравнений. Поиск минимумов</a></li>
 </ul>
@@ -206,7 +224,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -245,9 +262,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>9. Интерполяция</li>
+      <li><span class="section-number">9. </span>Интерполяция</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -261,10 +278,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="theme8.html" class="btn btn-neutral float-left" title="8. Численное интегрирование" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+        <a href="theme8.html" class="btn btn-neutral float-left" title="8. Библиотека SciPy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -274,7 +291,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="theme9">
-<span id="id1"></span><h1>9. Интерполяция<a class="headerlink" href="#theme9" title="Ссылка на этот заголовок">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">9. </span>Интерполяция<a class="headerlink" href="#theme9" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme9.ipynb">Лекция в .ipynb формате</a></p>
 <p>Интерполяция, интерполяция ближайшим соседом. Схема Горнера, интерполяционные многочлены, сплайн-функции, полином Лагранжа. Интерполяция функций нескольких переменных. Численное дифференцирование. Обзор методов scipy.inerpolate. Численное дифференцирование зашумленных данных.</p>
 </div>
@@ -287,10 +304,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="theme8.html" class="btn btn-neutral float-left" title="8. Численное интегрирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Предыдущая</a>
+        <a href="theme8.html" class="btn btn-neutral float-left" title="8. Библиотека SciPy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -299,19 +316,11 @@
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Авторские права R.D.Yamaletdinov, NIIC SB RAS, 2020
+        &copy; Copyright R.D.Yamaletdinov, NIIC SB RAS, 2020
 
     </p>
   </div>
-    
-    
-    
-    Собрано при помощи <a href="http://sphinx-doc.org/">Sphinx</a> с использованием
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">темы,</a>
-    
-    предоставленной <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -322,6 +331,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
