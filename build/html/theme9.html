@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Интерполяция &mdash; документация Основы Python для работы с научными данными </title>
+  <title>9. Введение в ООП. Настройка окружения и установка пакетов &mdash; документация Основы Python для работы с научными данными </title>
   
 
   
@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="10. Решение уравнений. Поиск минимумов" href="theme10.html" />
+    <link rel="next" title="10. Примеры от экспериментаторов?" href="theme10.html" />
     <link rel="prev" title="8. Библиотека SciPy" href="theme8.html" /> 
 </head>
 
@@ -197,28 +197,43 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theme8.html">8. Библиотека SciPy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-linalg">8.1. Линейная алгебра (<code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="theme8.html#scipy-integrate">8.1.1. Интегрирование и работа с обыкновенными дифференциальными уравнениями (<code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-linalg">8.1. Линейная алгебра (<code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-integrate">8.2. Интегрирование и работа с обыкновенными дифференциальными уравнениями (<code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id4">8.2.1. Интегрирование функций</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id5">8.2.2. Интегрирование по заданному набору точек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id6">8.2.3. Интегрирование ОДУ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#id1">8.2. Интегрирование функций</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="theme8.html#id4">8.2.1. Интегрирование по заданному набору точек</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-optimize">8.3. Фитирование кривых, нахождение минимума функции, решение уравнений с <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id7">8.3.1. Фитирование кривых</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id8">8.3.2. Минимизация функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id10">8.3.3. Поиск корней уравнения</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#id5">8.3. Интегрирование ОДУ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="theme8.html#scipy-optimize">8.3.1. Фитирование кривых, нахождение минимума функции, решение уравнений с <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id11">8.4. #Экспериментаторы рекомендуют</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id12">8.5. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#id6">8.4. Фитирование кривых</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#id9">8.5. Минимизация функции</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theme8.html#id10">8.6. Поиск корней уравнения</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="theme8.html#id11">8.6.1. Задачи</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Введение в ООП. Настройка окружения и установка пакетов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python">9.1. Установка пакетов и настройка окружения в Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pip-conda">9.1.1. <code class="docutils literal notranslate"><span class="pre">pip</span></code> и <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.1.2. Настройка окружения в Python</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">9.2. Основы ООП</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">9.2.1. Зачем это надо?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">9.2.2. Классы в Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">9.2.3. Специальные (магические) методы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">9.2.4. Инициализация объекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">9.2.5. Итерация по объекту</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">9.2.6. Определение арифметических и логических операций</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Интерполяция</a></li>
-<li class="toctree-l1"><a class="reference internal" href="theme10.html">10. Решение уравнений. Поиск минимумов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">9.3. Большой пример.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">9.4. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme10.html">10. Примеры от экспериментаторов?</a></li>
 </ul>
 
             
@@ -264,7 +279,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">9. </span>Интерполяция</li>
+      <li><span class="section-number">9. </span>Введение в ООП. Настройка окружения и установка пакетов</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -278,7 +293,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Примеры от экспериментаторов?" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="theme8.html" class="btn btn-neutral float-left" title="8. Библиотека SciPy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -290,10 +305,611 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="theme9">
-<span id="id1"></span><h1><span class="section-number">9. </span>Интерполяция<a class="headerlink" href="#theme9" title="Ссылка на этот заголовок">¶</a></h1>
+  <div class="section" id="id1">
+<h1><span class="section-number">9. </span>Введение в ООП. Настройка окружения и установка пакетов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme9.ipynb">Лекция в .ipynb формате</a></p>
-<p>Интерполяция, интерполяция ближайшим соседом. Схема Горнера, интерполяционные многочлены, сплайн-функции, полином Лагранжа. Интерполяция функций нескольких переменных. Численное дифференцирование. Обзор методов scipy.inerpolate. Численное дифференцирование зашумленных данных.</p>
+<div class="section" id="python">
+<h2><span class="section-number">9.1. </span>Установка пакетов и настройка окружения в Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="pip-conda">
+<h3><span class="section-number">9.1.1. </span><code class="docutils literal notranslate"><span class="pre">pip</span></code> и <code class="docutils literal notranslate"><span class="pre">conda</span></code><a class="headerlink" href="#pip-conda" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Сторонние библиотеки можно устанавливать различными методами. Глобально
+их можно разделить на два основных: ручная установка и менеджеры
+пакетов. В большинстве случаев предпочтительно использовать именно
+менеджеры пакетов, т.к. они способны автоматически разрешить большую
+часть зависимостей. Здесь мы рассмотрим два наиболее актуальных для
+наших задач: стандартный <code class="docutils literal notranslate"><span class="pre">pip</span></code> (в ходит в дистрибутив python по
+умолчанию) и менеджер пакетов от anaconda.</p>
+<p>Для использования <code class="docutils literal notranslate"><span class="pre">pip</span></code> достаточно запустить командную строку с каким
+либо активированным окружением и ввести команду</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">package_name</span>
+</pre></div>
+</div>
+<p>На пример, для установки numpy строка будет выглядеть
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code>.</p>
+<p>Аналогичная ситуация с anaconda: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">numpy</span></code>.</p>
+<p>Также большинство пакетов в своей документации приводят конкретную
+строку для установки (иногда требуется передать в установщик
+дополнительные параметры, такие как версия или источник).</p>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">9.1.2. </span>Настройка окружения в Python<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интерпретатор, запуская любой скрип, пытается выполнить его в
+основываясь на заданных настройках. Заметная часть этих настроек
+включает в себя какие именно пакеты и где ему искать. В ОС существует
+глобальное окружение с заданными параметрами (например язык, время и
+т.д.) и стандартные пути для поиска пакетов и библиотек. Иногда, вам
+может потребоваться задать эти параметры отличные от системных настроек.
+Такая ситуация может произойти при работе на сторонних серверах, где у
+пользователя недостаточно прав для установки пакетов в системные
+директории, или же при сборке проекта (например Pyinstaller при
+использовании со стандартной средой anaconda может раздуть финальный
+проект до нескольких гигабайт просто пытаясь впихнуть в него все
+возможные зависимости). Для этого можно использовать настройки
+виртуального окружения, которые стандартно управляются утилитой <code class="docutils literal notranslate"><span class="pre">venv</span></code>
+<a class="reference external" href="https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment">(смотри документацию)</a>.</p>
+<p>В случае использования Anaconda-Navigator управление пакетами и
+виртуальной средой можно делать графически на вкладке Environments.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">9.2. </span>Основы ООП<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Согласно <a class="reference external" href="https://ru.wikipedia.org/wiki/Объектно-ориентированное_программирование">Википедии</a>, <strong>Объе́ктно-ориенти́рованное программи́рование (ООП)</strong>
+- — методология программирования, основанная на представлении программы
+в виде совокупности объектов, каждый из которых является экземпляром
+определённого класса, а классы образуют иерархию наследования.</p>
+<p>Основные принципы структурирования в случае ООП связаны с различными
+аспектами базового понимания предметной задачи, которое требуется для
+оптимального управления соответствующей моделью:</p>
+<ul class="simple">
+<li><p><strong>абстракция</strong> для выделения в моделируемом предмете важного для
+решения конкретной задачи по предмету, в конечном счёте — контекстное
+понимание предмета, формализуемое в виде <strong>класса</strong>;</p></li>
+<li><p><strong>инкапсуляция</strong> для быстрой и безопасной организации собственно
+иерархической управляемости: чтобы было достаточно простой команды
+<strong>«что делать», без одновременного уточнения как именно делать</strong>, так
+как это уже другой уровень управления;</p></li>
+<li><p><strong>наследование для быстрой</strong> и безопасной организации родственных
+понятий: чтобы было достаточно на каждом иерархическом шаге учитывать
+только изменения, не дублируя всё остальное, учтённое на предыдущих
+шагах;</p></li>
+<li><p><strong>полиморфизм</strong> для определения точки, в которой единое управление
+лучше распараллелить или наоборот — собрать воедино.</p></li>
+</ul>
+<p>В данной лекции будут затронуты лишь базовые понятия ООП в Python,
+достаточные для дальнейшего углубления в тему, и поверхностного
+самостоятельного понимания сторонних модулей.</p>
+<div class="section" id="id6">
+<h3><span class="section-number">9.2.1. </span>Зачем это надо?<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<ul class="simple">
+<li><p>Язык Python базируется на концепции ООП. Большая часть
+специализированного применения также подразумевает ООП. Часто,
+документацией к некоторым пакетам является просто исходный код с
+комментариями.</p></li>
+<li><p>Можно писать свои небольшие пакеты, удобные для стороннего
+использования (или для самостоятельного использования, но позже). Нет
+необходимости разбираться сколько и каких аргументов требуется
+передать. Все можно заранее предусмотреть в самом классе, и не
+тратить время на воспоминания о том что именно и как делает этот код.</p></li>
+<li><p>Удобно для написания собственных рутинных “оболочек” для сторонних
+пакетов (например для matplotlib).</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">9.2.2. </span>Классы в Python<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Python является объектно-ориентированным языком. Каждый используемый
+элемент (даже числа) в нем является объектом с теми или иными заданными
+методами.</p>
+<p>Создание класса происходит простым способом:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassName</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="c1"># методы и атрибуты класса ClassName</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>По общей договоренности название классов пишется слитно с заглавных букв, а функций, методов и констат с маленьких разделителем «_».</p>
+</div>
+<p>Создадим наш новый класс для описания атомов:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Atom</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">element</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">def</span> <span class="nf">set_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">coords</span> <span class="c1"># меняем атрибуты класса</span>
+
+
+<span class="n">a1</span><span class="o">=</span><span class="n">Atom</span><span class="p">()</span> <span class="c1"># создаем объект класса Atom</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">element</span><span class="p">)</span> <span class="c1">#выводим заданные атрибуты класса</span>
+
+<span class="n">a1</span><span class="o">.</span><span class="n">set_coord</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># используем метод класса</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">a1</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="c1"># выводим новые атрибуты класса</span>
+
+<span class="n">a1</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
+<span class="n">a1</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="mf">1.00784</span>       <span class="c1"># добавляем или изменяем атрибут или метод</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">element</span><span class="p">,</span> <span class="n">a1</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;__main__.Atom&#39;&gt;
+C
+1 2 3
+H 1.00784
+</pre></div>
+</div>
+<p>Для наследования свойств класса, родительские классы достаточно указать
+в скобках при описании дочернего класса. При этом атрибуты и методы
+родительского могут быть вызванны и/или переопределенны из дочернего.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DummyAtom</span><span class="p">(</span><span class="n">Atom</span><span class="p">):</span>
+    <span class="n">element</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">da1</span> <span class="o">=</span> <span class="n">DummyAtom</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">da1</span><span class="o">.</span><span class="n">element</span><span class="p">)</span>
+
+<span class="n">da1</span><span class="o">.</span><span class="n">set_coord</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># используем метод родительского класса</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">da1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">da1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">da1</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">None</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">9.2.3. </span>Специальные (магические) методы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для того чтобы узнать какие у класса есть методы и атрибуты существует
+стандартная функция <code class="docutils literal notranslate"><span class="pre">dir()</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">Atom</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__weakref__&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="s1">&#39;set_coord&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Последние два создали мы, остальные являются специальными методами
+класса. По аналогии с функцией dir() вам могут быть полезны следующие
+методы (в Python классы тоже являются объектами):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>    <span class="c1"># словарь всех публичных атрибутов объекта</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="fm">__dir__</span><span class="p">())</span>   <span class="c1"># тоже что и dir для класса, только для объекта</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">1.00784</span><span class="p">}</span>
+<span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;set_coord&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__weakref__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">9.2.4. </span>Инициализация объекта<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для выполнения какой-то логики для объекта при его иницилизации
+используется метод <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Перезададим наш класс <code class="docutils literal notranslate"><span class="pre">Atom</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">Atom</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">coords</span> <span class="c1"># меняем атрибуты класса</span>
+
+    <span class="n">_massDict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mf">1.00784</span><span class="p">,</span>  <span class="c1"># не публичные атрибуьы начинаются с _</span>
+               <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mf">15.999</span><span class="p">,</span>   <span class="c1"># к ним можно получить доступ,</span>
+               <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="mf">12.0107</span><span class="p">,</span>  <span class="c1"># но в чужом коде их лучше не трогать</span>
+               <span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="mf">14.0067</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="o">=</span><span class="n">element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_massDict</span><span class="p">[</span><span class="n">element</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_coord</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+<span class="n">a1</span><span class="o">=</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;element&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">1.00784</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;coords&#39;</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">9.2.5. </span>Итерация по объекту<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создадим новый класс Molecule. И сделаем так, чтобы мы могли итерировать
+молекулу по атомам. Для этого определим следующие методы (на деле их
+больше, см. сontainer special methods):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__len__(self)</span></code> - возвращаем значения для функции <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__getitem__(self,</span> <span class="pre">key)</span></code> - Определяет поведение при доступе к
+элементу, используя синтаксис <code class="docutils literal notranslate"><span class="pre">self[key]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__iter__(self)</span></code> - Должен вернуть итератор для контейнера. Проще
+всего с помощью встроенной функции <code class="docutils literal notranslate"><span class="pre">iiter(self.some_list)</span></code></p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Molecule</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_atoms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">list_of_atoms</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span> <span class="o">=</span> <span class="n">list_of_atoms</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="s2">&quot;возвращаем список всех атомов заданного типа&quot;</span>
+        <span class="n">list_to_return</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">element</span><span class="o">==</span><span class="n">element</span><span class="p">:</span>
+                <span class="n">list_to_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">list_to_return</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_atom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+
+    <span class="c1"># а не посчитать ли нам центр масс и молярную массу?</span>
+    <span class="k">def</span> <span class="nf">molar_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">molar</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="p">:</span>
+            <span class="n">molar</span><span class="o">+=</span> <span class="n">atom</span><span class="o">.</span><span class="n">mass</span>
+        <span class="k">return</span> <span class="n">molar</span>
+
+    <span class="k">def</span> <span class="nf">center_of_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">CoM</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_atoms</span><span class="p">:</span>
+            <span class="n">CoM</span><span class="o">+=</span> <span class="n">atom</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="n">atom</span><span class="o">.</span><span class="n">coords</span>
+        <span class="k">return</span> <span class="n">CoM</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">()</span>
+
+<span class="n">m1</span><span class="o">=</span><span class="n">Molecule</span><span class="p">()</span> <span class="c1">#создаем пустую молекулу</span>
+
+<span class="n">water</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;O&#39;</span><span class="p">,</span>  <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span>  <span class="mf">0.757</span><span class="p">,</span> <span class="mf">0.586</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.757</span><span class="p">,</span> <span class="mf">0.586</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">water</span><span class="p">:</span>
+    <span class="n">m1</span><span class="o">.</span><span class="n">add_atom</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>  <span class="c1">#заполняем молекулу атомами</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m1</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">m1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>  <span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">center_of_mass</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+<span class="n">O</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>
+<span class="n">H</span> <span class="mf">0.757</span> <span class="mf">0.586</span> <span class="mf">0.0</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">0.757</span> <span class="mf">0.586</span> <span class="mf">0.0</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Atom</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f267b4adc70</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Atom</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f267b4ad370</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="mf">18.014680000000002</span>
+<span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.06556811</span> <span class="mf">0.</span>        <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">9.2.6. </span>Определение арифметических и логических операций<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Отношение к арифметическим операциям также можно определять спеуиальными
+методами. Несколько примеров (далеко не все) приведенны ниже: *
+<code class="docutils literal notranslate"><span class="pre">__add__(self,</span> <span class="pre">other)</span></code> - Сложение. * <code class="docutils literal notranslate"><span class="pre">__sub__(self,</span> <span class="pre">other)</span></code> -
+Вычитание. * <code class="docutils literal notranslate"><span class="pre">__mul__(self,</span> <span class="pre">other)</span></code> - Умножение. *
+<code class="docutils literal notranslate"><span class="pre">__div__(self,</span> <span class="pre">other)</span></code> - Деление, оператор /.</p>
+<p>Для логических операций можно также определить исход сравнения:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__eq__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">==</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__ne__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">!=</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__lt__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__gt__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__le__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__ge__(self,</span> <span class="pre">other)</span></code> определяет поведение оператора <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></li>
+</ul>
+<p>Модернизируем наш класс <code class="docutils literal notranslate"><span class="pre">Atoms</span></code>, чтобы при сложении возвращало
+молекулу, а сравнение происходило основываясь на массах атомов.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Atom</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">coords</span> <span class="c1"># меняем атрибуты класса</span>
+
+    <span class="n">_massDict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mf">1.00784</span><span class="p">,</span>  <span class="c1"># не публичные атрибуьы начинаются с _</span>
+               <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mf">15.999</span><span class="p">,</span>   <span class="c1"># к ним можно получить доступ,</span>
+               <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="mf">12.0107</span><span class="p">,</span>  <span class="c1"># но в чужом коде их лучше не трогать</span>
+               <span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="mf">14.0067</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="o">=</span><span class="n">element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_massDict</span><span class="p">[</span><span class="n">element</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_coord</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coords</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">at2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Molecule</span><span class="p">([</span><span class="bp">self</span><span class="p">,</span> <span class="n">at2</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">at2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="o">==</span><span class="n">at2</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">at2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="o">&lt;</span><span class="n">at2</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+    <span class="c1">#остальные операции сравнения по аналогии</span>
+
+<span class="n">h</span><span class="o">=</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">h_</span><span class="o">=</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">H2</span> <span class="o">=</span> <span class="n">h</span><span class="o">+</span><span class="n">h_</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">H2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">&lt;</span><span class="n">h_</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;__main__.Molecule&#39;&gt;
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><span class="section-number">9.3. </span>Большой пример.<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Попробуем что-нибудь порисовать. Для работы с простейшими графическими
+приложениями нам потребуется модуль <code class="docutils literal notranslate"><span class="pre">tkinter</span></code>. Для работы со временем
+библиотека <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">gui</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>      <span class="c1"># инициализируем модуль</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x600&quot;</span><span class="p">)</span>   <span class="c1">#создаем пустое окно</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;окошко&quot;</span><span class="p">)</span>
+
+<span class="c1">#инструмент для рисования</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">gui</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="c1">#рисуем линию</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">create_line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="c1"># рисуем квадратик</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">create_rectangle</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">)</span>
+<span class="c1">#рисуем шарик</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#задаем смещение круга за шаг</span>
+<span class="n">xa</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">ya</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1">#смещаем позицию круга</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">ball1</span><span class="p">,</span><span class="n">xa</span><span class="p">,</span><span class="n">ya</span><span class="p">)</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="n">ball1</span><span class="p">)</span>
+
+    <span class="c1"># отражаем от стен</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">600</span> <span class="ow">or</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">ya</span> <span class="o">=</span> <span class="o">-</span><span class="n">ya</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">800</span> <span class="ow">or</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">xa</span> <span class="o">=</span> <span class="o">-</span><span class="n">xa</span>
+
+    <span class="c1"># обновляем состояние окна</span>
+    <span class="n">gui</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">025</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>создадим объект который будет обновляться по своим правилам</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Ball</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">canvas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">icanv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
+                                             <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+        <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">m</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s1">&#39;используем алгоритм Верле&#39;</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">()</span>
+
+        <span class="n">dx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">+</span> <span class="n">ax</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">+</span> <span class="n">ay</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="c1">#отражаем от стен или просто обновляем</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">&gt;</span> <span class="mi">790</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">dx</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">&gt;</span> <span class="mi">590</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">dy</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+
+        <span class="c1"># смещаем позицию круга</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Запускаем наш код заново</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">gui</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>      <span class="c1"># инициализируем модуль</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x600&quot;</span><span class="p">)</span>   <span class="c1">#создаем пустое окно</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;окошко&quot;</span><span class="p">)</span>
+
+<span class="c1">#инструмент для рисования</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">gui</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1">#создаем объект</span>
+<span class="n">ball1</span> <span class="o">=</span> <span class="n">Ball</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+<span class="n">ball2</span> <span class="o">=</span> <span class="n">Ball</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">ball1</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+    <span class="n">ball2</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+    <span class="n">gui</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">025</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Попробуем создать более физичный “шарик”. Будем считать что все шарики
+взаимодействют друг с дркгом согласно потенциалу Леннарда-Джонса:
+<span class="math notranslate nohighlight">\(U_{LJ} = 4\varepsilon \left[ \left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6 \right]\)</span>.</p>
+<p>Помимо этого, обновим граничные условия (по мере приближения к границы
+энергия шарика начне расти квадратично), и добавим специальную окраску
+шарикам.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>такая модель применяется для моделирования идеальных газов методом молекулярной динамики. Стоит отметить, что конкретно <em>этот пример крайне слабо связан с реальными алгоритмами МД</em>, в виду абсолютно неразумного расходования вычислительных ресурсов, а призван лишь продемонстрировать пример ООП.</p>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">Ball</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="c1">#начальное состояние</span>
+        <span class="n">v0</span><span class="o">=</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">v0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">v0</span>
+        <span class="c1">#добавляем картинку</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">canvas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">icanv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
+                                             <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="c1"># список соседей</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neighb</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">_U</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="c1">#параметры потенциала</span>
+        <span class="n">E</span><span class="o">=</span><span class="mi">4</span>
+        <span class="n">sigma</span><span class="o">=</span><span class="mi">20</span>
+
+        <span class="n">U</span><span class="o">=</span><span class="mf">0.</span>
+        <span class="c1"># отражаем от границ</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">750</span><span class="p">:</span> <span class="n">U</span><span class="o">+=</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">750</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">&lt;</span><span class="mi">50</span><span class="p">:</span> <span class="n">U</span><span class="o">+=</span><span class="p">(</span><span class="mi">50</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">if</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">550</span><span class="p">:</span> <span class="n">U</span><span class="o">+=</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">550</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">if</span> <span class="n">y</span><span class="o">&lt;</span><span class="mi">50</span><span class="p">:</span> <span class="n">U</span><span class="o">+=</span><span class="p">(</span><span class="mi">50</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+
+        <span class="c1">#считаем потенциальную энергию</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighb</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="p">((</span><span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+            <span class="n">U</span><span class="o">+=</span><span class="mi">4</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="p">((</span><span class="n">sigma</span><span class="o">/</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="mi">12</span><span class="o">-</span><span class="p">(</span><span class="n">sigma</span><span class="o">/</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">U</span>
+
+    <span class="k">def</span> <span class="nf">calc_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;считаем ускорение как градиент силы&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">dr</span><span class="o">=</span><span class="mf">0.0001</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_U</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">Fx</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_U</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">)</span> <span class="o">/</span> <span class="n">dr</span>
+        <span class="n">Fy</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_U</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">dr</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">)</span> <span class="o">/</span> <span class="n">dr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="n">Fx</span><span class="o">/</span><span class="n">m</span><span class="p">,</span><span class="n">Fy</span><span class="o">/</span><span class="n">m</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">update_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bs</span><span class="o">=</span><span class="mi">255</span><span class="o">/</span><span class="mi">90</span>
+        <span class="n">rs</span><span class="o">=</span><span class="mi">255</span><span class="o">/</span><span class="mi">1000</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="o">&lt;-</span><span class="mi">90</span><span class="p">:</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0000ff&#39;</span>
+            <span class="k">else</span><span class="p">:</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#</span><span class="si">{:02x}{:02x}</span><span class="s1">ff&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">255</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">bs</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">),</span>
+                                                <span class="mi">255</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">bs</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="o">&gt;</span><span class="mi">1000</span><span class="p">:</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff0000&#39;</span>
+            <span class="k">else</span><span class="p">:</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff</span><span class="si">{:02x}{:02x}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">rs</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">),</span>
+                                                <span class="mi">255</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">rs</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">U0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">itemconfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">recalc_neighb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">all_list</span><span class="p">):</span>
+        <span class="s2">&quot;просто перебираем все шарики&quot;</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">all_list</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">=</span><span class="p">((</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">&lt;</span><span class="mi">40</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="o">!=</span><span class="n">a</span><span class="o">.</span><span class="n">icanv</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s1">&#39;используем алгоритм Верле&#39;</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+        <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">+</span> <span class="n">ax</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">+</span> <span class="n">ay</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">**</span> <span class="mi">2</span>
+
+        <span class="c1"># немного остужаем систему на каждом шаге</span>
+        <span class="n">dx</span><span class="o">*=</span><span class="mf">0.99999</span>
+        <span class="n">dy</span><span class="o">*=</span><span class="mf">0.99999</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_priv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+
+        <span class="c1"># смещаем позицию круга</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icanv</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Запустим также немного модернизированное окошко с шариками</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">gui</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>      <span class="c1"># инициализируем модуль</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x600&quot;</span><span class="p">)</span>   <span class="c1">#создаем пустое окно</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;окошко&quot;</span><span class="p">)</span>
+
+<span class="c1">#инструмент для рисования</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">gui</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">list_of_balls</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="c1">#создаем объект и задаем начальные координаты, исключающие пересечения</span>
+<span class="n">cl</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">35</span><span class="o">*</span><span class="mi">25</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">c</span><span class="o">//</span><span class="mi">25</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">c</span><span class="o">%</span><span class="k">25</span>
+    <span class="n">cl</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">list_of_balls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ball</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span><span class="n">x</span><span class="o">*</span><span class="mi">20</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span><span class="n">y</span><span class="o">*</span><span class="mi">20</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
+
+
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">list_of_balls</span><span class="p">:</span>
+
+        <span class="c1"># для хоть какой-то экономии ресурсов</span>
+        <span class="c1"># пересчитываем соседей не каждый шаг</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">4</span>==0:
+            <span class="n">ball</span><span class="o">.</span><span class="n">recalc_neighb</span><span class="p">(</span><span class="n">list_of_balls</span><span class="p">)</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">calc_a</span><span class="p">()</span> <span class="c1">#считаем ускорения</span>
+
+    <span class="k">for</span> <span class="n">ball</span> <span class="ow">in</span> <span class="n">list_of_balls</span><span class="p">:</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">update_color</span><span class="p">()</span> <span class="c1">#обновляем цвет и двигаем</span>
+        <span class="n">ball</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+    <span class="n">gui</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2><span class="section-number">9.4. </span>Задачи<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li><p>На основе класса <code class="docutils literal notranslate"><span class="pre">matplotlib.axes</span></code> (<a class="reference external" href="https://matplotlib.org/3.3.3/api/axes_api.html">описание класса</a>) и других
+необходимых стороних библиотек и функций, создайте дочерний класс,
+который бы умел чиать csv файлы (<code class="docutils literal notranslate"><span class="pre">numpy.loadtxt</span></code>), и автоматически
+строил линеаризацию данных (см. первый пример в теме <em>Библиотека
+SciPy</em>). Добавьте автоматический вывод уравнения прямой на график, и
+задайте новый стандартный формат маркеров и линий (например красные
+ромбики и синий пунктир, или что-либо еще на ваше усмотрение).
+Проверьте корректность вывода на каком нибудь примере (т.е. создайте
+файл с зашумленной линией, сохраните его, а потом постройте данные с
+помощью вашего нового класса)</p></li>
+<li><p>Смоделируйте поведение 1D системы из <span class="math notranslate nohighlight">\(N\)</span> шариков разной массы,
+последовательно связанных друг с другом пружинками разной жесткости.
+Изменением цвета пружинки (линии) отображайте ее напряжение
+<span class="math notranslate nohighlight">\(\frac{k \Delta x^2}{2}\)</span>. Крайний шарик превратите в стенку, не
+переписывая весь класс, а лишь изменив необходимые методы или
+аттрибуты конкретного объекта.</p></li>
+</ol>
+</div>
 </div>
 
 
@@ -304,7 +920,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Решение уравнений. Поиск минимумов" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="theme10.html" class="btn btn-neutral float-right" title="10. Примеры от экспериментаторов?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="theme8.html" class="btn btn-neutral float-left" title="8. Библиотека SciPy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
