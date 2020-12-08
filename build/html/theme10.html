@@ -233,15 +233,15 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">10. Pandas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">10.1. Основные классы для хранения данных в Pandas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dataframe">10.1.1. Изменение DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">10.1. Основные классы для хранения данных в Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataframe">10.2. Изменение DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">10.2.1. Дополнение объекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">10.2.2. Индексация DataFrame</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">10.2. Дополнение объекта</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">10.3. Индексация DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">10.4. Загрузка экспериментальных данных</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">10.5. Построение графиков из экспериментальных данных</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">10.6. Манипуляции с данными.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">10.3. Загрузка экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">10.4. Построение графиков из экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">10.5. Манипуляции с данными.</a></li>
 </ul>
 </li>
 </ul>
@@ -421,12 +421,11 @@ a
 <span class="mi">11</span>  <span class="mi">3</span>
 </pre></div>
 </div>
+</div>
 <div class="section" id="dataframe">
-<h3><span class="section-number">10.1.1. </span>Изменение DataFrame<a class="headerlink" href="#dataframe" title="Ссылка на этот заголовок">¶</a></h3>
-</div>
-</div>
+<h2><span class="section-number">10.2. </span>Изменение DataFrame<a class="headerlink" href="#dataframe" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="id3">
-<h2><span class="section-number">10.2. </span>Дополнение объекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<h3><span class="section-number">10.2.1. </span>Дополнение объекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Объекты <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> имеют несколько методов модификации. Для
 добавления данных в таблицу можно использовать метод <code class="docutils literal notranslate"><span class="pre">append</span></code> или
 функцию <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>.</p>
@@ -529,7 +528,7 @@ a
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">10.3. </span>Индексация DataFrame<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<h3><span class="section-number">10.2.2. </span>Индексация DataFrame<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
 <p>При объединении объектов мы могли случайно (или специально) поломать
 индексацию. Если мы хотим восстановить стандартную нумерацию, можем
 использовать метод <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code></p>
@@ -699,8 +698,9 @@ a
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="id5">
-<h2><span class="section-number">10.4. </span>Загрузка экспериментальных данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">10.3. </span>Загрузка экспериментальных данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Для загрузки экспериментальных данных из текстовых файлов используется
 функция pd.read_table(filename), которая создает объект класса
 DataFrame, содержащий данные из загружаемого файла filename. Функция
@@ -792,7 +792,7 @@ DataFrame, содержащий данные из загружаемого фа�
  получили массив с экспериментальными данными</pre>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">10.5. </span>Построение графиков из экспериментальных данных<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">10.4. </span>Построение графиков из экспериментальных данных<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Теперь мы имеем 2d массив экспериментальных данных, в котором колонки
 названы временем эксперимента, а строки - длиной волны. Для построения
 графиков нет необходимости подключать библиотеку <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>,
@@ -829,7 +829,7 @@ DataFrame, содержащий данные из загружаемого фа�
 <img alt="_images/output_32_1.png" src="_images/output_32_1.png" />
 </div>
 <div class="section" id="id8">
-<h2><span class="section-number">10.6. </span>Манипуляции с данными.<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">10.5. </span>Манипуляции с данными.<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Данные в датафреймах зачастую приходится обрабатывать одинаковыми
 методами. Для того, чтобы не использовать циклы для перебора строк или
 столбцов, полезно использовать <code class="docutils literal notranslate"><span class="pre">lamda</span></code>-функцию, это будет наиболее
