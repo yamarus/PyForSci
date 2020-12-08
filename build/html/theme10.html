@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Примеры от экспериментаторов? &mdash; документация Основы Python для работы с научными данными </title>
+  <title>10. Pandas &mdash; документация Основы Python для работы с научными данными </title>
   
 
   
@@ -232,7 +232,18 @@
 <li class="toctree-l2"><a class="reference internal" href="theme9.html#id13">9.4. Задачи</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Примеры от экспериментаторов?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">10.1. Основные классы для хранения данных в Pandas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataframe">10.1.1. Изменение DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">10.2. Дополнение объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">10.3. Индексация DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">10.4. Загрузка экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">10.5. Построение графиков из экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">10.6. Манипуляции с данными.</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -278,7 +289,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">10. </span>Примеры от экспериментаторов?</li>
+      <li><span class="section-number">10. </span>Pandas</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -302,10 +313,598 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="theme10">
-<span id="id1"></span><h1><span class="section-number">10. </span>Примеры от экспериментаторов?<a class="headerlink" href="#theme10" title="Ссылка на этот заголовок">¶</a></h1>
+  <div class="section" id="pandas">
+<span id="theme10"></span><h1><span class="section-number">10. </span>Pandas<a class="headerlink" href="#pandas" title="Ссылка на этот заголовок">¶</a></h1>
 <p><a class="reference external" href="../../source/lectures/theme10.ipynb">Лекция в .ipynb формате</a></p>
-<p>Метод дихотомий, метод итераций и метод Ньютона. Задачи поиска экстремума. Обобщенный обзор градиентных методов и подходов к задаче нахождения глобального минимума. Обзор методов scipy.optimize. Оптимизация простых кинетических моделей.</p>
+<p><strong>Подготовлена к.х.н. Бердюгиным Семёном Николаевичем</strong></p>
+<p>Pandas - открытая библиотека, предоставляющая высокпроизводительные
+удобные инструменты для работы с данными. Библиотека поставляется в
+стандартном наборе дистрибутива anaconda. <a class="reference external" href="https://pandas.pydata.org/docs/index.html">Ссылка на документацию</a>.</p>
+<p>Для использования <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> импортируется в код обычным методом. По
+общей договоренности чаще всего его импортируют как <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">10.1. </span>Основные классы для хранения данных в Pandas<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> явдяется основным классом в Pandas. По логике своего
+устройства каждый объект класса <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> является таблицей.</p>
+<div class="figure align-default">
+<img alt="_images/01_table_dataframe1.svg" src="_images/01_table_dataframe1.svg" /></div>
+<p>Каждая колонка, в свою очередь представляет из себя объект класса
+<code class="docutils literal notranslate"><span class="pre">pd.Series</span></code>.</p>
+<p>Создадим пустой объект <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">panob</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+<p>В качестве аргумента <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code> может быть любой массив с
+данными - строки, числа, списки и тд. Сделаем массив из 2 списков.
+Каждая строка и колонка имеет свой индекс.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datalist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">panob</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">datalist</span><span class="p">,</span><span class="n">datalist</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">datalist</span><span class="p">,</span><span class="n">datalist</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;объекты DataFrame выводятся вместе с индексами.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;пустые ячейки заполняются NaN</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+
+
+<span class="n">объекты</span> <span class="n">DataFrame</span> <span class="n">выводятся</span> <span class="n">вместе</span> <span class="n">с</span> <span class="n">индексами</span><span class="o">.</span>
+<span class="n">пустые</span> <span class="n">ячейки</span> <span class="n">заполняются</span> <span class="n">NaN</span>
+
+   <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>    <span class="mi">5</span>
+<span class="mi">0</span>  <span class="n">a</span>  <span class="n">b</span>  <span class="n">c</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mf">3.0</span>
+<span class="mi">1</span>  <span class="n">a</span>  <span class="n">b</span>  <span class="n">c</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="n">NaN</span>
+</pre></div>
+</div>
+<p>К элементам <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> можно обращаться по индексу и брать срезы,
+как и с любыми итерируемыми объектами.</p>
+<p>Выведем <code class="docutils literal notranslate"><span class="pre">panob[0]</span></code> - первую колонку созданного объекта (тип объекта
+<code class="docutils literal notranslate"><span class="pre">pd.Series</span></code>)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">panob</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#печатаем 0 элемент 0 элемента датафрейма, иными словами datalist[0]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">#таким образом, в датафрейм можно загружать любые объекты,</span>
+<span class="c1">#каждый объект обрабатывать согласно его свойствам</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
+
+
+0    a
+1    a
+Name: 0, dtype: object
+
+
+a
+</pre></div>
+</div>
+<p>Именой аргумент <code class="docutils literal notranslate"><span class="pre">index</span></code> в <code class="docutils literal notranslate"><span class="pre">pd.DataFrame(index=)</span></code> позволяет присвоить
+индексам свои значения</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">i</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">i_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">datalist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">panob1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datalist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">panob2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datalist</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">i_np</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="n">a</span>
+<span class="mi">1</span>  <span class="n">b</span>
+<span class="mi">2</span>  <span class="n">c</span>
+<span class="mi">3</span>  <span class="mi">1</span>
+<span class="mi">4</span>  <span class="mi">2</span>
+<span class="mi">5</span>  <span class="mi">3</span>
+
+
+    <span class="mi">0</span>
+<span class="mi">1</span>   <span class="n">a</span>
+<span class="mi">3</span>   <span class="n">b</span>
+<span class="mi">5</span>   <span class="n">c</span>
+<span class="mi">7</span>   <span class="mi">1</span>
+<span class="mi">9</span>   <span class="mi">2</span>
+<span class="mi">11</span>  <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe">
+<h3><span class="section-number">10.1.1. </span>Изменение DataFrame<a class="headerlink" href="#dataframe" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">10.2. </span>Дополнение объекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Объекты <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> имеют несколько методов модификации. Для
+добавления данных в таблицу можно использовать метод <code class="docutils literal notranslate"><span class="pre">append</span></code> или
+функцию <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>.</p>
+<p>Создадим новую таблицу просто добавив в нее дополнительные записи</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob3</span><span class="o">=</span><span class="n">panob1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="c1">#добовляем записи из i к старому panob1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">#можно наоборот</span>
+<span class="n">panob3</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">panob1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="n">a</span>
+<span class="mi">1</span>   <span class="n">b</span>
+<span class="mi">2</span>   <span class="n">c</span>
+<span class="mi">3</span>   <span class="mi">1</span>
+<span class="mi">4</span>   <span class="mi">2</span>
+<span class="mi">5</span>   <span class="mi">3</span>
+<span class="mi">0</span>   <span class="mi">2</span>
+<span class="mi">1</span>   <span class="mi">4</span>
+<span class="mi">2</span>   <span class="mi">6</span>
+<span class="mi">3</span>   <span class="mi">8</span>
+<span class="mi">4</span>  <span class="mi">10</span>
+<span class="mi">5</span>  <span class="mi">12</span>
+
+
+    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">2</span>
+<span class="mi">1</span>   <span class="mi">4</span>
+<span class="mi">2</span>   <span class="mi">6</span>
+<span class="mi">3</span>   <span class="mi">8</span>
+<span class="mi">4</span>  <span class="mi">10</span>
+<span class="mi">5</span>  <span class="mi">12</span>
+<span class="mi">0</span>   <span class="n">a</span>
+<span class="mi">1</span>   <span class="n">b</span>
+<span class="mi">2</span>   <span class="n">c</span>
+<span class="mi">3</span>   <span class="mi">1</span>
+<span class="mi">4</span>   <span class="mi">2</span>
+<span class="mi">5</span>   <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Также объединения с настраиваемыми параметрами можно использовать
+функцию <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>. Мы рассмотрим только два ключевых аргумента</p>
+<p><code class="docutils literal notranslate"><span class="pre">objs</span></code> - список для объединения</p>
+<p><code class="docutils literal notranslate"><span class="pre">axis</span></code> - ось вдоль которой объединять (0 - допишем в конце, 1 -
+добавим колонку)</p>
+<p>пустые ячейки будут заполнены <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Более подробное описание можно
+найти в документации.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob4</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">panob2</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#аналогично panob3=i.append(panob2)</span>
+
+<span class="c1">#объединяем индексы таблиц i и panob1.</span>
+<span class="c1">#Появляются NaN потому что в исходных данных нет элементов</span>
+<span class="c1">#с соответствуюзими индексами</span>
+<span class="n">panob5</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">panob2</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">panob6</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">panob2</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">panob4</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">2</span>
+<span class="mi">1</span>    <span class="mi">4</span>
+<span class="mi">2</span>    <span class="mi">6</span>
+<span class="mi">3</span>    <span class="mi">8</span>
+<span class="mi">4</span>   <span class="mi">10</span>
+<span class="mi">5</span>   <span class="mi">12</span>
+<span class="mi">1</span>    <span class="n">a</span>
+<span class="mi">3</span>    <span class="n">b</span>
+<span class="mi">5</span>    <span class="n">c</span>
+<span class="mi">7</span>    <span class="mi">1</span>
+<span class="mi">9</span>    <span class="mi">2</span>
+<span class="mi">11</span>   <span class="mi">3</span>
+
+
+       <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mf">2.0</span>  <span class="n">NaN</span>
+<span class="mi">1</span>    <span class="mf">4.0</span>    <span class="n">a</span>
+<span class="mi">2</span>    <span class="mf">6.0</span>  <span class="n">NaN</span>
+<span class="mi">3</span>    <span class="mf">8.0</span>    <span class="n">b</span>
+<span class="mi">4</span>   <span class="mf">10.0</span>  <span class="n">NaN</span>
+<span class="mi">5</span>   <span class="mf">12.0</span>    <span class="n">c</span>
+<span class="mi">7</span>    <span class="n">NaN</span>    <span class="mi">1</span>
+<span class="mi">9</span>    <span class="n">NaN</span>    <span class="mi">2</span>
+<span class="mi">11</span>   <span class="n">NaN</span>    <span class="mi">3</span>
+
+
+      <span class="mi">0</span>     <span class="mi">0</span>
+<span class="mi">0</span>   <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>     <span class="n">a</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>   <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>     <span class="n">b</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>   <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>     <span class="n">c</span>  <span class="mf">12.0</span>
+<span class="mi">7</span>     <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">9</span>     <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">10.3. </span>Индексация DataFrame<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>При объединении объектов мы могли случайно (или специально) поломать
+индексацию. Если мы хотим восстановить стандартную нумерацию, можем
+использовать метод <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="mi">0</span>     <span class="mi">0</span>
+<span class="mi">0</span>   <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>     <span class="n">a</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>   <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>     <span class="n">b</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>   <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>     <span class="n">c</span>  <span class="mf">12.0</span>
+<span class="mi">7</span>     <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">9</span>     <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+
+
+   <span class="n">index</span>    <span class="mi">0</span>     <span class="mi">0</span>
+<span class="mi">0</span>      <span class="mi">0</span>  <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>      <span class="mi">1</span>    <span class="n">a</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>      <span class="mi">2</span>  <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>      <span class="mi">3</span>    <span class="n">b</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>      <span class="mi">4</span>  <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>      <span class="mi">5</span>    <span class="n">c</span>  <span class="mf">12.0</span>
+<span class="mi">6</span>      <span class="mi">7</span>    <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">7</span>      <span class="mi">9</span>    <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">8</span>     <span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+</pre></div>
+</div>
+<p>Каждая колонка в таблице имеет свое название, по которому можно
+обращаться к DataFrame. При этом возвращается соответствующая строка.</p>
+<p>Для присвоения названий колонок во время создания фрейма используется
+именной аргумент <code class="docutils literal notranslate"><span class="pre">colunns</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datalist</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">i_np</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a1&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">a1</span>
+<span class="mi">1</span>   <span class="n">a</span>
+<span class="mi">3</span>   <span class="n">b</span>
+<span class="mi">5</span>   <span class="n">c</span>
+<span class="mi">7</span>   <span class="mi">1</span>
+<span class="mi">9</span>   <span class="mi">2</span>
+<span class="mi">11</span>  <span class="mi">3</span>
+</pre></div>
+</div>
+<p>При конкатенации массивов название колонок сохраняется</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob6</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">panob2</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">panob6</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">panob2</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">a1</span>     <span class="mi">0</span>
+<span class="mi">0</span>   <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>     <span class="n">a</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>   <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>     <span class="n">b</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>   <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>     <span class="n">c</span>  <span class="mf">12.0</span>
+<span class="mi">7</span>     <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">9</span>     <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+
+     <span class="n">a1</span>     <span class="mi">0</span>
+<span class="mi">1</span>     <span class="n">a</span>   <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">b</span>   <span class="n">NaN</span>
+<span class="mi">5</span>     <span class="n">c</span>   <span class="n">NaN</span>
+<span class="mi">7</span>     <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">9</span>     <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+<span class="mi">0</span>   <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>   <span class="n">NaN</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>   <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>   <span class="n">NaN</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>   <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>   <span class="n">NaN</span>  <span class="mf">12.0</span>
+</pre></div>
+</div>
+<p>Если у столбца есть название, то его можно вызвать обращаясь к аттрибуту
+соответствующего объекта. Иначе используются индексы</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="o">.</span><span class="n">a1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>       <span class="n">a</span>
+<span class="mi">3</span>       <span class="n">b</span>
+<span class="mi">5</span>       <span class="n">c</span>
+<span class="mi">7</span>       <span class="mi">1</span>
+<span class="mi">9</span>       <span class="mi">2</span>
+<span class="mi">11</span>      <span class="mi">3</span>
+<span class="mi">0</span>     <span class="n">NaN</span>
+<span class="mi">1</span>     <span class="n">NaN</span>
+<span class="mi">2</span>     <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">NaN</span>
+<span class="mi">4</span>     <span class="n">NaN</span>
+<span class="mi">5</span>     <span class="n">NaN</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">a1</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+<span class="mi">1</span>      <span class="n">NaN</span>
+<span class="mi">3</span>      <span class="n">NaN</span>
+<span class="mi">5</span>      <span class="n">NaN</span>
+<span class="mi">7</span>      <span class="n">NaN</span>
+<span class="mi">9</span>      <span class="n">NaN</span>
+<span class="mi">11</span>     <span class="n">NaN</span>
+<span class="mi">0</span>      <span class="mf">2.0</span>
+<span class="mi">1</span>      <span class="mf">4.0</span>
+<span class="mi">2</span>      <span class="mf">6.0</span>
+<span class="mi">3</span>      <span class="mf">8.0</span>
+<span class="mi">4</span>     <span class="mf">10.0</span>
+<span class="mi">5</span>     <span class="mf">12.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>Если требуется изменить название колонки, то можно использовать метод
+<code class="docutils literal notranslate"><span class="pre">.rename</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panob6</span><span class="o">=</span><span class="n">panob6</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;a1&#39;</span><span class="p">:</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;b&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">#теперь мы можем вызывать колонки по их названию</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panob6</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">panob6</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">a</span>     <span class="n">b</span>
+<span class="mi">1</span>     <span class="n">a</span>   <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">b</span>   <span class="n">NaN</span>
+<span class="mi">5</span>     <span class="n">c</span>   <span class="n">NaN</span>
+<span class="mi">7</span>     <span class="mi">1</span>   <span class="n">NaN</span>
+<span class="mi">9</span>     <span class="mi">2</span>   <span class="n">NaN</span>
+<span class="mi">11</span>    <span class="mi">3</span>   <span class="n">NaN</span>
+<span class="mi">0</span>   <span class="n">NaN</span>   <span class="mf">2.0</span>
+<span class="mi">1</span>   <span class="n">NaN</span>   <span class="mf">4.0</span>
+<span class="mi">2</span>   <span class="n">NaN</span>   <span class="mf">6.0</span>
+<span class="mi">3</span>   <span class="n">NaN</span>   <span class="mf">8.0</span>
+<span class="mi">4</span>   <span class="n">NaN</span>  <span class="mf">10.0</span>
+<span class="mi">5</span>   <span class="n">NaN</span>  <span class="mf">12.0</span>
+
+
+<span class="mi">1</span>       <span class="n">a</span>
+<span class="mi">3</span>       <span class="n">b</span>
+<span class="mi">5</span>       <span class="n">c</span>
+<span class="mi">7</span>       <span class="mi">1</span>
+<span class="mi">9</span>       <span class="mi">2</span>
+<span class="mi">11</span>      <span class="mi">3</span>
+<span class="mi">0</span>     <span class="n">NaN</span>
+<span class="mi">1</span>     <span class="n">NaN</span>
+<span class="mi">2</span>     <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="n">NaN</span>
+<span class="mi">4</span>     <span class="n">NaN</span>
+<span class="mi">5</span>     <span class="n">NaN</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+
+ <span class="mi">1</span>      <span class="n">NaN</span>
+<span class="mi">3</span>      <span class="n">NaN</span>
+<span class="mi">5</span>      <span class="n">NaN</span>
+<span class="mi">7</span>      <span class="n">NaN</span>
+<span class="mi">9</span>      <span class="n">NaN</span>
+<span class="mi">11</span>     <span class="n">NaN</span>
+<span class="mi">0</span>      <span class="mf">2.0</span>
+<span class="mi">1</span>      <span class="mf">4.0</span>
+<span class="mi">2</span>      <span class="mf">6.0</span>
+<span class="mi">3</span>      <span class="mf">8.0</span>
+<span class="mi">4</span>     <span class="mf">10.0</span>
+<span class="mi">5</span>     <span class="mf">12.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">10.4. </span>Загрузка экспериментальных данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для загрузки экспериментальных данных из текстовых файлов используется
+функция pd.read_table(filename), которая создает объект класса
+DataFrame, содержащий данные из загружаемого файла filename. Функция
+содержит большое количество аргументов, которые позволяют как открыть
+разноформатные данные, так и задать дополнительные параметры вашего
+датафрейма.</p>
+<p>Примечательно, что используя циклы и конкатенацию можно записать в
+датафрейм сразу все файлы из папки, что зачастую бывает полезно при
+обработке однотипных данных, таких как спектры.</p>
+<p>В нашем примере мы создадим функцию <code class="docutils literal notranslate"><span class="pre">importer</span></code> с аргументами
+<code class="docutils literal notranslate"><span class="pre">folder</span></code> (папка с экспериментальными данными) и <code class="docutils literal notranslate"><span class="pre">undent</span></code> (число,
+показывающее сколько символов с конца необходимо убрать из имени файла,
+чтобы получить число; в дальнейшем это будет использоваться для задания
+ключей).</p>
+<p>Такая функция полезна, если названия ваших файлов состоят из числа
+(например, времени в минутах с начала эксперимента, как в используемом
+для примера случае).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">importer</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">undent</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span><span class="c1">#Считываем имена файлов в папке</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="c1">#Создаем пустой DataFrame</span>
+
+    <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span> <span class="c1">#Инициируем главный цикл перебора всех имен в искомой папке</span>
+
+        <span class="k">if</span> <span class="n">names</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span><span class="c1">#Выбираем только файлы с расширением txt.</span>
+
+            <span class="c1">#Загружаем данные из файлов текстовых файлов</span>
+            <span class="n">table</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">names</span><span class="p">,</span> <span class="c1"># имя файла</span>
+                                <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="c1">#разделитель строк в исходном файле</span>
+                                <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="c1">#количество или номера строк, которые не следует считывать</span>
+                                <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wavelenght&#39;</span><span class="o">+</span><span class="n">names</span><span class="p">[:</span><span class="o">-</span><span class="n">undent</span><span class="p">],</span><span class="nb">int</span><span class="p">(</span><span class="n">names</span><span class="p">[:</span><span class="o">-</span><span class="n">undent</span><span class="p">])],</span> <span class="c1">#названия колонок, которые следует использовать при чтении из файла</span>
+                                <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#колонка, которая будет использоваться в качестве индекса. Если не задавать - будут присвоены индексы по умолчанию, и датафрейм будет двумерным</span>
+            <span class="c1">#Собираем все экспериментальные в один датафрейм data с помощью конкатенации массивов data и table.</span>
+            <span class="c1">#В отличие от numpy при конкатенации dataframe нулевой размерности и непустого не возникает ошибок</span>
+            <span class="c1">#несовпадения размерности, что значитльно упрощает жизнь. Кроме этого, как было указано раньше,</span>
+            <span class="c1">#при несовпадении размерностей файлов, пустые ячейки будут заполнены NaN, после чего их можно будет убрать, например взяв срез</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span><span class="n">table</span><span class="p">],</span>
+                             <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#ключ, указывающий на поколоночную конкатенацию</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Последняя строчка требует отдельного пояснения. Поскольку при чтении
+имен файлов создается список, заполненный данными класса <code class="docutils literal notranslate"><span class="pre">string</span></code>,
+первоначальная сортировка применяется “неправильная”, и получается
+массив, в котором файлы выстроены не в том порядке, в котором вы их
+экспериментально получили. Одним из способв избежания этой проблемы
+служит функция <code class="docutils literal notranslate"><span class="pre">sorted</span></code> которая по умалчанию сортирует сначала числа,
+если видит их, а затем символы. Соответственно, аргументом будут служить
+названия колонок нашего массива с данными <code class="docutils literal notranslate"><span class="pre">data</span></code>, а метод <code class="docutils literal notranslate"><span class="pre">reindex</span></code>
+будет изменять порядок расположения колонок в соответсвии со вновь
+остортированным списком. В итоге получим новый датафрейм, в котором
+данные будут расположены в порядке возрастания их порядкового номера.</p>
+<p>На следующем этапе воспользуемся созданной нами функцией importer. Для
+этого нам понадобится импортировать библиотеку os.</p>
+<p><a class="reference external" href="../../source/lectures/theme10.zip">используемые файлы</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">folder</span><span class="o">=</span><span class="s2">&quot;theme10/&quot;</span><span class="c1">#задаем название папки с экспериментальными данными</span>
+<span class="n">undent</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1">#количесвто ненужных символов в конце названия</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">importer</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span><span class="n">undent</span><span class="p">)</span> <span class="c1">#задаем переменной data значения функции importer c аргументами folder и udent</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;получили массив с экспериментальными данными&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">        -2     -1      0      10     20     30     40     50     60     70   700.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+699.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+698.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+697.0  0.009  0.010  0.012  0.001  0.002  0.004  0.001  0.002  0.001  0.002
+696.0  0.009  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.001  0.002
+...      ...    ...    ...    ...    ...    ...    ...    ...    ...    ...
+204.0  0.147  0.127  0.108 -0.013  0.006  0.036  0.012  0.085  0.045  0.002
+203.0  0.240  0.068  0.072  0.005  0.025  0.062  0.039  0.036  0.084  0.017
+202.0  0.121  0.017 -0.009 -0.025 -0.064  0.008 -0.005  0.024  0.036 -0.011
+201.0  0.077  0.115  0.059 -0.030  0.004  0.049 -0.002 -0.028  0.014 -0.042
+200.0  0.087  0.125  0.027 -0.032 -0.050  0.067  0.035  0.061  0.025 -0.021
+
+         80     90     100    110    120    130    140    150    160    170
+700.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+699.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+698.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+697.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+696.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+...      ...    ...    ...    ...    ...    ...    ...    ...    ...    ...
+204.0  0.019  0.001  0.065  0.005  0.074  0.005  0.095  0.316  0.343  0.499
+203.0  0.019  0.142  0.076  0.070  0.091  0.082  0.071  0.482  0.504  0.413
+202.0  0.025 -0.001  0.022 -0.023  0.037  0.034  0.068  0.369  0.456  0.321
+201.0 -0.001  0.014  0.036  0.011  0.037 -0.029  0.046  0.352  0.452  0.439
+200.0 -0.003  0.014 -0.027 -0.003  0.020  0.071  0.083  0.520  0.367  0.462
+
+[501 rows x 20 columns]
+
+ получили массив с экспериментальными данными</pre>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">10.5. </span>Построение графиков из экспериментальных данных<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Теперь мы имеем 2d массив экспериментальных данных, в котором колонки
+названы временем эксперимента, а строки - длиной волны. Для построения
+графиков нет необходимости подключать библиотеку <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>,
+поскольку <code class="docutils literal notranslate"><span class="pre">pandas</span></code> автоматически ее загружает при вызове функции
+<code class="docutils literal notranslate"><span class="pre">plot</span></code>. Построим сперва график одной экспериментальной кривой на
+первом графике, а затем на втором - всех экспериментальных данных.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[{</span><span class="mi">0</span><span class="p">}]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7ffac5d23a60</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_30_1.png" src="_images/output_30_1.png" />
+<img alt="_images/output_30_2.png" src="_images/output_30_2.png" />
+<p>Как видно на втором графике, картинки получились некаистые и непонятные.
+Чтобы это исправить можно воспользоваться ключами, которые подробно
+описаны в документации к функции. Они во многом похожи на те, что
+используются в блиблиотеке <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+<p>Например, можно задать гамму, благодаря которой последовательные кривые
+будут строиться с использованием последовательности цветов, что полезно
+при визуализации данных с временным разрешением, или для того, чтобы
+визуализировать плавно изменяющиеся данные.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="c1">#гамма из библиотеки matplotlib</span>
+          <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="c1">#аргумент, указывающий на то, добавлять легенду (значение True) или  нет &#39;False&#39;</span>
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="c1">#аргумент, указывающий на размер картинки в дюймах</span>
+          <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">#аргумент, указывающий на толщину линий, необходимо использовать только целочисленные значения</span>
+          <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span> <span class="c1">#аргумент альфа-канала, влияет на прозрачность фона</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7ffac5c320a0</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_32_1.png" src="_images/output_32_1.png" />
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">10.6. </span>Манипуляции с данными.<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Данные в датафреймах зачастую приходится обрабатывать одинаковыми
+методами. Для того, чтобы не использовать циклы для перебора строк или
+столбцов, полезно использовать <code class="docutils literal notranslate"><span class="pre">lamda</span></code>-функцию, это будет наиболее
+простой и лаконичный способ.</p>
+<p>В нашем примере мы будем вычитать спектр исходного соединения,
+полученного при времени t = 0 (столбец с ключом <code class="docutils literal notranslate"><span class="pre">{0}</span></code>) из остальных
+столбцов. Для начала создадим новую переменную со значениями, которые мы
+будем вычитать.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_col</span><span class="o">=</span><span class="n">data</span><span class="p">[{</span><span class="mi">0</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>Затем воспользуемся функцией apply для применения математической
+операции ко всем колонкам</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bigtable_sub</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">column</span><span class="p">:</span> <span class="n">column</span> <span class="o">-</span> <span class="n">first_col</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="c1">#column взято для удобства, можно писать любое название</span>
+                        <span class="c1">#first_col[0] необходимо повторно указать название колонки,</span>
+                        <span class="c1">#потому что pandas требует это делать при применении оперпций к колонкам</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1"># ключ указывает, что опреацию будем применять поколоночно</span>
+</pre></div>
+</div>
+<p>Построим что получилось с теми же ключами, как и в предыдущем случае, но
+в другой гамме.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bigtable_sub</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="c1">#карта цветов из библиотеки matplotlib</span>
+          <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="c1">#ключ, указывающий на то, добавлять легенду (значение True) или  нет &#39;False&#39;</span>
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="c1">#ключ, указывающий на размер картинки в дюймах</span>
+          <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">#ключ, указывающий на толщину линий, необходимо использовать только целочисленные значения</span>
+          <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span> <span class="c1">#ключ альфа-канала, влияет на прозрачность фона</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7ffac5b8bf70</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_38_1.png" src="_images/output_38_1.png" />
+<p>Иногда бывает необходимо взять горизонтальный срез из <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>,
+например, чтобы проследить, как изменяется поглощение только на одной
+длине волны. Для таких целей существует функция <code class="docutils literal notranslate"><span class="pre">loc</span></code>, аргументом
+которой служит индекс нужных элементов в массиве.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data300</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">300</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data300</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span>      <span class="mf">0.069</span>
+<span class="o">-</span><span class="mi">1</span>      <span class="mf">0.070</span>
+ <span class="mi">0</span>      <span class="mf">0.069</span>
+ <span class="mi">10</span>     <span class="mf">0.037</span>
+ <span class="mi">20</span>     <span class="mf">0.057</span>
+ <span class="mi">30</span>     <span class="mf">0.081</span>
+ <span class="mi">40</span>     <span class="mf">0.084</span>
+ <span class="mi">50</span>     <span class="mf">0.104</span>
+ <span class="mi">60</span>     <span class="mf">0.123</span>
+ <span class="mi">70</span>     <span class="mf">0.150</span>
+ <span class="mi">80</span>     <span class="mf">0.159</span>
+ <span class="mi">90</span>     <span class="mf">0.174</span>
+ <span class="mi">100</span>    <span class="mf">0.201</span>
+ <span class="mi">110</span>    <span class="mf">0.206</span>
+ <span class="mi">120</span>    <span class="mf">0.216</span>
+ <span class="mi">130</span>    <span class="mf">0.237</span>
+ <span class="mi">140</span>    <span class="mf">0.244</span>
+ <span class="mi">150</span>    <span class="mf">0.264</span>
+ <span class="mi">160</span>    <span class="mf">0.281</span>
+ <span class="mi">170</span>    <span class="mf">0.297</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mf">300.0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>Эти данные можно использовать для построения кинетических кривых</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">data300</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time, min&quot;</span><span class="p">)</span> <span class="c1">#название оси x</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Absorption&quot;</span><span class="p">)</span>   <span class="c1">#название оси y</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_42_1.png" src="_images/output_42_1.png" />
+</div>
 </div>
 
 
