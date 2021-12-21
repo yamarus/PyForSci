@@ -34,6 +34,7 @@
    theme8
    theme9
    theme10
+   theme11
 
 
 
