@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. Полезные библиотеки для python &mdash; документация Основы Python для работы с научными данными </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="10. Pandas" href="theme10.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #6495ED" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Основы Python для работы с научными данными
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="theme1.html">1. Введение. Установка интерпретатора Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id3">1.1. О языке Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme1.html#id4">1.2. Установка интерпретатора Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#anaconda">1.2.1. Установка Anaconda на свой компьютер</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme1.html#id9">1.2.2. Установка стандартных средств для python разработки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme2.html">2. Основы Синтаксиса Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id2">2.1. Форматирование блоков кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id3">2.2. Динамическая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id4">2.3. Ввод и вывод в консоль</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id5">2.4. Ключевые слова и встроенные функции в Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id8">2.5. Основные операторы и типы данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id9">2.5.1. Логические переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id10">2.5.2. Числовые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id11">2.5.3. Списки и кортежи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id12">2.5.4. Словари и множества</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id13">2.5.5. Строки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id14">2.5.6. Операторы сравнения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#id15">2.5.7. Условные операторы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#while">2.5.8. Цикл while</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme2.html#for-range">2.5.9. Цикл for и функция range</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme2.html#id16">2.6. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme3.html">3. Числа и списки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme3.html#id2">3.1. Числа</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#int">3.1.1. Целые числа (int)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#float">3.1.2. Числа с плавающей запятой (float)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#complex">3.1.3. Комплексные числа (complex)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme3.html#math">3.2. Модуль math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme3.html#list">3.3. Списки (list)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#id7">3.3.1. Обращения к элементам списка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#id8">3.3.2. Срезы списков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#id9">3.3.3. Свойства списков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme3.html#id10">3.3.4. Некоторые операции со списками</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme3.html#id11">3.4. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme4.html">4. Функции и строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id2">4.1. Функции</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id3">4.1.1. Функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id4">4.1.2. Аргументы функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#lambda">4.1.3. Lambda функции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id5">4.2. Строки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id6">4.2.1. Литералы строк.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#id9">4.2.2. Методы и функции строк</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme4.html#format">4.2.3. Форматирование строк. Метод <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme4.html#id12">4.3. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme5.html">5. Работа с файлами, модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id1">5.1. Работа с файлами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#id2">5.1.1. Файловая система</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#python">5.1.2. Стандартные методы Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme5.html#with-as-try-except">5.1.3. Конструкции <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">..</span> <span class="pre">as</span></code> и <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">..</span> <span class="pre">except</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id4">5.2. Модуль <code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme5.html#id7">5.3. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme6.html">6. NumPy массивы и их свойства</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme6.html#id1">6.1. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme6.html#id3">6.2. Массивы NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme6.html#id6">6.2.1. Базовые методы масивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme6.html#id7">6.2.2. Оси и форма массивов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme6.html#id8">6.2.3. Создание шаблонных массивов NumPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme6.html#copy">6.2.4. Метод <code class="docutils literal notranslate"><span class="pre">copy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme6.html#id10">6.2.5. NumPy работа с файлами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme6.html#scipy-linalg">6.3. Линейная алгебра и SciPy.linalg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme6.html#id15">6.4. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme7.html">7. Работа с графиками</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#matplotlib">7.1. Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#id3">7.2. Свойства линии и точки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id4">7.2.1. Итерационная задача цветов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#id5">7.3. Оформление</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#matplotlib-rcparams">7.3.1. matplotlib rcParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id7">7.3.2. Легенда</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id8">7.3.3. Заголовки и подписи</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#matplotlib-axes">7.4. Несколько графиков на картинке, matplotlib.axes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#id10">7.5. Масштаб и оси</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id11">7.5.1. Пределы отображения и масштабирование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id12">7.5.2. Оси и сетка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id13">7.5.3. Двойные оси.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme7.html#id14">7.5.4. Общая ось для двух соседних графиков</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#id15">7.6. Гистограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#d">7.7. 2D графики</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme7.html#id16">7.8. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme8.html">8. Библиотека SciPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-linalg">8.1. Линейная алгебра (<code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-integrate">8.2. Интегрирование и работа с обыкновенными дифференциальными уравнениями (<code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id4">8.2.1. Интегрирование функций</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id5">8.2.2. Интегрирование по заданному набору точек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id6">8.2.3. Интегрирование ОДУ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#scipy-optimize">8.3. Фитирование кривых, нахождение минимума функции, решение уравнений с <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id7">8.3.1. Фитирование кривых</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id8">8.3.2. Минимизация функции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme8.html#id10">8.3.3. Поиск корней уравнения</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id11">8.4. #Экспериментаторы рекомендуют</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme8.html#id12">8.5. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme9.html">9. Введение в ООП. Настройка окружения и установка пакетов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme9.html#python">9.1. Установка пакетов и настройка окружения в Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#pip-conda">9.1.1. <code class="docutils literal notranslate"><span class="pre">pip</span></code> и <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id2">9.1.2. Настройка окружения в Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme9.html#id4">9.2. Основы ООП</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id6">9.2.1. Зачем это надо?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id7">9.2.2. Классы в Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id8">9.2.3. Специальные (магические) методы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id9">9.2.4. Инициализация объекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id10">9.2.5. Итерация по объекту</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme9.html#id11">9.2.6. Определение арифметических и логических операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme9.html#id12">9.3. Большой пример.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme9.html#id13">9.4. Задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theme10.html">10. Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theme10.html#id2">10.1. Основные классы для хранения данных в Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme10.html#dataframe">10.2. Изменение DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theme10.html#id3">10.2.1. Дополнение объекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theme10.html#id4">10.2.2. Индексация DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theme10.html#id5">10.3. Загрузка экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme10.html#id7">10.4. Построение графиков из экспериментальных данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theme10.html#id8">10.5. Манипуляции с данными.</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Полезные библиотеки для python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pandas">11.1. Pandas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.1.1. Один пример работы Pandas. Загрузка экспериментальных данных</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seaborn">11.2. Seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rdkit">11.3. RDKit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sympy">11.4. SymPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scikit-learn">11.5. scikit-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#svgwrite">11.6. svgwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mdtraj">11.7. MDTraj</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-docx">11.8. python-docx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">11.9. SPHINX</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Основы Python для работы с научными данными</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">11. </span>Полезные библиотеки для python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+      
+        <a href="theme10.html" class="btn btn-neutral float-left" title="10. Pandas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<span id="theme11"></span><h1><span class="section-number">11. </span>Полезные библиотеки для python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="../../source/lectures/theme11.ipynb">Лекция в .ipynb формате</a></p>
+<div class="section" id="pandas">
+<h2><span class="section-number">11.1. </span>Pandas<a class="headerlink" href="#pandas" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Pandas - открытая библиотека, предоставляющая высокпроизводительные
+удобные инструменты для работы с данными. Библиотека поставляется в
+стандартном наборе дистрибутива anaconda. <a class="reference external" href="https://pandas.pydata.org/docs/index.html">Ссылка на документацию</a>.</p>
+<p>Для использования <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> импортируется в код обычным методом. По
+общей договоренности чаще всего его импортируют как <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
+<p><a class="reference external" href="theme10.html">Чуть более подробное описание библиотеки</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">11.1.1. </span>Один пример работы Pandas. Загрузка экспериментальных данных<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для загрузки экспериментальных данных из текстовых файлов используется
+функция <code class="docutils literal notranslate"><span class="pre">pd.read_table(filename)</span></code></p>
+<p>В нашем примере мы создадим функцию <code class="docutils literal notranslate"><span class="pre">importer</span></code> с аргументами
+<code class="docutils literal notranslate"><span class="pre">folder</span></code> (папка с экспериментальными данными) и <code class="docutils literal notranslate"><span class="pre">undent</span></code> (число,
+показывающее сколько символов с конца необходимо убрать из имени файла,
+чтобы получить число; в дальнейшем это будет использоваться для задания
+ключей).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">importer</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">undent</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span><span class="c1">#Считываем имена файлов в папке</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="c1">#Создаем пустой DataFrame</span>
+
+    <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span> <span class="c1">#Инициируем главный цикл перебора всех имен в искомой папке</span>
+
+        <span class="k">if</span> <span class="n">names</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span><span class="c1">#Выбираем только файлы с расширением txt.</span>
+
+            <span class="c1">#Загружаем данные из файлов текстовых файлов</span>
+            <span class="n">table</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">names</span><span class="p">,</span> <span class="c1"># имя файла</span>
+                                <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="c1">#разделитель строк в исходном файле</span>
+                                <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="c1">#количество или номера строк, которые не следует считывать</span>
+                                <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wavelenght&#39;</span><span class="o">+</span><span class="n">names</span><span class="p">[:</span><span class="o">-</span><span class="n">undent</span><span class="p">],</span><span class="nb">int</span><span class="p">(</span><span class="n">names</span><span class="p">[:</span><span class="o">-</span><span class="n">undent</span><span class="p">])],</span> <span class="c1">#названия колонок, которые следует использовать при чтении из файла</span>
+                                <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#колонка, которая будет использоваться в качестве индекса. Если не задавать - будут присвоены индексы по умолчанию, и датафрейм будет двумерным</span>
+            <span class="c1">#Собираем все экспериментальные в один датафрейм data с помощью конкатенации массивов data и table.</span>
+            <span class="c1">#В отличие от numpy при конкатенации dataframe нулевой размерности и непустого не возникает ошибок</span>
+            <span class="c1">#несовпадения размерности, что значитльно упрощает жизнь. Кроме этого, как было указано раньше,</span>
+            <span class="c1">#при несовпадении размерностей файлов, пустые ячейки будут заполнены NaN, после чего их можно будет убрать, например взяв срез</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span><span class="n">table</span><span class="p">],</span>
+                             <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#ключ, указывающий на поколоночную конкатенацию</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>На следующем этапе воспользуемся созданной нами функцией importer.</p>
+<p><a class="reference external" href="../../source/lectures/theme10.zip">используемые файлы</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">folder</span><span class="o">=</span><span class="s2">&quot;theme10/&quot;</span><span class="c1">#задаем название папки с экспериментальными данными</span>
+<span class="n">undent</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1">#количесвто ненужных символов в конце названия</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">importer</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span><span class="n">undent</span><span class="p">)</span> <span class="c1">#задаем переменной data значения функции importer c аргументами folder и udent</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">        -2     -1      0      10     20     30     40     50     60     70   700.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+699.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+698.0  0.010  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.002  0.002
+697.0  0.009  0.010  0.012  0.001  0.002  0.004  0.001  0.002  0.001  0.002
+696.0  0.009  0.010  0.012  0.001  0.002  0.005  0.001  0.002  0.001  0.002
+...      ...    ...    ...    ...    ...    ...    ...    ...    ...    ...
+204.0  0.147  0.127  0.108 -0.013  0.006  0.036  0.012  0.085  0.045  0.002
+203.0  0.240  0.068  0.072  0.005  0.025  0.062  0.039  0.036  0.084  0.017
+202.0  0.121  0.017 -0.009 -0.025 -0.064  0.008 -0.005  0.024  0.036 -0.011
+201.0  0.077  0.115  0.059 -0.030  0.004  0.049 -0.002 -0.028  0.014 -0.042
+200.0  0.087  0.125  0.027 -0.032 -0.050  0.067  0.035  0.061  0.025 -0.021
+
+         80     90     100    110    120    130    140    150    160    170
+700.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+699.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+698.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+697.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+696.0  0.001  0.003  0.004  0.002  0.001  0.006  0.004  0.002  0.003  0.001
+...      ...    ...    ...    ...    ...    ...    ...    ...    ...    ...
+204.0  0.019  0.001  0.065  0.005  0.074  0.005  0.095  0.316  0.343  0.499
+203.0  0.019  0.142  0.076  0.070  0.091  0.082  0.071  0.482  0.504  0.413
+202.0  0.025 -0.001  0.022 -0.023  0.037  0.034  0.068  0.369  0.456  0.321
+201.0 -0.001  0.014  0.036  0.011  0.037 -0.029  0.046  0.352  0.452  0.439
+200.0 -0.003  0.014 -0.027 -0.003  0.020  0.071  0.083  0.520  0.367  0.462
+
+[501 rows x 20 columns]</pre>
+<p>Построим сперва график одной экспериментальной кривой на первом графике,
+а затем на втором - всех экспериментальных данных.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[{</span><span class="mi">0</span><span class="p">}]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_7_1.png" src="_images/output_7_1.png" />
+<img alt="_images/output_7_2.png" src="_images/output_7_2.png" />
+<p>Теперь вычтем исходны спектр из остальных, и построим изменение сигнала
+на 300 нм от времени</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_col</span><span class="o">=</span><span class="n">data</span><span class="p">[{</span><span class="mi">0</span><span class="p">}]</span>
+
+<span class="n">bigtable_sub</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">column</span><span class="p">:</span> <span class="n">column</span> <span class="o">-</span> <span class="n">first_col</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="c1">#column взято для удобства, можно писать любое название</span>
+                        <span class="c1">#first_col[0] необходимо повторно указать название колонки,</span>
+                        <span class="c1">#потому что pandas требует это делать при применении оперпций к колонкам</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1"># ключ указывает, что опреацию будем применять поколоночно</span>
+
+<span class="n">bigtable_sub</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AxesSubplot</span><span class="p">:</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_9_1.png" src="_images/output_9_1.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data300</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">data300</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time, min&quot;</span><span class="p">)</span> <span class="c1">#название оси x</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Absorption&quot;</span><span class="p">)</span>   <span class="c1">#название оси y</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;Absorption&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/output_10_1.png" src="_images/output_10_1.png" />
+</div>
+</div>
+<div class="section" id="seaborn">
+<h2><span class="section-number">11.2. </span>Seaborn<a class="headerlink" href="#seaborn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Seaborn - библиотека для визуализации основаная на <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.
+Основным направлением библиотеки является работа со статистическими
+данными.</p>
+<p><a class="reference external" href="https://seaborn.pydata.org/index.html">Документация Seaborn</a></p>
+<p>Расмотрим пример распределения глубины клюва пингвинов в зависимости от
+массы тела</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
+<span class="c1">#print(type(df),&#39;\n\n&#39;,df)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span>
+             <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="p">((</span><span class="mi">2200</span><span class="p">,</span> <span class="mi">6800</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)),</span>
+             <span class="n">thresh</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;rocket&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_marginals</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#03051A&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">seaborn</span><span class="o">.</span><span class="n">axisgrid</span><span class="o">.</span><span class="n">JointGrid</span> <span class="n">at</span> <span class="mh">0x7fa6ea294c40</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/output_12_1.png" src="_images/output_12_1.png" />
+</div>
+<div class="section" id="rdkit">
+<h2><span class="section-number">11.3. </span>RDKit<a class="headerlink" href="#rdkit" title="Ссылка на этот заголовок">¶</a></h2>
+<p>RDKit - мощный дистрибутив для хемоинформатики. Заточен для анализа
+структур молекул. Требует установки дистрибутива.</p>
+<p><a class="reference external" href="https://www.rdkit.org/">Сайт проекта</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>
+</pre></div>
+</div>
+<p>чтение данных может происходить из различных форматов:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21&#39;</span><span class="p">)</span>
+<span class="n">refmol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CCCN(CCCCN1CCN(c2ccccc2OC)CC1)Cc1ccc2ccccc2c1&#39;</span><span class="p">)</span>
+<span class="c1">#mol = Chem.MolFromMolFile(&#39;data/input.mol&#39;)</span>
+<span class="c1">#stringWithMolData=open(&#39;data/input.mol&#39;,&#39;r&#39;).read()</span>
+<span class="c1">#mol = Chem.MolFromMolBlock(stringWithMolData)</span>
+</pre></div>
+</div>
+<p>Удобен для отрисовки молекул и визуализации данных.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from rdkit.Chem import AllChem</span>
+<span class="kn">from</span> <span class="nn">rdkit.Chem.Draw</span> <span class="kn">import</span> <span class="n">IPythonConsole</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">ipython_useSVG</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">molSize</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span><span class="mi">200</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addStereoAnnotation</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span>
+</pre></div>
+</div>
+<img alt="_images/output_19_0.svg" src="_images/output_19_0.svg" /><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refmol</span>
+</pre></div>
+</div>
+<img alt="_images/output_20_0.svg" src="_images/output_20_0.svg" /><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rdkit.Chem.Draw</span> <span class="kn">import</span> <span class="n">SimilarityMaps</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">maxweight</span> <span class="o">=</span> <span class="n">SimilarityMaps</span><span class="o">.</span><span class="n">GetSimilarityMapForFingerprint</span><span class="p">(</span><span class="n">refmol</span><span class="p">,</span> <span class="n">mol</span><span class="p">,</span> <span class="n">SimilarityMaps</span><span class="o">.</span><span class="n">GetMorganFingerprint</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/output_22_0.png" src="_images/output_22_0.png" />
+</div>
+<div class="section" id="sympy">
+<h2><span class="section-number">11.4. </span>SymPy<a class="headerlink" href="#sympy" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет для символьных вычислений.</p>
+<p><a class="reference external" href="https://www.sympy.org/en/index.html">Документация</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">symbols</span>
+<span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">)</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">expr</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \left(x + y\right)^{2}\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">expand</span><span class="p">,</span> <span class="n">factor</span>
+<span class="n">expanded_expr</span> <span class="o">=</span> <span class="n">expand</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="n">expanded_expr</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle x^{2} + 2 x y + y^{2}\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span><span class="p">(</span><span class="n">expanded_expr</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle y \left(2 x + y\right)\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sin</span>
+<span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle e^{x} \sin{\left(x \right)}\]</div>
+</div>
+<div class="section" id="scikit-learn">
+<h2><span class="section-number">11.5. </span>scikit-learn<a class="headerlink" href="#scikit-learn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для машинного обучения. <a class="reference external" href="https://scikit-learn.org/">Сайт проекта</a>. Собрана на основе
+NumPy, SciPy, matplolib</p>
+</div>
+<div class="section" id="svgwrite">
+<h2><span class="section-number">11.6. </span>svgwrite<a class="headerlink" href="#svgwrite" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для отрисовки svg. <a class="reference external" href="https://svgwrite.readthedocs.io/en/latest/">Документация</a>.</p>
+</div>
+<div class="section" id="mdtraj">
+<h2><span class="section-number">11.7. </span>MDTraj<a class="headerlink" href="#mdtraj" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для работы с траекториями молекулярной динамики. <a class="reference external" href="https://www.mdtraj.org/">Сайт</a>
+проекта.</p>
+</div>
+<div class="section" id="python-docx">
+<h2><span class="section-number">11.8. </span>python-docx<a class="headerlink" href="#python-docx" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для работы с docx файлами. <a class="reference external" href="https://python-docx.readthedocs.io/en/latest/">Документация</a>.</p>
+<p>(c Excel лучше работать с помощью Pandas)</p>
+</div>
+<div class="section" id="sphinx">
+<h2><span class="section-number">11.9. </span>SPHINX<a class="headerlink" href="#sphinx" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Генератор документации (например эта страница сделана с его помощью).
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/">Документация</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="theme10.html" class="btn btn-neutral float-left" title="10. Pandas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright R.D.Yamaletdinov, NIIC SB RAS, 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
