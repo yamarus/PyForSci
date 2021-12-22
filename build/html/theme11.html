@@ -250,13 +250,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#seaborn">11.2. Seaborn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rdkit">11.3. RDKit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sympy">11.4. SymPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sympy">11.3. SymPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symfit">11.4. symfit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scikit-learn">11.5. scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#svgwrite">11.6. svgwrite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mdtraj">11.7. MDTraj</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-docx">11.8. python-docx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sphinx">11.9. SPHINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#awesome-python-chemistry">11.7. Awesome Python Chemistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rdkit">11.8. RDKit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datamol">11.8.1. datamol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#open-babel">11.9. Open Babel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pybel">11.9.1. Pybel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pycroscopy">11.10. Pycroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stk">11.11. stk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nglviewer">11.12. nglviewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mdtraj">11.13. MDTraj</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-docx">11.14. python-docx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">11.15. SPHINX</a></li>
 </ul>
 </li>
 </ul>
@@ -475,8 +487,63 @@
 </div>
 <img alt="_images/output_12_1.png" src="_images/output_12_1.png" />
 </div>
+<div class="section" id="sympy">
+<h2><span class="section-number">11.3. </span>SymPy<a class="headerlink" href="#sympy" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет для символьных вычислений.</p>
+<p><a class="reference external" href="https://www.sympy.org/en/index.html">Документация</a></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">symbols</span>
+<span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">)</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">expr</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \left(x + y\right)^{2}\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">expand</span><span class="p">,</span> <span class="n">factor</span>
+<span class="n">expanded_expr</span> <span class="o">=</span> <span class="n">expand</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="n">expanded_expr</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle x^{2} + 2 x y + y^{2}\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span><span class="p">(</span><span class="n">expanded_expr</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle y \left(2 x + y\right)\]</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sin</span>
+<span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle e^{x} \sin{\left(x \right)}\]</div>
+</div>
+<div class="section" id="symfit">
+<h2><span class="section-number">11.4. </span>symfit<a class="headerlink" href="#symfit" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет, комбинирующий <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code> и <code class="docutils literal notranslate"><span class="pre">sympy</span></code> позволяет быстро и
+просто проводить фитирование кривых аналитическими функциями.
+<a class="reference external" href="https://symfit.readthedocs.io/en/stable/index.html">Документация</a>.</p>
+</div>
+<div class="section" id="scikit-learn">
+<h2><span class="section-number">11.5. </span>scikit-learn<a class="headerlink" href="#scikit-learn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для машинного обучения. <a class="reference external" href="https://scikit-learn.org/">Сайт проекта</a>. Собрана на основе
+NumPy, SciPy, matplolib</p>
+</div>
+<div class="section" id="svgwrite">
+<h2><span class="section-number">11.6. </span>svgwrite<a class="headerlink" href="#svgwrite" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Библиотека для отрисовки svg. <a class="reference external" href="https://svgwrite.readthedocs.io/en/latest/">Документация</a>.</p>
+</div>
+<div class="section" id="awesome-python-chemistry">
+<h2><span class="section-number">11.7. </span>Awesome Python Chemistry<a class="headerlink" href="#awesome-python-chemistry" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сообщество ученых, использующих Python составило и поддерживает
+актуальным список полезных пакетов для химимков. Ниже представлены
+некоторые программы из этого списка. Полный набор с кратким описанием
+можно найти на <a class="reference external" href="https://github.com/lmmentel/awesome-python-chemistry">странице проекта</a></p>
+</div>
 <div class="section" id="rdkit">
-<h2><span class="section-number">11.3. </span>RDKit<a class="headerlink" href="#rdkit" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">11.8. </span>RDKit<a class="headerlink" href="#rdkit" title="Ссылка на этот заголовок">¶</a></h2>
 <p>RDKit - мощный дистрибутив для хемоинформатики. Заточен для анализа
 структур молекул. Требует установки дистрибутива.</p>
 <p><a class="reference external" href="https://www.rdkit.org/">Сайт проекта</a></p>
@@ -512,61 +579,58 @@
 </pre></div>
 </div>
 <img alt="_images/output_22_0.png" src="_images/output_22_0.png" />
+<div class="section" id="datamol">
+<h3><span class="section-number">11.8.1. </span>datamol<a class="headerlink" href="#datamol" title="Ссылка на этот заголовок">¶</a></h3>
+<p>datamol - пакет надстройка над RDKit упрощает многие операкции при
+работе с RDKit. <a class="reference external" href="https://doc.datamol.io/">Документация</a>.</p>
 </div>
-<div class="section" id="sympy">
-<h2><span class="section-number">11.4. </span>SymPy<a class="headerlink" href="#sympy" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Пакет для символьных вычислений.</p>
-<p><a class="reference external" href="https://www.sympy.org/en/index.html">Документация</a></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
-<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">symbols</span>
-<span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">)</span>
-<span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">expr</span>
+</div>
+<div class="section" id="open-babel">
+<h2><span class="section-number">11.9. </span>Open Babel<a class="headerlink" href="#open-babel" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Open Babel - инструмент для работы с химическими данными и переводом их
+из одного формата в другой. Имеет ряд дополнительных инструментов для
+анализа. <a class="reference external" href="http://openbabel.org/wiki/Main_Page">Документация</a>.</p>
+<div class="section" id="pybel">
+<h3><span class="section-number">11.9.1. </span>Pybel<a class="headerlink" href="#pybel" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Надстройак над Open Babel. Упрощает взаимодействие и дополнительно
+адаптирует Open Babel для работы из python. <a class="reference external" href="https://openbabel.org/docs/dev/UseTheLibrary/Python_Pybel.html">Документация</a>.</p>
+</div>
+</div>
+<div class="section" id="pycroscopy">
+<h2><span class="section-number">11.10. </span>Pycroscopy<a class="headerlink" href="#pycroscopy" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Инструмент для работы с данными по микроскопии наноматериалов. <a class="reference external" href="https://pycroscopy.github.io/pycroscopy/index.html">Сайт
+проекта</a>.</p>
+</div>
+<div class="section" id="stk">
+<h2><span class="section-number">11.11. </span>stk<a class="headerlink" href="#stk" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Инструмент для конструирования молекул. <a class="reference external" href="https://stk.readthedocs.io/en/stable/index.html">Документация</a>.</p>
+</div>
+<div class="section" id="nglviewer">
+<h2><span class="section-number">11.12. </span>nglviewer<a class="headerlink" href="#nglviewer" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Виджет для IPython/Jupyter для визуализаций молекул и траекторий.
+<a class="reference external" href="https://github.com/nglviewer/nglview">Станица проекта</a>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nglview</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">nglview</span><span class="o">.</span><span class="n">show_file</span><span class="p">(</span><span class="s2">&quot;1C4D.pdb&quot;</span><span class="p">)</span>
+<span class="c1">#view = nglview.show_pdbid(&quot;3pqr&quot;)</span>
+<span class="n">view</span>
 </pre></div>
 </div>
-<div class="math notranslate nohighlight">
-\[\displaystyle \left(x + y\right)^{2}\]</div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">expand</span><span class="p">,</span> <span class="n">factor</span>
-<span class="n">expanded_expr</span> <span class="o">=</span> <span class="n">expand</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
-<span class="n">expanded_expr</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NGLWidget</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="math notranslate nohighlight">
-\[\displaystyle x^{2} + 2 x y + y^{2}\]</div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span><span class="p">(</span><span class="n">expanded_expr</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="math notranslate nohighlight">
-\[\displaystyle y \left(2 x + y\right)\]</div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sin</span>
-<span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="math notranslate nohighlight">
-\[\displaystyle e^{x} \sin{\left(x \right)}\]</div>
-</div>
-<div class="section" id="scikit-learn">
-<h2><span class="section-number">11.5. </span>scikit-learn<a class="headerlink" href="#scikit-learn" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Библиотека для машинного обучения. <a class="reference external" href="https://scikit-learn.org/">Сайт проекта</a>. Собрана на основе
-NumPy, SciPy, matplolib</p>
-</div>
-<div class="section" id="svgwrite">
-<h2><span class="section-number">11.6. </span>svgwrite<a class="headerlink" href="#svgwrite" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Библиотека для отрисовки svg. <a class="reference external" href="https://svgwrite.readthedocs.io/en/latest/">Документация</a>.</p>
 </div>
 <div class="section" id="mdtraj">
-<h2><span class="section-number">11.7. </span>MDTraj<a class="headerlink" href="#mdtraj" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">11.13. </span>MDTraj<a class="headerlink" href="#mdtraj" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Библиотека для работы с траекториями молекулярной динамики. <a class="reference external" href="https://www.mdtraj.org/">Сайт</a>
 проекта.</p>
 </div>
 <div class="section" id="python-docx">
-<h2><span class="section-number">11.8. </span>python-docx<a class="headerlink" href="#python-docx" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">11.14. </span>python-docx<a class="headerlink" href="#python-docx" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Библиотека для работы с docx файлами. <a class="reference external" href="https://python-docx.readthedocs.io/en/latest/">Документация</a>.</p>
 <p>(c Excel лучше работать с помощью Pandas)</p>
 </div>
 <div class="section" id="sphinx">
-<h2><span class="section-number">11.9. </span>SPHINX<a class="headerlink" href="#sphinx" title="Ссылка на этот заголовок">¶</a></h2>
+<h2><span class="section-number">11.15. </span>SPHINX<a class="headerlink" href="#sphinx" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Генератор документации (например эта страница сделана с его помощью).
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Документация</a>.</p>
 </div>

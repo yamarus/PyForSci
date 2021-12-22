@@ -214,6 +214,97 @@ Seaborn - библиотека для визуализации основана�
 
 .. image:: figs/theme11/output_12_1.png
 
+SymPy
+=====
+
+Пакет для символьных вычислений.
+
+`Документация <https://www.sympy.org/en/index.html>`_
+
+.. code:: ipython3
+
+    import sympy
+    from sympy import init_printing, symbols
+    init_printing(use_unicode=True)
+    x, y = symbols('x y')
+    expr = (x + y)**2
+    expr
+
+
+
+
+.. math::
+
+    \displaystyle \left(x + y\right)^{2}
+
+
+
+.. code:: ipython3
+
+    from sympy import expand, factor
+    expanded_expr = expand(expr)
+    expanded_expr
+
+
+
+
+.. math::
+
+    \displaystyle x^{2} + 2 x y + y^{2}
+
+
+
+.. code:: ipython3
+
+    factor(expanded_expr-x**2)
+
+
+
+
+.. math::
+
+    \displaystyle y \left(2 x + y\right)
+
+
+
+.. code:: ipython3
+
+    from sympy import integrate, exp,cos,sin
+    integrate(exp(x)*sin(x) + exp(x)*cos(x), x)
+
+
+
+
+.. math::
+
+    \displaystyle e^{x} \sin{\left(x \right)}
+
+
+symfit
+======
+
+Пакет, комбинирующий ``scipy.optimize`` и ``sympy`` позволяет быстро и
+просто проводить фитирование кривых аналитическими функциями.
+`Документация <https://symfit.readthedocs.io/en/stable/index.html>`_.
+
+scikit-learn
+============
+
+Библиотека для машинного обучения. `Сайт проекта <https://scikit-learn.org/>`_. Собрана на основе
+NumPy, SciPy, matplolib
+
+svgwrite
+========
+
+Библиотека для отрисовки svg. `Документация <https://svgwrite.readthedocs.io/en/latest/>`_.
+
+Awesome Python Chemistry
+========================
+
+Сообщество ученых, использующих Python составило и поддерживает
+актуальным список полезных пакетов для химимков. Ниже представлены
+некоторые программы из этого списка. Полный набор с кратким описанием
+можно найти на `странице проекта <https://github.com/lmmentel/awesome-python-chemistry>`_
 
 RDKit
 =====
@@ -282,83 +373,55 @@ RDKit - мощный дистрибутив для хемоинформатик�
 .. image:: figs/theme11/output_22_0.png
 
 
-SymPy
-=====
+datamol
+-------
 
-Пакет для символьных вычислений.
+datamol - пакет надстройка над RDKit упрощает многие операкции при
+работе с RDKit. `Документация <https://doc.datamol.io/>`_.
 
-`Документация <https://www.sympy.org/en/index.html>`_
+Open Babel
+==========
 
-.. code:: ipython3
+Open Babel - инструмент для работы с химическими данными и переводом их
+из одного формата в другой. Имеет ряд дополнительных инструментов для
+анализа. `Документация <http://openbabel.org/wiki/Main_Page>`_.
 
-    import sympy
-    from sympy import init_printing, symbols
-    init_printing(use_unicode=True)
-    x, y = symbols('x y')
-    expr = (x + y)**2
-    expr
+Pybel
+-----
 
+Надстройак над Open Babel. Упрощает взаимодействие и дополнительно
+адаптирует Open Babel для работы из python. `Документация <https://openbabel.org/docs/dev/UseTheLibrary/Python_Pybel.html>`_.
 
+Pycroscopy
+==========
 
+Инструмент для работы с данными по микроскопии наноматериалов. `Сайт
+проекта <https://pycroscopy.github.io/pycroscopy/index.html>`_.
 
-.. math::
+stk
+===
 
-    \displaystyle \left(x + y\right)^{2}
+Инструмент для конструирования молекул. `Документация <https://stk.readthedocs.io/en/stable/index.html>`_.
 
+nglviewer
+=========
 
-
-.. code:: ipython3
-
-    from sympy import expand, factor
-    expanded_expr = expand(expr)
-    expanded_expr
-
-
-
-
-.. math::
-
-    \displaystyle x^{2} + 2 x y + y^{2}
-
-
+Виджет для IPython/Jupyter для визуализаций молекул и траекторий.
+`Станица проекта <https://github.com/nglviewer/nglview>`_.
 
 .. code:: ipython3
 
-    factor(expanded_expr-x**2)
+    import nglview
+    view = nglview.show_file("1C4D.pdb")  
+    #view = nglview.show_pdbid("3pqr") 
+    view
 
 
 
+.. parsed-literal::
 
-.. math::
+    NGLWidget()
 
-    \displaystyle y \left(2 x + y\right)
-
-
-
-.. code:: ipython3
-
-    from sympy import integrate, exp,cos,sin
-    integrate(exp(x)*sin(x) + exp(x)*cos(x), x)
-
-
-
-
-.. math::
-
-    \displaystyle e^{x} \sin{\left(x \right)}
-
-
-
-scikit-learn
-============
-
-Библиотека для машинного обучения. `Сайт проекта <https://scikit-learn.org/>`_. Собрана на основе
-NumPy, SciPy, matplolib
-
-svgwrite
-========
-
-Библиотека для отрисовки svg. `Документация <https://svgwrite.readthedocs.io/en/latest/>`_.
 
 MDTraj
 ======
